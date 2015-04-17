@@ -4,13 +4,8 @@
 
 /*
 DEURES
-
 Add(Amb punter a node pare)
-<<<<<<< HEAD
-=======
 Recursiu
->>>>>>> origin/master
-
 */
 template <class TYPE>
 struct tree_node {
@@ -27,7 +22,7 @@ struct tree_node {
 	// Si el Add el fem abans del for, es un preorder,
 	// Si el fem despres, un post-order
 
-	void VisitAll(List <TYPE> * list) //Postorder recursiu
+	void PostorderREC(List <TYPE> * list) //Postorder recursiu
 	{
 		node<TYPE> tmp = sons->start;
 		for (tmp != NULL)
@@ -38,17 +33,63 @@ struct tree_node {
 		list.Add(data);
 	}
 
-	void VisitAll2(List <TYPE> * list) //Preorder recursiu
+	void PreorderREC(List <TYPE> * list) //Preorder recursiu
 	{
+		node<TYPE> * tmp;
+		tmp = sons->start;
+
+
+		while (tmp != NULL)
+		{
+			tmp->PreorderREC(list);
+			tmp = tmp->next;
+		}
+		list.Add(data);
+	}
+
+
+
+
+
+
+
+
+
+
+
+	void InorderREC(List <TYPE> * list) //Preorder recursiu
+	{
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		list.Add(data);
 		node<TYPE> tmp = sons->start;
 		for (tmp != NULL)
 		{
 			tmp = tmp->next;
-			node->VisitAll(list);
+			tmp->VisitAll(list);
 		}
 	}
-
 	void VisitAll4(List <TYPE> * list)  //Inorder iteratiu POSAR STACK
 	{
 		list.Add(data);
@@ -68,19 +109,37 @@ struct tree_node {
 		}
 	}
 
-	void PreorderIT(List <TYPE> * list)
+	void PostorderIT(List <tree_node> * list)
+	{
+		//Stack <tree_node<TYPE>> sonStack;
+		Stack <tree_node> sonStack;
+		node <tree_node> * badass = sons->end;
+		badass = root;
+		while (badass != NULL)
+		{
+			list->Add(badass);
+			while (tmp != NULL)
+			{
+				sonStack.PushBack(tmp);
+				tmp = tmp->prev;
+			}
+			badass = sonStack.Pop(tmp);
+		}
+	}
+
+	void PreorderIT(List <tree_node> * list)
 	{
 		Stack <tree_node> sonList;
-		list->node = root;
+		node <tree_node> badass = sons->start;
+		badass = root;
 		while (node != NULL)
 		{
-			list->Add(node);
-
+			
 		}
 
 	}
 };
-};
+
 
 template <class TYPE>
 class Tree
