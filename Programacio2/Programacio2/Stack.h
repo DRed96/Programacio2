@@ -2,13 +2,12 @@
 template <class T>
 class Stack{
 private:
-
-	T * data;
 	unsigned int nElements; //Cambiar el tipus segons l'utilització de la cadena
 	unsigned int mem_alloc;// Quantitat de memòria	
 
 public:
-
+	
+	T * data;
 	//Constructors
 	Stack()
 	{
@@ -60,12 +59,14 @@ public:
 		}
 	}
 
-	void Pop(){
+	T* Pop(){
 		if (nElements != 0)
 			nElements--;
+			return data[nElements];
 	}
-
-	void Top(){
+	//Gets a pointer to the top of the stack read/write
+	T* Top()
+	{
 		return data[nElements];
 	}
 
