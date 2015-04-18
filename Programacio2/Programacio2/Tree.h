@@ -59,13 +59,22 @@ struct tree_node {
 
 	void InorderREC(List <TYPE> * list) //Preorder recursiu
 	{
+		node<TYPE>* tmp;
+		tmp = sons->start;
+		unsigned int counter = 0;
+		while (tmp)
+		{
+			if (counter >= size / 2)
+			{
+				list.Add(data);
+			}
+			tmp->InorderREC(list);
+			counter++;
+			tmp = tmp->next;
 
-
-
-
-
-
-
+		}
+		if (counter < size)
+			list.Add(data);
 
 
 
