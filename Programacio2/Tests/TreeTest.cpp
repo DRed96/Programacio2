@@ -170,8 +170,8 @@ namespace UnitTest1
 			tree.Add('H', it);
 
 			List<tree_node<char>*> list;
-			tree.PreorderREC(list);
-
+			tree.PreorderREC(&list);
+			
 			Assert::AreEqual((int)list.count(), 10);
 
 			Assert::AreEqual((char)list[0]->data, 'F');

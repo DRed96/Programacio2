@@ -67,7 +67,8 @@ public:
 			end->next = newNode;
 			end = newNode;
 		}
-		return ++size;
+		size++;
+		return size;
 	}
 
 	bool del(node <TYPE> * ndelete)
@@ -173,11 +174,11 @@ public:
 	}
 
 
-	const node <TYPE>*getStart() const
+	node <TYPE>*getStart() const
 	{
 		return start;
 	}
-	const node <TYPE>*getEnd() const
+	node <TYPE>*getEnd() const
 	{
 		return end;
 	}

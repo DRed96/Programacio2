@@ -25,33 +25,35 @@ struct tree_node {
 	// Si el Add el fem abans del for, es un preorder,
 	// Si el fem despres, un post-order
 
-	void PostorderREC(List <tree_node<TYPE>*> list) //Postorder recursiu
+	void PostorderREC(List <tree_node<TYPE>*>* list) //Postorder recursiu
 	{
 		node<TYPE> tmp = sons->start;
+	
 		for (tmp != NULL)
 		{
 			tmp = tmp->next;
-			node->VisitAll(list);
+			node->PostorderRECl(list);
 		}
 		list.Add(data);
+		
 	}
 
-	void PreorderREC(List <tree_node<TYPE>*> list) //Preorder recursiu
+	void PreorderREC(List <tree_node<TYPE>*>* list) //Preorder recursiu
 	{
-		const node<tree_node<TYPE>*> * tmp;
+		node<tree_node<TYPE>*> * tmp;
 		tmp = sons.getStart();
 
-
+		list->Add(this);
 		while (tmp != NULL)
 		{
-			PreorderREC(list);
+			tmp->data->PreorderREC(list);
 			tmp = tmp->next;
 		}
-		list.Add(tmp->data);
+		
 	}
 
 	
-	void InorderREC(List <TYPE*> list) //Preorder recursiu
+	void InorderREC(List <tree_node<TYPE>*>* list) //Preorder recursiu
 	{
 		const node<TYPE>* tmp;
 		tmp = sons->start;
@@ -70,7 +72,7 @@ struct tree_node {
 		
 	}
 
-	void InorderIT(List <TYPE> * list)  //Inorder iteratiu POSAR STACK
+	void InorderIT(List <tree_node<TYPE>*>* list)  //Inorder iteratiu POSAR STACK
 	{
 
 
@@ -113,7 +115,7 @@ struct tree_node {
 		}
 	}*/
 
-	void PreorderIT(List <tree_node<TYPE>*> list)
+	void PreorderIT(List <tree_node<TYPE>*>* list)
 	{
 		Stack <tree_node> sonList;
 		node <tree_node> badass = sons->start;
@@ -157,21 +159,29 @@ public:
 		return newNode;
 	}
 
-	void PostorderREC(List <TYPE*> list) const
+	void PostorderREC(List <TYPE*>* list) const
 	{
 		root->PostorderREC(list);
 	}
 
-	void PreorderREC(List <tree_node<TYPE>*> list) const
+	void PreorderREC(List <tree_node<TYPE>*>* list) const
 	{
 		root->PreorderREC(list);
 	}
-	void InorderREC(List <TYPE> * list) const
+	void InorderREC(List <tree_node<TYPE>*> * list) const
 	{
 		root->InorderREC(list);
 	}
 
 	void PostorderIT(List <tree_node<TYPE>*> * list) const
+	{
+		root->PostorderIT(list);
+	}
+	void PretorderIT(List <tree_node<TYPE>*> * list) const
+	{
+		root->PostorderIT(list);
+	}
+	void InorderIT(List <tree_node<TYPE>*> * list) const
 	{
 		root->PostorderIT(list);
 	}
