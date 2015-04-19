@@ -5,15 +5,12 @@
 #ifndef _DYNARRAY_H_
 #define _DYNARRAY_H_
 
-
-
 #include "Globals.h"
 
 template<class TYPE>
-class p2DynArray
+class DynArray
 {
 private:
-
 	TYPE*			data;
 	unsigned int	memAlloc;
 	unsigned int	nElements;
@@ -21,18 +18,18 @@ private:
 public:
 
 	// Constructors
-	p2DynArray()8 n_elements(0), data(NULL)
+	DynArray(): nElements(0), data(NULL)
 	{
 		Alloc(MEM_CHUNK);
 	}
 
-	p2DynArray(unsigned int newMem)  n_elements(0), data(NULL)
+	DynArray(unsigned int newMem) : nElements(0), data(NULL)
 	{
-		Alloc(capacity);
+		Alloc(newMem);
 	}
 
 	// Destructor
-	~p2DynArray()
+	~DynArray()
 	{
 		delete[] data;
 	}
@@ -40,7 +37,7 @@ public:
 	// Operators
 	TYPE& operator[](unsigned int index)
 	{
-		assert(index < n_elements);
+		assert(index < nElements);
 		return data[index];
 	}
 
@@ -53,19 +50,19 @@ public:
 	// Data Management
 	void PushBack(const TYPE& element)
 	{
-		if (num_elements >= mem_capacity)
+		if (nElements >= memAlloc)
 		{
-			Alloc(mem_capacity + MEM_CHUNK);
+			Alloc(memAlloc + MEM_CHUNK);
 		}
 
-		data[++n_elements] = element;
+		data[++nElements] = element;
 	}
 
 	bool Pop()
 	{
-		if (num_elements > 0)
+		if (numElements > 0)
 		{
-			--n_elements;
+			--nElements;
 			return true;
 		}
 		return false;
@@ -73,30 +70,30 @@ public:
 
 	void Clear()
 	{
-		n_elements = 0;
+		nElements = 0;
 	}
 
 	bool Insert(const TYPE& element, unsigned int position)
 	{
-		if (position > num_elements)
+		if (position > nElements)
 			return false;
 
-		if (position == num_elements)
+		if (position == nElements)
 		{
 			PushBack(element);
 			return true;
 		}
 
-		if (num_elements + 1 > mem_capacity)
-			Alloc(mem_capacity + DYN_ARRAY_BLOCK_SIZE);
+		if (nElements + 1 > memAlloc)
+			Alloc(memAlloc + MEM_CHUNK);
 
-		for (unsigned int i = num_elements; i > position; --i)
+		for (unsigned int i = nElements; i > position; --i)
 		{
 			data[i] = data[i - 1];
 		}
 
 		data[position] = element;
-		++num_elements;
+		++nElements;
 
 		return true;
 	}
@@ -105,7 +102,7 @@ public:
 	{
 		TYPE* result = NULL;
 
-		if (index < num_elements)
+		if (index < nElements)
 			return result = &data[index];
 
 		return result;
@@ -115,7 +112,7 @@ public:
 	{
 		TYPE* result = NULL;
 
-		if (index < num_elements)
+		if (index < nElements)
 			return result = &data[index];
 
 		return result;
@@ -124,12 +121,12 @@ public:
 	// Utils
 	unsigned int GetCapacity() const
 	{
-		return mem_capacity;
+		return memAlloc;
 	}
 
 	unsigned int Count() const
 	{
-		return num_elements;
+		return nElements;
 	}
 
 private:
@@ -140,7 +137,7 @@ private:
 		TYPE* tmp = data;
 
 		memAlloc = new_mem;
-		data = new [mem_capacity];
+		//data = new TYPE [memAlloc];
 
 		if (nElements > memAlloc)
 		{
@@ -149,7 +146,7 @@ private:
 	
 		if (tmp != NULL)
 		{
-			for (unsigned int i = 0; i < numElements; i++)
+			for (unsigned int i = 0; i < nElements; i++)
 			{
 				data[i] = tmp[i];
 			}

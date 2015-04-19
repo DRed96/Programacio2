@@ -59,7 +59,7 @@ public:
 		}
 	}
 
-	T* Pop(){
+	T& Pop(){
 		if (nElements != 0)
 			nElements--;
 			return data[nElements];

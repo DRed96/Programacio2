@@ -24,12 +24,12 @@ template<class TYPE>
 class List
 {
 private:
-	List_item<TYPE>*   start;
-	List_item<TYPE>*   end;
-	unsigned int  size;
+	node<TYPE>* start;
+	node<TYPE>* end;
+	
 
 public:
-
+	unsigned int  size;
 	//Constructor
 	
 	 List()
@@ -67,7 +67,7 @@ public:
 			end->next = newNode;
 			end = newNode;
 		}
-		return size++;
+		return ++size;
 	}
 
 	bool del(node <TYPE> * ndelete)
@@ -148,7 +148,7 @@ public:
 			sNode = sNode->next;
 		}
 
-		assert(sNode == NULL);
+		
 
 		return(sNode->data);
 	}
@@ -158,7 +158,7 @@ public:
 	*/
 	int find(const TYPE& data)
 	{
-		p2List_item<TYPE>* tmp = start;
+		node<TYPE>* tmp = fstart;
 		int index = 0;
 
 		while (tmp != NULL)
