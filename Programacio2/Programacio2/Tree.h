@@ -95,11 +95,11 @@ struct tree_node {
 		}
 	}
 
-	void PostorderIT(List <tree_node> * list)
+	void PostorderIT(List <tree_node<TYPE>*> * list)
 	{
 		//Stack <tree_node<TYPE>> sonStack;
-		Stack <tree_node> sonStack;
-		tree_node <TYPE> * badass = sons->end;
+		Stack <tree_node<TYPE>*> sonStack;
+		node<tree_node <TYPE> *> badass = sons->end;
 		badass->data = root;
 		while (badass != NULL)
 		{
@@ -169,5 +169,10 @@ public:
 	void InorderREC(List <TYPE> * list) const
 	{
 		root->InorderREC(list);
+	}
+
+	void PostorderIT(List <tree_node<TYPE>*> * list) const
+	{
+		root->PostorderIT(list);
 	}
 };

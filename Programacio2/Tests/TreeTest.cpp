@@ -78,22 +78,29 @@ namespace UnitTest1
 			Assert::AreEqual((char)list[8]->data, 'I');
 			Assert::AreEqual((char)list[9]->data, 'H');
 		}
-
+		*/
 		TEST_METHOD(TreePostOrderIterative)
 		{
-			p2Tree<char> tree('F');
+			Tree<char> tree;
+			
+			//Abreviaton for iterative
+			//Each pointer points to a son
+			tree_node <char>* s1;
+			tree_node <char>* s2;
+			tree_node <char>* testroot;
 
-			tree.Add('B', 'F');
-			tree.Add('G', 'F');
-			tree.Add('A', 'B');
-			tree.Add('D', 'B');
-			tree.Add('C', 'D');
-			tree.Add('E', 'D');
-			tree.Add('I', 'G');
-			tree.Add('H', 'I');
+			testroot = tree.Add('F', NULL);
+			s1 = tree.Add('B', testroot);
+			s2 = tree.Add('G', testroot);
+			tree.Add('A', s1);
+			tree.Add('D', s1);
+			tree.Add('C', s1->sons[1]);
+			tree.Add('E', s1->sons[1]);
+			tree.Add('I', s2);
+			tree.Add('H', s2->sons[0]);
 
-			p2List<p2TreeNode<char>*> list;
-			tree.PostOrderIterative(&list);
+			List<tree_node<char>*> list;
+			tree.PostorderIT(&list);
 
 			Assert::AreEqual((int)list.count(), 9);
 
@@ -107,7 +114,7 @@ namespace UnitTest1
 			Assert::AreEqual((char)list[7]->data, 'G');
 			Assert::AreEqual((char)list[8]->data, 'F');
 		}
-
+		/*
 		TEST_METHOD(TreeInOrderIterative)
 		{
 			p2Tree<char> tree('F');
