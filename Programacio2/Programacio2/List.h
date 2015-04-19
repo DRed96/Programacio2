@@ -171,5 +171,15 @@ public:
 		}
 		return (-1);
 	}
+
+
+	const node <TYPE>*getStart() const
+	{
+		return start;
+	}
+	const node <TYPE>*getEnd() const
+	{
+		return end;
+	}
 };
 #endif //_List_H_

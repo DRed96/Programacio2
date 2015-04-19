@@ -7,18 +7,21 @@ DEURES
 Add(Amb punter a node pare)
 Recursiu
 */
+
 template <class TYPE>
 struct tree_node {
 	TYPE data;
 	tree_node * father;
-	List <tree_node> * sons;
+	List <tree_node<TYPE>*> sons;
 
+	tree_node() : data(NULL), father(NULL)
+	{}
 
-	tree_node(const TYPE a)
-	{
-		data = a;
-		father = NULL;
-	}
+	tree_node(const TYPE a) : data(a), father(NULL)
+	{}
+
+	~tree_node()
+	{}
 	// Si el Add el fem abans del for, es un preorder,
 	// Si el fem despres, un post-order
 
@@ -47,16 +50,7 @@ struct tree_node {
 		list.Add(data);
 	}
 
-
-
-
-
-
-
-
-
-
-
+	
 	void InorderREC(List <TYPE> * list) //Preorder recursiu
 	{
 		node<TYPE>* tmp;
@@ -73,33 +67,10 @@ struct tree_node {
 			tmp = tmp->next;
 
 		}
-		if (counter < size)
-			list.Add(data);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		list.Add(data);
-		node<TYPE> tmp = sons->start;
-		for (tmp != NULL)
-		{
-			tmp = tmp->next;
-			tmp->VisitAll(list);
-		}
+		
 	}
-	void VisitAll4(List <TYPE> * list)  //Inorder iteratiu POSAR STACK
+
+	void InorderIT(List <TYPE> * list)  //Inorder iteratiu POSAR STACK
 	{
 		list.Add(data);
 		unsigned int counter = 0;
@@ -157,23 +128,27 @@ public:
 	tree_node<TYPE>* root;
 	unsigned int size;
 
-	//Codi poc òptim al constructor
-	Tree(const TYPE a)
+	Tree() :root(NULL)
 	{
-		root = new tree_node<TYPE>(a);
 	}
 
-	unsigned int Add(const TYPE& _data)
+	tree_node<TYPE> * Add(const TYPE& _data, tree_node<TYPE> * newFather)
 	{
-		tree_node <TYPE> * newNode = new tree_node<TYPE>(_data);
-		//ERROR!!
-		//Quan intento accedir a sons no em deixa,
-		//EN cas de no crear un nou node per root, tampoc puc accedir a father 
-		root->sons->PushBack(newNode);
+		//assert(root != NULL && newFather == NULL);
 
-		newNode->father = root;
-		size = 1;
-		return size;
+		tree_node <TYPE> *newNode = new tree_node<TYPE>(_data);
+		if (newFather == NULL && root == NULL)
+		{
+			root = newNode;
+			newNode->father = NULL;
+		}
+		if (newFather != NULL && root != NULL)
+		{
+			newFather->sons.Add(newNode);
+			newNode->father = newFather;
+		} 
+		size++;
+		return newNode;
 	}
 
 	void VisitAllNodes(List <TYPE>* list) const
