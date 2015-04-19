@@ -67,8 +67,8 @@ public:
 			end->next = newNode;
 			end = newNode;
 		}
-		size++;
-		return size;
+		
+		return ++size;
 	}
 
 	bool del(node <TYPE> * ndelete)
