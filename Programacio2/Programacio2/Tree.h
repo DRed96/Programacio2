@@ -38,8 +38,8 @@ struct tree_node {
 
 	void PreorderREC(List <tree_node<TYPE>*> list) //Preorder recursiu
 	{
-		node<tree_node<TYPE>*> * tmp;
-		tmp = sons.getStart()->data;
+		const node<tree_node<TYPE>*> * tmp;
+		tmp = sons.getStart();
 
 
 		while (tmp != NULL)
@@ -47,13 +47,13 @@ struct tree_node {
 			PreorderREC(list);
 			tmp = tmp->next;
 		}
-		list.Add(data);
+		list.Add(tmp->data);
 	}
 
 	
 	void InorderREC(List <TYPE*> list) //Preorder recursiu
 	{
-		node<TYPE>* tmp;
+		const node<TYPE>* tmp;
 		tmp = sons->start;
 		unsigned int counter = 0;
 		while (tmp)
@@ -95,7 +95,7 @@ struct tree_node {
 		}
 	}
 
-	void PostorderIT(List <tree_node<TYPE>*> * list)
+	/*void PostorderIT(List <tree_node<TYPE>*> * list)
 	{
 		//Stack <tree_node<TYPE>> sonStack;
 		Stack <tree_node<TYPE>*> sonStack;
@@ -111,7 +111,7 @@ struct tree_node {
 			}
 			badass = sonStack.Pop(tmp);
 		}
-	}
+	}*/
 
 	void PreorderIT(List <tree_node<TYPE>*> list)
 	{

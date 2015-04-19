@@ -78,7 +78,7 @@ namespace UnitTest1
 			Assert::AreEqual((char)list[8]->data, 'I');
 			Assert::AreEqual((char)list[9]->data, 'H');
 		}
-		*/
+		*
 		TEST_METHOD(TreePostOrderIterative)
 		{
 			Tree<char> tree;
