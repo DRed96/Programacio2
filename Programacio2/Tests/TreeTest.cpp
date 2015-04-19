@@ -11,7 +11,7 @@ namespace UnitTest1
 		
 		TEST_METHOD(TreeAdd)
 		{
-			Tree<int> tree;
+			Tree<int> test;
 			//Abreviaton for iterative
 			tree_node <int>* it;
 			//Each pointer points to a son
@@ -20,21 +20,21 @@ namespace UnitTest1
 			tree_node <int>* s3;
 			tree_node <int>* testroot;
 
-			testroot = tree.Add(0, NULL);
-			s1 = tree.Add(100, testroot);
+			testroot = test.Add(0, NULL);
+			s1 = test.Add(100, testroot);
 			
-			tree.Add(101, s1);
-			tree.Add(102, s1);
-			tree.Add(103, s1);
+			test.Add(101, s1);
+			test.Add(102, s1);
+			test.Add(103, s1);
 
 
-			s2 = tree.Add(200, testroot);
-			it = tree.Add(201, s2);
-			tree.Add(211, it);
+			s2 = test.Add(200, testroot);
+			it = test.Add(201, s2);
+			test.Add(211, it);
 
-			s3 = tree.Add(300, testroot);
+			s3 = test.Add(300, testroot);
 
-			tree.Add(221, NULL);
+			test.Add(221, NULL);
 			Assert::AreEqual(testroot->sons[0]->data, 100);
 			Assert::AreEqual(s1->sons[0]->data, 101);
 			Assert::AreEqual(s1->sons[1]->data, 102);
@@ -45,10 +45,7 @@ namespace UnitTest1
 			Assert::AreEqual(s2->sons[0]->sons[0]->data, 211);
 			Assert::IsTrue(s2->sons[0]->sons[0]->sons.getStart() == NULL);
 			
-			Assert::AreEqual(testroot->sons[2]->data, 300);
-
-			// Just do not test that we run forever because of the recursion
-			
+			Assert::AreEqual(testroot->sons[2]->data, 300);		
 		}
 
 		/*TEST_METHOD(TreePreOrderIterative)
@@ -141,23 +138,32 @@ namespace UnitTest1
 		}
 		*/
 
-		/*
+		
 		TEST_METHOD(TreePreOrder)
 		{
-			p2Tree<char> tree('F');
+			Tree<char> tree;
 
-			tree.Add('B', 'F');
-			tree.Add('G', 'F');
-			tree.Add('A', 'B');
-			tree.Add('D', 'B');
-			tree.Add('X', 'B');
-			tree.Add('C', 'D');
-			tree.Add('E', 'D');
-			tree.Add('I', 'G');
-			tree.Add('H', 'I');
+			//Abreviaton for iterative
+			tree_node <char>* it;
+			//Each pointer points to a son
+			tree_node <char>* s1;
+			tree_node <char>* s2;
+			tree_node <char>* testroot;
 
-			p2List<p2TreeNode<char>*> list;
-			tree.PreOrderRecursive(&list);
+			testroot = tree.Add('F', NULL);
+
+			s1 = tree.Add('B', testroot);
+			s2 = tree.Add('G', testroot);
+			tree.Add('A', s1);
+			tree.Add('D', s1);
+			tree.Add('X', s1);
+			tree.Add('C', s1->sons[1]);
+			tree.Add('E', s1->sons[1]);
+			it = tree.Add('I', s2);
+			tree.Add('H', it);
+
+			List<tree_node<char>*> list;
+			tree.PreorderREC(list);
 
 			Assert::AreEqual((int)list.count(), 10);
 
@@ -172,7 +178,7 @@ namespace UnitTest1
 			Assert::AreEqual((char)list[8]->data, 'I');
 			Assert::AreEqual((char)list[9]->data, 'H');
 		}
-
+		/*
 		TEST_METHOD(TreePostOrder)
 		{
 			p2Tree<char> tree('F');

@@ -25,7 +25,7 @@ struct tree_node {
 	// Si el Add el fem abans del for, es un preorder,
 	// Si el fem despres, un post-order
 
-	void PostorderREC(List <TYPE> * list) //Postorder recursiu
+	void PostorderREC(List <tree_node<TYPE>*> list) //Postorder recursiu
 	{
 		node<TYPE> tmp = sons->start;
 		for (tmp != NULL)
@@ -36,22 +36,22 @@ struct tree_node {
 		list.Add(data);
 	}
 
-	void PreorderREC(List <TYPE> * list) //Preorder recursiu
+	void PreorderREC(List <tree_node<TYPE>*> list) //Preorder recursiu
 	{
-		node<TYPE> * tmp;
-		tmp = sons->start;
+		node<tree_node<TYPE>*> * tmp;
+		tmp = sons.getStart()->data;
 
 
 		while (tmp != NULL)
 		{
-			tmp->PreorderREC(list);
+			PreorderREC(list);
 			tmp = tmp->next;
 		}
 		list.Add(data);
 	}
 
 	
-	void InorderREC(List <TYPE> * list) //Preorder recursiu
+	void InorderREC(List <TYPE*> list) //Preorder recursiu
 	{
 		node<TYPE>* tmp;
 		tmp = sons->start;
@@ -72,6 +72,9 @@ struct tree_node {
 
 	void InorderIT(List <TYPE> * list)  //Inorder iteratiu POSAR STACK
 	{
+
+
+
 		list.Add(data);
 		unsigned int counter = 0;
 		node<TYPE> tmp = sons->start;
@@ -86,6 +89,9 @@ struct tree_node {
 
 			sons->
 				counter++;
+		
+		
+		
 		}
 	}
 
@@ -93,8 +99,8 @@ struct tree_node {
 	{
 		//Stack <tree_node<TYPE>> sonStack;
 		Stack <tree_node> sonStack;
-		node <tree_node> * badass = sons->end;
-		badass = root;
+		tree_node <TYPE> * badass = sons->end;
+		badass->data = root;
 		while (badass != NULL)
 		{
 			list->Add(badass);
@@ -107,7 +113,7 @@ struct tree_node {
 		}
 	}
 
-	void PreorderIT(List <tree_node> * list)
+	void PreorderIT(List <tree_node<TYPE>*> list)
 	{
 		Stack <tree_node> sonList;
 		node <tree_node> badass = sons->start;
@@ -151,8 +157,17 @@ public:
 		return newNode;
 	}
 
-	void VisitAllNodes(List <TYPE>* list) const
+	void PostorderREC(List <TYPE*> list) const
 	{
-		root->VisitAll(list);
+		root->PostorderREC(list);
+	}
+
+	void PreorderREC(List <tree_node<TYPE>*> list) const
+	{
+		root->PreorderREC(list);
+	}
+	void InorderREC(List <TYPE> * list) const
+	{
+		root->InorderREC(list);
 	}
 };
