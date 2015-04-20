@@ -34,7 +34,7 @@ struct tree_node {
 			tmp = tmp->next;
 			node->PostorderRECl(list);
 		}
-		list.Add(data);
+		list.Add(this);
 		
 	}
 
@@ -62,13 +62,13 @@ struct tree_node {
 		{
 			if (counter >= size / 2)
 			{
-				list.Add(data);
+				list.Add(this);
 			}
 			tmp->InorderREC(list);
 			counter++;
 			tmp = tmp->next;
-
 		}
+		list->Add(this);
 		
 	}
 
@@ -97,7 +97,7 @@ struct tree_node {
 		}
 	}
 
-	/*void PostorderIT(List <tree_node<TYPE>*> * list)
+	void PostorderIT(List <tree_node<TYPE>*> * list)
 	{
 		//Stack <tree_node<TYPE>> sonStack;
 		Stack <tree_node<TYPE>*> sonStack;
@@ -113,7 +113,7 @@ struct tree_node {
 			}
 			badass = sonStack.Pop(tmp);
 		}
-	}*/
+	}
 
 	void PreorderIT(List <tree_node<TYPE>*>* list)
 	{
