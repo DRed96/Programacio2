@@ -89,27 +89,6 @@ namespace UnitTest1
 
 			Assert::AreEqual((int)array.GetCapacity(), 1008);
 			Assert::AreEqual((int)array.Count(), 999);
-		}
-
-		TEST_METHOD(insert)
-		{
-			DynArray<int> array;
-
-			for (int i = 0; i < MEM_CHUNK; ++i)
-			{
-				array.PushBack(i);
-			}
-
-			array.Insert(999, 3);
-			array.Insert(888, 17);
-			array.Insert(777, 50);
-
-			Assert::IsFalse(array.Insert(777, 50));
-			Assert::AreEqual((int)array.GetCapacity(), MEM_CHUNK * 2);
-			Assert::AreEqual((int)array.Count(), 18);
-			Assert::AreEqual((int)array[3], 999);
-			Assert::AreEqual((int)array[17], 888);
-		}
-	
+		}	
 	};
 }

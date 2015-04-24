@@ -74,9 +74,6 @@ struct tree_node {
 
 	void InorderIT(List <tree_node<TYPE>*>* list)  //Inorder iteratiu POSAR STACK
 	{
-
-
-
 		list.Add(data);
 		unsigned int counter = 0;
 		node<TYPE> tmp = sons->start;
@@ -91,18 +88,29 @@ struct tree_node {
 
 			sons->
 				counter++;
-		
-		
-		
 		}
 	}
 
 	void PostorderIT(List <tree_node<TYPE>*> * list)
 	{
 		//Stack <tree_node<TYPE>> sonStack;
-		Stack <tree_node<TYPE>*> sonStack;
-		node<tree_node <TYPE> *> badass = sons->end;
-		badass->data = root;
+		Stack <tree_node> sonList;
+		node <tree_node> badass = sons->start;
+		badass = root;
+		while (node != NULL)
+		{
+
+		}
+
+	}
+	
+
+	void PreorderIT(List <tree_node<TYPE>*>* list)
+	{
+
+	Stack <tree_node<TYPE>*> sonStack;
+	node<tree_node <TYPE> *> badass = sons->end;
+	badass->data = root;
 		while (badass != NULL)
 		{
 			list->Add(badass);
@@ -113,18 +121,6 @@ struct tree_node {
 			}
 			badass = sonStack.Pop(tmp);
 		}
-	}
-
-	void PreorderIT(List <tree_node<TYPE>*>* list)
-	{
-		Stack <tree_node> sonList;
-		node <tree_node> badass = sons->start;
-		badass = root;
-		while (node != NULL)
-		{
-			
-		}
-
 	}
 };
 
