@@ -1,7 +1,7 @@
 #pragma once
 #include "List.h"
 #include "Stack.h"
-
+#include "Queue.h"
 /*
 DEURES
 Add(Amb punter a node pare)
@@ -93,15 +93,21 @@ struct tree_node {
 
 	void PostorderIT(List <tree_node<TYPE>*> * list)
 	{
-		//Stack <tree_node<TYPE>> sonStack;
-		Stack <tree_node> sonList;
-		node <tree_node> badass = sons->start;
-		badass = root;
-		while (node != NULL)
-		{
-
+		//FER EL QUEUE BE????
+		Stack <tree_node<TYPE>> sonStack;
+		tree_node<TYPE> * it_node = root;
+		node<TYPE>* tmp;
+		
+		while (it_node != NULL){
+			tmp = it_node->sons->end;
+			while (tmp != NULL)
+			{
+				sonStack.PushBack(tmp);
+				tmp = tmp->prev;
+			}
+			it_node = sonStack.Pop();
+			list->Add(it_node);
 		}
-
 	}
 	
 
@@ -109,21 +115,24 @@ struct tree_node {
 	{
 
 	Stack <tree_node<TYPE>*> sonStack;
-	node<tree_node <TYPE> *> badass = sons->end;
-	badass->data = root;
+	tree_node <TYPE> * badass = root; 
+	node<TYPE>* tmp;
+	//list->Add(root);
 		while (badass != NULL)
 		{
 			list->Add(badass);
+			//if (badass->sons)
+				tmp = badass->sons->end;
 			while (tmp != NULL)
 			{
 				sonStack.PushBack(tmp);
 				tmp = tmp->prev;
-			}
+			}	
 			badass = sonStack.Pop(tmp);
 		}
 	}
 };
-
+g
 
 template <class TYPE>
 class Tree
