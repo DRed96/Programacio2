@@ -94,22 +94,11 @@ struct tree_node {
 	void PostorderIT(List <tree_node<TYPE>*> * list)
 	{
 		Stack <tree_node<TYPE>> sonStack;
-		Stack <tree_node<TYPE>> secondStack;
 		tree_node<TYPE> * it_node = root;
 		node<TYPE>* tmp;
 		
 		while (it_node != NULL){
-			/*if (it_node->sons != NULL)
-				secondStack.PushBack(it_node);	
 			
-			if (it_node == it_node->father->sons->end){
-				while (it_node != NULL)
-				{
-					it_node = secondStack.Pop();
-					list->Add(it_node);
-				}
-			}*/
-
 			tmp = it_node->sons->end;
 			
 			while (tmp != NULL)
@@ -133,12 +122,7 @@ struct tree_node {
 				list->Add(it_node);
 				it_node = sonStack.Top();
 			}
-		/*	if (it_node->father->sons->start = tmp->data)
-				it_node = sonStack.Pop();
-				list->Add(it_node);
-				it_node = sonStack.Top();
-				*/
-
+		
 		}
 		list->Add(root);
 	}
