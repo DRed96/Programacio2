@@ -97,8 +97,7 @@ struct tree_node {
 		Stack <tree_node<TYPE>> secondStack;
 		tree_node<TYPE> * it_node = root;
 		node<TYPE>* tmp;
-		sonStack.PushBack(it_node);
-
+		
 		while (it_node != NULL){
 			/*if (it_node->sons != NULL)
 				secondStack.PushBack(it_node);	
@@ -110,6 +109,7 @@ struct tree_node {
 					list->Add(it_node);
 				}
 			}*/
+
 			tmp = it_node->sons->end;
 			
 			while (tmp != NULL)
@@ -122,15 +122,25 @@ struct tree_node {
 			
 			//it_node = sonStack.Pop();
 
-			if (it_node->sons == NULL)
+			if (it_node->sons == NULL){
 				list->Add(it_node);
 				sonStack.Pop;
-			if (it_node->father->sons->start = tmp->data)
+			}
+
+			if (it_node == it_node->father->sons->end)
+			{
 				it_node = sonStack.Pop();
 				list->Add(it_node);
 				it_node = sonStack.Top();
+			}
+		/*	if (it_node->father->sons->start = tmp->data)
+				it_node = sonStack.Pop();
+				list->Add(it_node);
+				it_node = sonStack.Top();
+				*/
 
 		}
+		list->Add(root);
 	}
 	
 
