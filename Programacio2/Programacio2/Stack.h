@@ -9,14 +9,12 @@ public:
 	
 	T * data;
 	//Constructors
-	Stack()
+	Stack() : mem_alloc(0), data(NULL), nElements(0)
 	{
-		mem_alloc = 0; data = NULL; nElements = 0;
+		//mem_alloc = 0; data = NULL; nElements = 0;
 	}
-	Stack(unsigned int Size)
+	Stack(unsigned int Size): mem_alloc(Size), nElements(0)
 	{
-		mem_alloc = Size;
-		nElements = 0;
 		data = new T[mem_alloc];
 	}
 
@@ -34,16 +32,16 @@ public:
 	unsigned int getMem() const { return mem_alloc; }
 	unsigned int getElem() const { return nElements; }
 	//Methods
-	void PushBack(T newValue){
+	void PushBack(const T newValue){
 		if (data != NULL)
 		{
 			if (nElements >= mem_alloc)
 			{
-				int * tmpCpy = data;
+				T * tmpCpy = data;
 				mem_alloc++;
-				delete[] data;
 				data = new T[mem_alloc];
 				CopyArrays(data, tmpCpy, nElements);
+				delete[] tmpCpy;
 			}
 
 			data[nElements] = newValue;
@@ -53,30 +51,38 @@ public:
 		{
 			nElements = 1;
 			mem_alloc = 1;
-			data = new int[mem_alloc];
+			data = new T[mem_alloc];
 			data[0] = newValue;
 
 		}
 	}
 
-	T& Pop(){
+	T* Pop()
+	{
 		if (nElements != 0)
+		{
+			int * ret;
 			nElements--;
-			return data[nElements];
+			ret =data[nElements];
+			return ret;
+		}
+		return NULL;
+		//If it does nothing, it returns 0
 	}
-	//Gets a pointer to the top of the stack read/write
-	T* Top()
+	
+	//Gets a pointer to the top of the stack 
+	T& Top()
 	{
 		return data[nElements];
 	}
 
-	void CopyArrays(int * destiny, int * source, unsigned int newMem)
+	void CopyArrays(T * destiny, T * source, unsigned int newMem)
 	{
 		if (source != NULL)
 		{
 			if (destiny == NULL)
 			{
-				destiny = new int[newMem];
+				destiny = new T[newMem];
 			}
 			for (unsigned int i = 0; i < newMem; i++)
 			{

@@ -23,12 +23,10 @@ struct node
 template<class TYPE>
 class List
 {
-private:
+public:
 	node<TYPE>* start;
 	node<TYPE>* end;
 	
-
-public:
 	unsigned int  size;
 	//Constructor
 	

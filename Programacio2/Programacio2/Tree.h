@@ -13,7 +13,7 @@ struct tree_node {
 	TYPE data;
 	tree_node * father;
 	List <tree_node<TYPE>*> sons;
-
+	//TYPE2 = tree_node<TYPE>*;
 	tree_node() : data(NULL), father(NULL)
 	{}
 
@@ -31,13 +31,14 @@ struct tree_node {
 	
 		for (tmp != NULL)
 		{
-			tmp = tmp->next;
 			node->PostorderRECl(list);
+			tmp = tmp->next;
+			
 		}
 		list.Add(this);
 		
 	}
-
+	/*
 	void PreorderREC(List <tree_node<TYPE>*>* list) //Preorder recursiu
 	{
 		node<tree_node<TYPE>*> * tmp;
@@ -76,7 +77,7 @@ struct tree_node {
 	{
 		list.Add(data);
 		unsigned int counter = 0;
-		node<TYPE> tmp = sons->start;
+		node<tree_node<TYPE>*> * tmp = sons->start;
 		while (sons->size > counter)
 		{
 			Add(tmp->data);
@@ -90,20 +91,20 @@ struct tree_node {
 				counter++;
 		}
 	}
-
+	*/
 	void PostorderIT(List <tree_node<TYPE>*> * list)
 	{
-		Stack <tree_node<TYPE>> sonStack;
-		tree_node<TYPE> * it_node = root;
-		node<TYPE>* tmp;
+		Stack <tree_node<TYPE>*> sonStack;
+		tree_node<TYPE>* it_node = this;
+		node<tree_node<TYPE>*>* tmp;
 		
 		while (it_node != NULL){
 			
-			tmp = it_node->sons->end;
+			tmp = sons.end;
 			
 			while (tmp != NULL)
 			{
-				sonStack.PushBack(tmp);
+				sonStack.PushBack(tmp->data);
 				tmp = tmp->prev;
 			}
 
@@ -111,12 +112,12 @@ struct tree_node {
 			
 			//it_node = sonStack.Pop();
 
-			if (it_node->sons == NULL){
+			if (it_node->sons.start == NULL){
 				list->Add(it_node);
-				sonStack.Pop;
+				sonStack.Pop();
 			}
 
-			if (it_node == it_node->father->sons->end)
+			if (it_node == it_node->father->sons.end->data)
 			{
 				it_node = sonStack.Pop();
 				list->Add(it_node);
@@ -124,10 +125,10 @@ struct tree_node {
 			}
 		
 		}
-		list->Add(root);
+		list->Add(this);
 	}
 	
-
+	/*
 	void PreorderIT(List <tree_node<TYPE>*>* list)
 	{
 
@@ -147,7 +148,7 @@ struct tree_node {
 			}	
 			badass = sonStack.Pop(tmp);
 		}
-	}
+	}*/
 };
 
 
@@ -181,6 +182,7 @@ public:
 		return newNode;
 	}
 
+	/*
 	void PostorderREC(List <TYPE*>* list) const
 	{
 		root->PostorderREC(list);
@@ -193,18 +195,18 @@ public:
 	void InorderREC(List <tree_node<TYPE>*> * list) const
 	{
 		root->InorderREC(list);
-	}
-
+	}*/
+	
 	void PostorderIT(List <tree_node<TYPE>*> * list) const
 	{
 		root->PostorderIT(list);
 	}
 	void PretorderIT(List <tree_node<TYPE>*> * list) const
 	{
-		root->PostorderIT(list);
+		root->PreorderIT(list);
 	}
 	void InorderIT(List <tree_node<TYPE>*> * list) const
 	{
-		root->PostorderIT(list);
+		root->InorderIT(list);
 	}
 };

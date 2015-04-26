@@ -61,7 +61,7 @@ namespace UnitTest1
 			//OPERATOR?
 			tree_node<char> * s1;
 			tree_node<char> * s2;
-			tree_node<char> * it; //ITERATIVE NODE
+		//	tree_node<char> * it; //ITERATIVE NODE
 			
 			test.Add('F', NULL);
 
@@ -84,7 +84,7 @@ namespace UnitTest1
 			test.PostorderIT(output);
 
 
-			Assert::AreEqual(output->getStart()->data->data, 'F');
+	//		Assert::AreEqual(output->getStart()->data->data, 'F');
 			/*Assert::AreEqual(output[1], 'F');
 			Assert::AreEqual(output[2], 'F');
 			Assert::AreEqual(output[3], 'F');
