@@ -23,14 +23,13 @@ namespace UnitTest1
 
 		TEST_METHOD(DynArray_push_back)
 		{
-		/*	DynArray<int> array;
+			DynArray<int> array;
 
 			array.PushBack(1);
 			array.PushBack(2);
 			array.PushBack(3);
 			Assert::AreEqual((int)array.GetCapacity(), MEM_CHUNK);
-			Assert::AreEqual((int)array.Count(), 3);*/
-			Assert::AreEqual(1, 3);
+			Assert::AreEqual((int)array.Count(), 3);
 		}
 
 	
