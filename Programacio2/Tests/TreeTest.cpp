@@ -12,7 +12,7 @@ namespace UnitTest1
 		
 		TEST_METHOD(Tree_Add)
 		{
-			Tree<int> test;
+			Tree <int> test;
 			//OPERATOR?
 			tree_node<int> * s1;
 			tree_node<int> * s2;

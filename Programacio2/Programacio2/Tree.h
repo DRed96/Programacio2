@@ -111,7 +111,7 @@ struct tree_node {
 				tmp = badass->sons->end;
 			while (tmp != NULL)
 			{
-				sonStack.PushBack(tmp);
+				sonStack.PushBack(tmp);a
 				tmp = tmp->prev;
 			}	
 			badass = sonStack.Pop(tmp);
@@ -150,6 +150,14 @@ public:
 		return newNode;
 	}
 
+	void PretorderIT(List <tree_node<TYPE>*> * list) const
+	{
+		root->PreorderIT(list);
+	}
+	void InorderIT(List <tree_node<TYPE>*> * list) const
+	{
+		root->InorderIT(list);
+	}
 	/*
 	void PostorderREC(List <TYPE*>* list) const
 	{
@@ -182,7 +190,7 @@ public:
 				tmp = tmp->prev;
 			}
 
-			//Perquï¿½ no puc fer servir el Top??
+			//Perquè no puc fer servir el Top??
 			it_node = sonStack.data[sonStack.nElements- 1];
 
 			if (it_node->sons.start == NULL){
@@ -200,7 +208,7 @@ public:
 		//assert(1 != 1);
 		//	assert(sonStack.isOver != true);
 		list->Add(root);
-	}*/
+	}
 
 
 	void PostorderIT(List <tree_node<TYPE>*> * list)
@@ -220,7 +228,7 @@ public:
 				tmp = tmp->prev;
 			}
 
-			//Perquï¿½ no puc fer servir el Top??
+			//Perquè no puc fer servir el Top??
 			it_node = sonStack.data[sonStack.nElements - 1];
 
 			if (it_node->sons.start == NULL){
@@ -239,15 +247,7 @@ public:
 		//	assert(sonStack.isOver != true);
 		list->Add(root);
 	}
+	*/
 
 
-
-	void PretorderIT(List <tree_node<TYPE>*> * list) const
-	{
-		root->PreorderIT(list);
-	}
-	void InorderIT(List <tree_node<TYPE>*> * list) const
-	{
-		root->InorderIT(list);
-	}
 };
