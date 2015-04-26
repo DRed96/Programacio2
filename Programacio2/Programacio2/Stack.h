@@ -1,14 +1,17 @@
 #define MEM_CHUNK 16
 template <class T>
 class Stack{
-private:
+public:
+
 	unsigned int nElements; //Cambiar el tipus segons l'utilització de la cadena
 	unsigned int mem_alloc;// Quantitat de memòria	
 	
-public:
-	
+
 	T * data;
 	bool isOver;
+public:
+	
+	
 	//Constructors
 	Stack() : mem_alloc(0), data(NULL), nElements(0), isOver(false)
 	{
@@ -58,21 +61,30 @@ public:
 		}
 	}
 
-	T& Pop()
+	bool Pop(T& ref)
 	{
 		if (nElements != 0)
 		{
 			nElements--;
-			return data[nElements];
-			
+			ref = data[nElements];
+			return true;
 		}
-		else
-		{
-			isOver = true;
-		}
+		return false;
+		
 		//If it does nothing, it returns 0
 	}
 	
+	bool Pop()
+	{
+		if (nElements != 0)
+		{
+			nElements--;
+			return true;
+		}
+		return false;
+
+		//If it does nothing, it returns 0
+	}
 	//Gets a pointer to the top of the stack 
 	T& Top()
 	{

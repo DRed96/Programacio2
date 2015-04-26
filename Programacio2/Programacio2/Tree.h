@@ -208,9 +208,10 @@ public:
 		Stack <tree_node<TYPE>*> sonStack;
 		tree_node<TYPE>* it_node = root;
 		node<tree_node<TYPE>*>* tmp;
+		bool checker = true;
 
 
-		while (sonStack.isOver != true){
+		while (checker == true){
 
 			tmp = it_node->sons.end;
 
@@ -220,18 +221,18 @@ public:
 				tmp = tmp->prev;
 			}
 
-			//Perquï¿½ no puc fer servir el Top??
-			it_node = sonStack.data[sonStack.nElements - 1];
+			//Perquï¿e no puc fer servir el Top??
+			checker = sonStack.Pop(it_node);
 
 			if (it_node->sons.start == NULL){
 				list->Add(it_node);
-				sonStack.Pop();
+			//	sonStack.Pop();
 			}
 
 			if (it_node == it_node->father->sons.end->data)
 			{
 				//assert(1 != 1);
-				sonStack.Pop(it_node);
+			//	sonStack.Pop(it_node);
 				list->Add(it_node);
 			}
 		}

@@ -63,12 +63,13 @@ namespace UnitTest1
 			tree_node<char> * s2;
 		//	tree_node<char> * it; //ITERATIVE NODE
 			
-			test.Add('F', NULL);
+			test.Add('D', NULL);
 
-			s1 = test.Add('B', test.root);
-			s2 = test.Add('G', test.root);
+			s1 = test.Add('C', test.root);
+			s2 = test.Add('B', s1);
+			test.Add('A', s2);
 
-			test.Add('A', s1);
+			/*test.Add('A', s1);
 			test.Add('C', s1);
 
 			test.Add('D', s1->sons[1]);
@@ -76,25 +77,21 @@ namespace UnitTest1
 
 			test.Add('H', s2);
 			test.Add('I', s2->sons[0]);
-
+			*/
 
 			List<tree_node<char>*>* output;
 			output = new List<tree_node<char>*>;
 
-			//		test.PostorderIT(output);
+			test.PostorderIT(output);
 
-
-	//		Assert::AreEqual(output->getStart()->data->data, 'F');
-			/*Assert::AreEqual(output[1], 'F');
-			Assert::AreEqual(output[2], 'F');
-			Assert::AreEqual(output[3], 'F');
-			Assert::AreEqual(output[4], 'F');
-			Assert::AreEqual(output[5], 'F');
-			Assert::AreEqual(output[6], 'F');
-			Assert::AreEqual(output[7], 'F');
-			Assert::AreEqual(output[8], 'F');
-		
-			Assert::AreEqual('F', test.root->data);
+					//Assert::AreEqual(output[1], 'F');
+		//	Assert::AreEqual(output->getStart()->data->data, 'A');
+			//v1 = C,B,A,A,D(root)
+		Assert::AreEqual(output->getStart()->next->data->data, 'B');
+		//	Assert::AreEqual(output->getStart()->next->next->data->data, 'C');
+		//	Assert::AreEqual(output->getStart()->next->next->next->data->data, 'D');
+		Assert::AreEqual(output->getStart()->next->next->next->next->data->data, 'A');
+			/*Assert::AreEqual('F', test.root->data);
 			Assert::AreEqual(test.root->sons[0]->data, s1->data);
 			Assert::AreEqual(test.root->sons[1]->data, s2->data);
 
