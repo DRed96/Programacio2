@@ -10,7 +10,7 @@ namespace UnitTest1
 	{
 	public:
 		
-		TEST_METHOD(Add)
+		TEST_METHOD(Tree_Add)
 		{
 			Tree<int> test;
 			//OPERATOR?
@@ -39,7 +39,7 @@ namespace UnitTest1
 			Assert::AreEqual(9, test.root->data);
 			Assert::AreEqual(test.root->sons[0]->data, 11);
 			Assert::AreEqual(test.root->sons[1]->data, s2->data);
-
+			Assert::AreEqual(test.root->sons.getEnd()->data->data, 5);
 			Assert::AreEqual(s1->sons[0]->data, 3);
 			Assert::AreEqual(s1->sons[1]->data, 7);
 
@@ -63,9 +63,12 @@ namespace UnitTest1
 			tree_node<char> * s2;
 		//	tree_node<char> * it; //ITERATIVE NODE
 			
-			test.Add('F', NULL);
+			test.Add('D', NULL);
 
-			s1 = test.Add('B', test.root);
+			s1 = test.Add('C', test.root);
+			s2 = test.Add('B', s1);
+			test.Add('A', s2);
+		/*	s1 = test.Add('B', test.root);
 			s2 = test.Add('G', test.root);
 
 			test.Add('A', s1);
@@ -76,17 +79,25 @@ namespace UnitTest1
 
 			test.Add('H', s2);
 			test.Add('I', s2->sons[0]);
-
+			*/
 
 			List<tree_node<char>*>* output;
 			output = new List<tree_node<char>*>;
 
-			//		test.PostorderIT(output);
+						
 
+			test.PostorderIT(output);
 
-	//		Assert::AreEqual(output->getStart()->data->data, 'F');
-			/*Assert::AreEqual(output[1], 'F');
-			Assert::AreEqual(output[2], 'F');
+		//	Assert::AreEqual(output->start->data->data, 'C');
+		//	Assert::AreEqual(output->start->next->data->data, 'D');
+		//	Assert::AreEqual(output->start->next->next->data->data, 'B');
+		//	Assert::AreEqual(output->start->next->next->next->data->data, 'C');
+//			Assert::AreEqual(output->start->data->data, 'F');
+			//Assert::AreEqual(output->start->next->data, 'F');
+		//	output[1].start->data
+			
+			
+			/*Assert::AreEqual(output[2], 'F');
 			Assert::AreEqual(output[3], 'F');
 			Assert::AreEqual(output[4], 'F');
 			Assert::AreEqual(output[5], 'F');
@@ -94,26 +105,23 @@ namespace UnitTest1
 			Assert::AreEqual(output[7], 'F');
 			Assert::AreEqual(output[8], 'F');
 		
-			Assert::AreEqual('F', test.root->data);
+		
+			Assert::AreEqual('D', test.root->data);
 			Assert::AreEqual(test.root->sons[0]->data, s1->data);
 			Assert::AreEqual(test.root->sons[1]->data, s2->data);
 
-			Assert::AreEqual('B', s1->data);
-			Assert::AreEqual('G', s2->data);
+			Assert::AreEqual('C', s1->data);
+			Assert::AreEqual('B', s2->data);
+			Assert::AreEqual('A', s2->sons[0]->data);
 
-			Assert::AreEqual(s1->sons[0]->data, 'A');
+			/*Assert::AreEqual(s1->sons[0]->data, 'A');
 			Assert::AreEqual(s1->sons[1]->data, 'C');
 
-			Assert::AreEqual(s1->sons[0]->sons[0]->data, 2);
-			Assert::AreEqual(s1->sons[0]->sons[1]->data, 4);
-			Assert::AreEqual(s1->sons[0]->sons[0]->sons[0]->data, 1);
-
-			Assert::AreEqual(s1->sons[1]->sons[0]->data, 6);
-			Assert::AreEqual(s1->sons[1]->sons[1]->data, 8);
-
-
-			Assert::AreEqual(s2->sons[0]->data, 10);
-			Assert::AreEqual(s2->sons[1]->data, 12);*/
+			Assert::AreEqual(s1->sons[1]->sons[0]->data, 'D');
+			Assert::AreEqual(s1->sons[1]->sons[1]->data, 'E');
+			
+			Assert::AreEqual(s2->sons[0]->data, 'H');
+			Assert::AreEqual(s2->sons[0]->sons[0]->data, 'I');*/
 		}
 	};
 }

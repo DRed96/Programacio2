@@ -16,12 +16,16 @@ namespace UnitTest1
 			Assert::AreEqual(value , 0);
 			test.PushBack(2);
 			Assert::AreEqual(test.getElem(),test.getMem());
-			Assert::IsTrue(test.getElem() ==1);
-			test.PushBack(-5);
-			Assert::AreEqual(test.getElem(), test.getMem());
-			Assert::IsTrue(test.getElem() == 2);
-			test.Pop();
 			Assert::IsTrue(test.getElem() == 1);
+			Assert::AreEqual(test.data[0], 2);
+			test.PushBack(-5);
+			Assert::AreEqual(test.getElem(), test.getMem() + MEM_CHUNK);
+			Assert::AreEqual(test.data[1], -5);
+			Assert::IsTrue(test.getElem() == 2);
+			test.Pop(NULL);
+			Assert::IsTrue(test.getElem() == 1);
+			Assert::AreEqual(test.data[1], -5);
+			Assert::AreEqual(test.data[0], 2);
 			Assert::IsTrue(test.getMem() == 2);
 
 		}
