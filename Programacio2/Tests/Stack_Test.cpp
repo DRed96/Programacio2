@@ -37,14 +37,17 @@ namespace UnitTest1
 			test.PushBack(1);
 			test.PushBack(0);
 
+			Assert::IsFalse(test.isOver);
 			Assert::IsTrue(test.Pop() == 0);
 			Assert::IsTrue(test.Pop() == 1);
 			Assert::IsTrue(test.Pop() == 2);
-			Assert::IsTrue(test.Top() == 2);
 			Assert::IsTrue(test.Pop() == 3);
 			Assert::IsTrue(test.Pop() == 4);
 			Assert::IsTrue(test.Pop() == 5);
 			//All memory Poped
+			
+			Assert::IsTrue(test.Pop() == 0);
+			Assert::IsTrue(test.isOver);
 			Assert::IsTrue(test.Pop() == 0);
 		}
 	};

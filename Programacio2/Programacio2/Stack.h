@@ -4,16 +4,17 @@ class Stack{
 private:
 	unsigned int nElements; //Cambiar el tipus segons l'utilització de la cadena
 	unsigned int mem_alloc;// Quantitat de memòria	
-
+	
 public:
 	
 	T * data;
+	bool isOver;
 	//Constructors
-	Stack() : mem_alloc(0), data(NULL), nElements(0)
+	Stack() : mem_alloc(0), data(NULL), nElements(0), isOver(false)
 	{
 		//mem_alloc = 0; data = NULL; nElements = 0;
 	}
-	Stack(unsigned int Size): mem_alloc(Size), nElements(0)
+	Stack(unsigned int Size) : mem_alloc(Size), nElements(0), isOver(false)
 	{
 		data = new T[mem_alloc];
 	}
@@ -57,23 +58,25 @@ public:
 		}
 	}
 
-	T* Pop()
+	T& Pop()
 	{
 		if (nElements != 0)
 		{
-			int * ret;
 			nElements--;
-			ret =data[nElements];
-			return ret;
+			return data[nElements];
+			
 		}
-		return NULL;
+		else
+		{
+			isOver = true;
+		}
 		//If it does nothing, it returns 0
 	}
 	
 	//Gets a pointer to the top of the stack 
 	T& Top()
 	{
-		return data[nElements];
+		return data[nElements - 1];
 	}
 
 	void CopyArrays(T * destiny, T * source, unsigned int newMem)

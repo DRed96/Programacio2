@@ -81,7 +81,7 @@ namespace UnitTest1
 			List<tree_node<char>*>* output;
 			output = new List<tree_node<char>*>;
 
-			test.PostorderIT(output);
+			//		test.PostorderIT(output);
 
 
 	//		Assert::AreEqual(output->getStart()->data->data, 'F');

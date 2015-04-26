@@ -98,9 +98,9 @@ struct tree_node {
 		tree_node<TYPE>* it_node = this;
 		node<tree_node<TYPE>*>* tmp;
 		
-		while (it_node != NULL){
+		while (sonStack.isOver != true){
 			
-			tmp = sons.end;
+			tmp = it_node->sons.end;
 			
 			while (tmp != NULL)
 			{
