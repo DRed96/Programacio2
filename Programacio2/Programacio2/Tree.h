@@ -1,7 +1,9 @@
 #pragma once
+
 #include "List.h"
 #include "Stack.h"
 #include "Queue.h"
+
 /*
 DEURES
 Add(Amb punter a node pare)
@@ -92,41 +94,7 @@ struct tree_node {
 		}
 	}
 	*/
-	void PostorderIT(List <tree_node<TYPE>*> * list)
-	{
-		Stack <tree_node<TYPE>*> sonStack;
-		tree_node<TYPE>* it_node = this;
-		node<tree_node<TYPE>*>* tmp;
-		
-		while (sonStack.isOver != true){
-			
-			tmp = it_node->sons.end;
-			
-			while (tmp != NULL)
-			{
-				sonStack.PushBack(tmp->data);
-				tmp = tmp->prev;
-			}
-
-			it_node = sonStack.Top();
-			
-			//it_node = sonStack.Pop();
-
-			if (it_node->sons.start == NULL){
-				list->Add(it_node);
-				sonStack.Pop();
-			}
-
-			if (it_node == it_node->father->sons.end->data)
-			{
-				it_node = sonStack.Pop();
-				list->Add(it_node);
-				it_node = sonStack.Top();
-			}
-		
-		}
-		list->Add(this);
-	}
+	
 	
 	/*
 	void PreorderIT(List <tree_node<TYPE>*>* list)
@@ -196,11 +164,84 @@ public:
 	{
 		root->InorderREC(list);
 	}*/
-	
-	void PostorderIT(List <tree_node<TYPE>*> * list) const
+
+	/*void PostorderIT(List <tree_node<TYPE>*> * list)
 	{
-		root->PostorderIT(list);
+		Stack <tree_node<TYPE>*> sonStack;
+		tree_node<TYPE>* it_node = root;
+		node<tree_node<TYPE>*>* tmp;
+
+
+		while (sonStack.isOver != true){
+
+			tmp = it_node->sons.end;
+
+			while (tmp != NULL)
+			{
+				sonStack.PushBack(tmp->data);
+				tmp = tmp->prev;
+			}
+
+			//Perqu� no puc fer servir el Top??
+			it_node = sonStack.data[sonStack.nElements- 1];
+
+			if (it_node->sons.start == NULL){
+				list->Add(it_node);
+				sonStack.Pop();
+			}
+
+			if (it_node == it_node->father->sons.end->data)
+			{
+				//assert(1 != 1);
+				sonStack.Pop(it_node);
+				list->Add(it_node);
+			}
+		}
+		//assert(1 != 1);
+		//	assert(sonStack.isOver != true);
+		list->Add(root);
+	}*/
+
+
+	void PostorderIT(List <tree_node<TYPE>*> * list)
+	{
+		Stack <tree_node<TYPE>*> sonStack;
+		tree_node<TYPE>* it_node = root;
+		node<tree_node<TYPE>*>* tmp;
+
+
+		while (sonStack.isOver != true){
+
+			tmp = it_node->sons.end;
+
+			while (tmp != NULL)
+			{
+				sonStack.PushBack(tmp->data);
+				tmp = tmp->prev;
+			}
+
+			//Perqu� no puc fer servir el Top??
+			it_node = sonStack.data[sonStack.nElements - 1];
+
+			if (it_node->sons.start == NULL){
+				list->Add(it_node);
+				sonStack.Pop();
+			}
+
+			if (it_node == it_node->father->sons.end->data)
+			{
+				//assert(1 != 1);
+				sonStack.Pop(it_node);
+				list->Add(it_node);
+			}
+		}
+		//assert(1 != 1);
+		//	assert(sonStack.isOver != true);
+		list->Add(root);
 	}
+
+
+
 	void PretorderIT(List <tree_node<TYPE>*> * list) const
 	{
 		root->PreorderIT(list);
