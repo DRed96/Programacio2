@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
 #include "../Programacio2/Bubble.h"
-#include <stdlib.h>
-#include "../Programacio2/log.cpp"
+
+
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace Tests
