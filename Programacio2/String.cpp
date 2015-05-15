@@ -114,6 +114,12 @@ void String::prefix(const char * input)
 	}
 }
 
+/* PROPOSTA COMPLEXA
+Metode que faci substitució de cadenes
+substitució(hola, pepito)
+hola pepito
+*/
+//Proposta, trim amb arguments molt cool i que estigui optimitzat, if you feel like it
 void String::Trim()
 {
 	unsigned int i = 0;
