@@ -3,11 +3,11 @@
 
 #include <string.h>
 class String{
+public:
 	char * chain;
-
 	unsigned int len;
 	unsigned int size;
-public:
+
 	//POSAR GETTERS I FER PRIVAT?
 	String();
 
@@ -48,7 +48,7 @@ public:
 
 	String & operator += (const char * cpyChain);
 
-
+	void Trim();
 private:
 	//Crea una còpia que allocata
 	void Alloc(unsigned int nSize)

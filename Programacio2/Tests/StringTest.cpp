@@ -98,8 +98,14 @@ namespace UnitTest1
 			String s1("Hola mundo");
 			s1.Clear();
 			Assert::AreEqual((int)s1.getLen(), 0);
+		}*/
+		TEST_METHOD(String_Trim)
+		{
+			String s1("    Hola mundo      ");//4 esquerra, 6 dreta
+			s1.Clear();
+			Assert::AreEqual((int)s1.getLen(), 0);
 		}
-		*/
+		
 	};
 	
 }

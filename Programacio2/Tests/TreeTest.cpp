@@ -55,7 +55,7 @@ namespace UnitTest1
 			Assert::AreEqual(s2->sons[1]->data, 12);
 		}
 
-		TEST_METHOD(Tree_PostOrderIT_2)
+		/*TEST_METHOD(Tree_PostOrderIT_2)
 		{
 			Tree<char> test;
 			//OPERATOR?
@@ -77,7 +77,7 @@ namespace UnitTest1
 
 			test.Add('H', s2);
 			test.Add('I', s2->sons[0]);
-			*/
+			
 
 			List<tree_node<char>*>* output;
 			output = new List<tree_node<char>*>;
@@ -110,7 +110,7 @@ namespace UnitTest1
 
 
 			Assert::AreEqual(s2->sons[0]->data, 10);
-			Assert::AreEqual(s2->sons[1]->data, 12);*/
-		}
+			Assert::AreEqual(s2->sons[1]->data, 12);
+		}*/
 	};
 }
