@@ -40,7 +40,7 @@ struct tree_node {
 		list.Add(this);
 		
 	}
-	/*
+	
 	void PreorderREC(List <tree_node<TYPE>*>* list) //Preorder recursiu
 	{
 		node<tree_node<TYPE>*> * tmp;
@@ -93,7 +93,7 @@ struct tree_node {
 				counter++;
 		}
 	}
-	*/
+	
 	
 	
 	/*
@@ -226,13 +226,12 @@ public:
 
 			if (it_node->sons.start == NULL){
 				list->Add(it_node);
-			//	sonStack.Pop();
 			}
 
 			if (it_node == it_node->father->sons.end->data)
 			{
-				//assert(1 != 1);
-			//	sonStack.Pop(it_node);
+				list->Add(it_node);
+				it_node = it_node->father;
 				list->Add(it_node);
 			}
 		}
