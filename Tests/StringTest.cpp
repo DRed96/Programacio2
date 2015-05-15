@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
-#include "../Programacio2/String.h"
+#include "../Programacio2/String.cpp"
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace UnitTest1
@@ -100,6 +100,12 @@ namespace UnitTest1
 			Assert::AreEqual((int)s1.getLen(), 0);
 		}
 		*/
+		TEST_METHOD(String_Trim)
+		{
+			String test("    Hola mundo      ");//4 esquerra, 6 dreta
+		//	test.Trim();
+			Assert::AreEqual((int)test.getLen(), 10);
+		}
 	};
 	
 }

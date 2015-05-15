@@ -6,7 +6,7 @@ class String{
 	char * chain;
 
 	unsigned int len;
-	unsigned int size;
+	unsigned int size; //memoria
 public:
 	//POSAR GETTERS I FER PRIVAT?
 	String();
@@ -48,7 +48,7 @@ public:
 
 	String & operator += (const char * cpyChain);
 
-
+	void Trim();
 private:
 	//Crea una còpia que allocata
 	void Alloc(unsigned int nSize)
