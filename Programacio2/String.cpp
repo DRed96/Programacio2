@@ -117,23 +117,24 @@ void String::prefix(const char * input)
 void String::Trim()
 {
 	unsigned int i = 0;
-	for (; i > len && chain[i] != ' '; i++)
-	{
-	}
+	for (; i < len && chain[i] == ' '; i++)
+	{	}
 
-	unsigned int j = len;
+	unsigned int j = len - 1;
 
-	for (; j > 0 && chain[j] != ' '; j--)
-	{
-	}
+	for (; j > 0 && chain[j] == ' '; j--)
+	{	}
 
 	char * tmp = new char[j - i];
-	for (int x1 = 0; i < j; i++)
+	for (int x1 = 0; i < j; x1++, i++)
 	{
 		tmp[x1] = chain[i];
 	}
 	delete chain;
 	chain = tmp;
+	len = j - i;
+	size = len + 1;
+	
 
 }
 
