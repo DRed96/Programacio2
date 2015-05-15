@@ -65,9 +65,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="log.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="Point2D.cpp" />
     <ClCompile Include="PointTemp.cpp" />
-    <ClCompile Include="Source.cpp" />
     <ClCompile Include="String.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -88,7 +88,6 @@
     <ClInclude Include="Tree.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Prova LOG.vcxproj" />
     <None Include="Prova LOG.vcxproj.filters" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

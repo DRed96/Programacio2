@@ -114,6 +114,28 @@ void String::prefix(const char * input)
 	}
 }
 
+void String::Trim()
+{
+	unsigned int i = 0;
+	for (; i > len && chain[i] != ' '; i++)
+	{
+	}
+
+	unsigned int j = len;
+
+	for (; j > 0 && chain[j] != ' '; j--)
+	{
+	}
+
+	char * tmp = new char[j - i];
+	for (int x1 = 0; i < j; i++)
+	{
+		tmp[x1] = chain[i];
+	}
+	delete chain;
+	chain = tmp;
+
+}
 
 //Operators
 
