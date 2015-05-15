@@ -86,12 +86,9 @@ public:
 		//If it does nothing, it returns 0
 	}
 	//Gets a pointer to the top of the stack 
-	T* Top(unsigned int index)
+	T& Top()
 	{
-		T* ret = NULL;
-		if (index<num_elements)
-			return ret = &data[nElements - 1];
-		return ret;
+		return data[nElements - 1];
 	}
 
 	void CopyArrays(T * destiny, T * source, unsigned int newMem)
