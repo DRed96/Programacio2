@@ -10,7 +10,7 @@ namespace UnitTest1
 	{
 	public:
 		
-		TEST_METHOD(Add)
+		TEST_METHOD(Tree_Add)
 		{
 			Tree<int> test;
 			//OPERATOR?

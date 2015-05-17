@@ -38,6 +38,7 @@ String::String(const char * cpy, ...)
 			Alloc(nSize + 1);
 			strcpy_s(chain, size, tmp);
 			len = strlen(chain);
+			size = nSize + 1;
 		}
 	}
 	if (size == 0)
@@ -119,8 +120,8 @@ Metode que faci substitució de cadenes
 substitució(hola, pepito)
 hola pepito
 */
-//Proposta, trim amb arguments molt cool i que estigui optimitzat, if you feel like it
-void String::Trim()
+// TODO: Proposta, trim amb arguments molt cool i que estigui optimitzat, if you feel like it
+/*void String::OLD_Trim()
 {
 	unsigned int i = 0;
 	for (; i < len && chain[i] == ' '; i++)
@@ -140,8 +141,27 @@ void String::Trim()
 	chain = tmp;
 	len = j - i;
 	size = len + 1;
-	
+}*/
+//Funcio que miri els espais
+void String::Trim()
+{
+	//Count spaces left 
 
+	unsigned int countR;
+	unsigned int countL;
+	unsigned int i;
+	for (countR = 0; chain[countR] != ' '; ++countR)
+	{}
+	//Count spaces right
+	for (countL = len; chain[countL] != ' '; --countL)
+	{}
+	
+	for (i = 0; countR < len && i < countL; i++, countR++)
+	{
+		chain[i] = chain[countR];
+	}
+	len = i;
+	chain[++i] = '\0';
 }
 
 //Operators

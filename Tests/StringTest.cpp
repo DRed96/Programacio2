@@ -8,7 +8,7 @@ namespace UnitTest1
 	TEST_CLASS(StringTest)
 	{
 	public:
-		/*
+		
 		TEST_METHOD(SString_empty_ctor)
 		{
 			String s;
@@ -99,12 +99,13 @@ namespace UnitTest1
 			s1.Clear();
 			Assert::AreEqual((int)s1.getLen(), 0);
 		}
-		*/
+		
 		TEST_METHOD(String_Trim)
 		{
 			String test("    Hola mundo      ");//4 esquerra, 6 dreta
 		//	test.Trim();
-			Assert::AreEqual((int)test.getLen(), 10);
+			const char * cpy = test.getString();
+			Assert::AreEqual(cpy[0], 'H');
 		}
 	};
 	

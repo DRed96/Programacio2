@@ -3,11 +3,12 @@
 
 #include <string.h>
 class String{
-	char * chain;
 
+	char * chain;
 	unsigned int len;
 	unsigned int size; //memoria
 public:
+
 	//POSAR GETTERS I FER PRIVAT?
 	String();
 
@@ -24,7 +25,6 @@ public:
 	void Clear();
 	unsigned int getLen();
 	unsigned int getSize() const;
-
 	const char* getString() const;
 	//Methods
 	void prefix(String ref);
