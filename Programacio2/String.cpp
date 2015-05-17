@@ -37,8 +37,7 @@ String::String(const char * cpy, ...)
 		{
 			Alloc(nSize + 1);
 			strcpy_s(chain, size, tmp);
-			len = strlen(chain);
-			size = nSize + 1;
+			len = strlen(chain)- 1;
 		}
 	}
 	if (size == 0)
@@ -51,7 +50,7 @@ String::String(const char * cpy, ...)
 
 String::String(const String & ref)
 {
-	len = strlen(ref.chain);
+	len = strlen(ref.chain) - 1;
 	size = ref.size;
 	chain = new char[size];
 	strcpy_s(chain, size, ref.chain);
@@ -150,18 +149,22 @@ void String::Trim()
 	unsigned int countR;
 	unsigned int countL;
 	unsigned int i;
-	for (countR = 0; chain[countR] != ' '; ++countR)
-	{}
+	for (countR = 0; chain[countR] == ' ';)
+	{
+		countR++;
+	}
 	//Count spaces right
-	for (countL = len; chain[countL] != ' '; --countL)
-	{}
+	for (countL = len; chain[countL] == ' ';)
+	{
+		countL--;
+	}
 	
-	for (i = 0; countR < len && i < countL; i++, countR++)
+	for (i = 0; countR < len && countR <= countL; i++, countR++)
 	{
 		chain[i] = chain[countR];
 	}
 	len = i;
-	chain[++i] = '\0';
+	chain[i] = '\0';
 }
 
 //Operators

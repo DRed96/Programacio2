@@ -103,9 +103,20 @@ namespace UnitTest1
 		TEST_METHOD(String_Trim)
 		{
 			String test("    Hola mundo      ");//4 esquerra, 6 dreta
-		//	test.Trim();
+			test.Trim();
 			const char * cpy = test.getString();
 			Assert::AreEqual(cpy[0], 'H');
+			Assert::AreEqual(cpy[1], 'o');
+			Assert::AreEqual(cpy[2], 'l');
+			Assert::AreEqual(cpy[3], 'a');
+			Assert::AreEqual(cpy[4], ' ');
+			Assert::AreEqual(cpy[5], 'm');
+			Assert::AreEqual(cpy[6], 'u');
+			Assert::AreEqual(cpy[7], 'n');
+			Assert::AreEqual(cpy[8], 'd');
+			Assert::AreEqual(cpy[9], 'o');
+			Assert::AreEqual(cpy[10],'\0');
+			Assert::AreEqual(cpy[20],'\0');
 		}
 	};
 	
