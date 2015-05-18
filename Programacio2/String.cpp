@@ -144,21 +144,18 @@ hola pepito
 //Funcio que miri els espais
 void String::Trim()
 {
-	//Count spaces left 
-
+	///Counters NO-OPTIMAL
 	unsigned int countR;
 	unsigned int countL;
 	unsigned int i;
-	for (countR = 0; chain[countR] == ' ';)
-	{
-		countR++;
-	}
-	//Count spaces right
-	for (countL = len; chain[countL] == ' ';)
-	{
-		countL--;
-	}
-	
+	//Count spaces starting from the begging
+	for (countR = 0; chain[countR] == ' '; countR++)
+	{}
+
+	//Count spaces starting from the end
+	for (countL = len; chain[countL] == ' '; --countL)
+	{}
+	//Puts letters to the start
 	for (i = 0; countR < len && countR <= countL; i++, countR++)
 	{
 		chain[i] = chain[countR];
@@ -167,6 +164,27 @@ void String::Trim()
 	chain[i] = '\0';
 }
 
+void String::Trim(bool toRight, bool toLeft, char toDestroy)
+{
+	//Counters NO-OPTIMAL
+	unsigned int countR;
+	unsigned int countL;
+	unsigned int i;
+	//Count spaces starting from the begging
+	for (countR = 0 && toRight == true; chain[countR] == toDestroy; countR++)
+	{}
+
+	//Count spaces starting from the end
+	for (countL = len && toLeft == true; chain[countL] == toDestroy; countL--)
+	{}
+
+	for (i = 0; countR < len && countR <= countL; i++, countR++)
+	{
+		chain[i] = chain[countR];
+	}
+	len = i;
+	chain[i] = '\0';
+}
 //Operators
 
 const bool String::operator == (const String & ref)

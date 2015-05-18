@@ -49,6 +49,8 @@ public:
 	String & operator += (const char * cpyChain);
 
 	void Trim();
+
+	void Trim(bool, bool, char);
 private:
 	//Crea una còpia que allocata
 	void Alloc(unsigned int nSize)
