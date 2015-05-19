@@ -29,7 +29,7 @@ namespace Tests
 
 			int iterations = Bubble(test);
 			//LOG ("%d", iterations); //99359728
-			Assert::AreEqual(1, 1); 
+			//Assert::AreEqual(1, 1); 
 			
 		}
 

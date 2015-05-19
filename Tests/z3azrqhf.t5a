@@ -94,20 +94,8 @@ namespace UnitTest1
 
 		TEST_METHOD(DynArray_Flip)
 		{
-			DynArray<int> test;
-			for (int i = 0; i < 6; i++)
-				test.PushBack(i);
+			DynArray test;
 
-			test.flip();
-
-			Assert::AreEqual(test[0], 6);
-			Assert::AreEqual(test[1], 5);
-			Assert::AreEqual(test[2], 4);
-			Assert::AreEqual(test[3], 3);
-			Assert::AreEqual(test[4], 2);
-			Assert::AreEqual(test[5], 1);
-			Assert::AreEqual(test[6], 0);
-			
 		}
 	};
 }

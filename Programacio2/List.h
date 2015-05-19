@@ -2,6 +2,7 @@
 #define _List_H_
 
 #include "Globals.h"
+//#include "Swap.h"
 
 template<class TYPE>
 struct node
@@ -128,6 +129,36 @@ public:
 
 	}
 
+
+	void swapNodes(node<TYPE> * n1, node<TYPE>* n2)
+	{
+		node<TYPE>* tmp;
+		//Prev
+
+		if (n1->prev)
+			n1->prev->next = n2;
+		if (n2->prev)
+			n2->prev->next = n1;
+
+		//swap(n1->prev, n2->prev);
+		tmp = n1->prev;
+		n1->prev = n2->prev;
+		n2->prev = tmp;
+
+		//next
+		if (n1->next)
+			n1->next->prev = n2;
+
+		if (n2->next)
+			n2->next->prev = n1;
+
+		//swap(n1->next, n2->next);
+		tmp = n1->next;
+		n1->next = n2->next;
+		n2->next = tmp;
+	}
+
+
 	/**
 	* read / write operator access directly to a position in the list
 	*/
@@ -161,6 +192,7 @@ public:
 
 	}
 
+	
 
 	//Ordenar la llista fent bubble sort
 	

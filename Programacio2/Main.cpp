@@ -1,15 +1,29 @@
-#include "List.h"
+#include "DynArray.h"
 #include <stdio.h>
 #include "log.h"
+
+int fibonacci(unsigned int index)
+{
+	int first = 0;
+	int second = 1;
+	int ret = 0;
+
+	for (unsigned int i = 0; i < index; i++)
+	{
+		ret = second + first;
+		first = second;
+		second = ret;
+	}
+	return ret;
+}
+
+/**
+*Fer fibonacci iteratiu i recursiu
+**/
+
+
 int main()
 {
-	List<int> test;
-	
-	for (unsigned int i = 0; i < 10000; i++)
-	{
-		
-		test.Add(rand() % 10000);
-	}
-
-	LOG("Iterations = %d \n", test.BubbleSort());
+	LOG("Fibonacci = %d \n", fibonacci(2));
+	return 0;
 }
