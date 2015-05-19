@@ -88,7 +88,7 @@
   <ItemGroup>
     <ClCompile Include="ArrayDTest.cpp" />
     <ClCompile Include="BubbleTest.cpp" />
-    <ClCompile Include="DListTest.cpp" />
+    <ClCompile Include="ListTest.cpp" />
     <ClCompile Include="PointTempTest.cpp" />
     <ClCompile Include="QueueTest.cpp" />
     <ClCompile Include="Stack_Test.cpp" />

@@ -1,6 +1,15 @@
-#include "String.h"
+#include "List.h"
+#include <stdio.h>
+#include "log.h"
 int main()
 {
-	String test("    Hola mundo      ");//4 esquerra, 6 dreta
-	test.Trim();
+	List<int> test;
+	
+	for (unsigned int i = 0; i < 10000; i++)
+	{
+		
+		test.Add(rand() % 10000);
+	}
+
+	LOG("Iterations = %d \n", test.BubbleSort());
 }

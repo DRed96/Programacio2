@@ -131,6 +131,68 @@ public:
 	/**
 	* read / write operator access directly to a position in the list
 	*/
+
+//Posar referencia
+	TYPE& operator [](unsigned int index)
+	{
+		
+		assert(index < size);
+		
+		node<TYPE>*  tmp = start;
+		for (unsigned int i = 0; i < index; i++)
+		{
+		tmp = tmp->next;
+		}
+		return tmp->data;
+		
+	}
+
+	const TYPE& operator [](unsigned int index)const
+	{
+
+		assert(index < size);
+
+		node<TYPE>*  tmp = start;
+		for (unsigned int i = 0; i < index; i++)
+		{
+			tmp = tmp->next;
+		}
+		return tmp->data;
+
+	}
+
+
+	//Ordenar la llista fent bubble sort
+	
+	unsigned int BubbleSort()
+	{
+		bool change = true;
+		unsigned int counter = 0;
+		//for the optimization
+		while (change == true)
+		{
+			change = false;
+			node<TYPE>*  tmp = start;
+			node<TYPE>*  tmp2 = tmp->next;
+			while (tmp->next)
+			{
+				counter++;
+				tmp2 = tmp->next;			
+				if (tmp->data > tmp2->data)
+				{
+					TYPE swapTMP = tmp->data;
+					tmp->data = tmp2->data;
+					tmp2->data = swapTMP;
+					change = true;
+				}
+				tmp = tmp2;
+			}
+		}
+		return counter;
+	}
+
+
+	/*Ricard
 	TYPE& operator  [](const unsigned int index)
 	{
 		int pos = 0;
@@ -151,7 +213,7 @@ public:
 
 		return(sNode->data);
 	}
-
+	*/
 	/**
 	* returns the first apperance of data as index (-1 if not found)
 	*/

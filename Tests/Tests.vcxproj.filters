@@ -50,7 +50,7 @@
     <ClCompile Include="BubbleTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DListTest.cpp">
+    <ClCompile Include="ListTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
