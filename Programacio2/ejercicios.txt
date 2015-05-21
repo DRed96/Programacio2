@@ -1,0 +1,158 @@
+﻿PROBLEMA 1
+----------
+Definir una clase que implemente el TAD (tipo abstracto de datos) "Conjunto". Tan sólo se pide su definición (.h) incluyendo los atributos que consideres oportunos así como 
+las definiciones de funciones para que admita las siguientes operaciones:
+
+- Crear un conjunto vacío
+- Crear un conjunto a partir de n elementos (n>=1)
+- Añadir uno o varios elementos
+- Preguntar si un elemento pertence a un conjunto
+- Eliminar uno o varios elementos
+- Intersección de dos conjuntos
+- Unión de dos conjuntos
+- Resta de dos conjuntos
+
+class Conjunto {
+private:
+	int * elements;s
+public:
+	Conjunto();
+	Conjunto(unsigned int _element);
+
+	void Add(int*); //Afegir un element o més d'un
+	bool Exist(int) const;
+	void Delete(int);
+	Conjunto* intersection(Conjuntos*); //Tornar referencia o punter per no haver de crear una copia de l'objecte
+	Conjunto* Suma(Conjuntos*);
+	Conjunto& Resto(Conjuntos*);
+}
+PROBLEMA 2
+----------
+
+2.1) Proponer una definición de la clase Timer (.h), con los atributos y funciones que creas necesarios para que admita las siguientes operaciones:
+- Crear
+- Reiniciar
+- Pedir tiempo transcurrido
+- Pedir FPS en función del número de ticks facilitados como único parámetro
+- Pausar la ejecución durante un número de milisegundos
+
+class Timer {
+public:
+	Timer();
+	Timer(double);
+	
+	void Reset();
+	double GetTimeTranscurred() const;
+	float GetFPS(double ticks) const;
+	void Pause (double miliseconds);
+private:
+		double timer;
+}
+
+2.2) Implementar la función GetFPS de tu clase propuesta en el punto anterior. Imaginar que el sistema operativo nos proporciona una función llamada GetTime que nos devuelve la 
+hora actual en milisegundos: double GetTime();
+
+float Timer::GetFPS(double ticks)
+{
+	double t2 = GetTime();
+	double lapsed_time = t2 - time;
+	
+	return lapsed_time/ticks;
+}
+
+PROBLEMA 3
+----------
+Contamos con el siguiente código:
+
+class EntityManager {
+public:
+	...
+	float Distance(Entity *u1,Entity *u2);
+	Entity* GetEnemy();
+private:
+	...
+	Entity Player, *Enemies;
+	int num_enemies;
+}
+
+class Entity {
+public:
+	int x,y;       //position
+	int hp;        //health points
+	bool stunned;  //active? 
+}
+
+Teniendo en cuenta que podemos presuponer que las variables Player y num_enemies están correctamente inicializadas se pide implementar los siguientes puntos.
+
+3.1) Implementar la función GetEnemy que nos devuelve un enemigo objetivo para el Player. Concretamente aquel enemigo que no esté aturdido y con menor valor resultante de dividir
+ la distancia que existe entre ambos con la diferencia (magnitud) de vida entre ellos. Si no hay candidato la función debe devolver el valor NULL. Utilizar la función Distance proporcionada.
+
+ #define MAX 999999
+ #define MIN_FACTOR 0.35f
+
+Entity* EntityManager::GetEnemy() {
+float d;
+int health;
+unsigned int index;
+float factor;
+float factor_min = FACTOR_MIN;
+
+		for(unsigned int i = 0; i < num_enemies; i++)
+		{
+			if(!Enemies[i]->stunned)
+			{	d = Distace(&Enemies[i], &Player);
+				health = abs(Player.hp - Enemies[i]->hp);
+				factor;
+				if(health == 0)
+				{
+					factor == MAX;
+				}
+				else
+				{
+					 factor = d/health;
+				}
+				if(factor < factor_min)
+				{
+					factor_min = factor;
+					index = i;
+				}
+			}
+		}
+	if(factor > FACTOR_MIN)
+		return NULL;
+	else
+		return &Enemies[index];
+
+		return (factor_min == MAX) ? NULL : &Enemies[index];
+}
+
+3.2) Implementar la función Surrender que nos devuelve un booleano: cierto, si la suma de las vidas de los enemigos activos, no aturdidos, 
+es 10 mayores igual o superior a la del Player; falso, sinó.
+
+bool EnetityManager::Surrender() {
+	int total_health = 0;
+	for(unsigned int i = 0; i < num_enemies; i++)
+	{
+		if(!Enemies[i]->stunned)
+		{
+			total_health += Enemies[i]->health;
+		}
+	}
+
+	if(total_health >= Player.health * 10)
+		return true;
+	else
+		return false;
+
+	return (total_health >= Player.health * 10) ? true : false;
+	
+}
+
+3.3) La clase EntityManager utiliza un array dinámico y un contador para tratar los enemigos. Indicar qué cambios deberíamos hacer para implementarla haciendo 
+uso del tipo p2list que hemos visto en clase.
+
+3.4) Propón una implementación de la función AddEnemy para la revisión de la clase EntityManager que has propuesto en el punto anterior utilizando el tipo p2list.
+
+void EntityManager::AddEnemy(Entity *enemy) {
+	...
+}
