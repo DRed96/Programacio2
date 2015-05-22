@@ -1,7 +1,7 @@
 #pragma once
 #include "List.h"
 template <class T>
-class Stack2
+class Stack_List
 {
 public:
 	List  <T> data;
@@ -9,9 +9,10 @@ public:
 	unsigned int nElements; //Cambiar el tipus segons l'utilització de la cadena
 	unsigned int mem_alloc;// Quantitat de memòria	
 
-	Stack() : mem_alloc(0), data(NULL), nElements(0), isOver(false)
+	Stack_List() : mem_alloc(0), , nElements(0), isOver(false)
 	{
 		//mem_alloc = 0; data = NULL; nElements = 0;
+		data.start = NULL;
 	}
 
 	void PushBack(const T& newValue)

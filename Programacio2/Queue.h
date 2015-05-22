@@ -1,4 +1,3 @@
-
 #include <assert.h>
 #include "globals.h"
 
@@ -33,7 +32,7 @@ public:
 
 
 	//Methods
-	void PushBack(T newValue){
+	void PushBack(const T& newValue){
 		if (data != NULL)
 		{
 			if (nElements < start_pos){ nElements = start_pos; }

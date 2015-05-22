@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
 #include "../Programacio2/Stack.h"
+#include "../Programacio2/Stack_List.h"
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace UnitTest1
@@ -49,6 +50,24 @@ namespace UnitTest1
 			Assert::IsTrue(test.Pop() == 0);
 			Assert::IsTrue(test.isOver);
 			Assert::IsTrue(test.Pop() == 0);
+		}
+
+		TEST_METHOD(ListStack_FullTest)
+		{
+			/*Stack_List<int> test;
+			int value = test.nElements;
+			Assert::AreEqual(value, 0);
+			test.PushBack(2);
+			Assert::AreEqual(test.nElements, test.mem_alloc);
+			Assert::IsTrue(test.nElements == 1);
+			test.PushBack(-5);
+			Assert::AreEqual(test.nElements, test.mem_alloc);
+			Assert::IsTrue(test.nElements == 2);
+			test.Pop();
+			Assert::IsTrue(test.nElements == 1);
+			Assert::IsTrue(test.mem_alloc == 2);*/
+			//TODO
+
 		}
 	};
 }
