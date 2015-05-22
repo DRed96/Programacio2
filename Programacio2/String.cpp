@@ -116,9 +116,35 @@ void String::prefix(const char * input)
 
 /* PROPOSTA COMPLEXA
 Metode que faccountRsubstitució de cadenes
-substitució(hola, pepito)
+substitució(mundo, pepito)
 hola pepito
 */
+
+void String::Substitute(const char * original, const char * result)
+{
+	unsigned int pos;
+	bool toSubstite = false;
+	unsigned int  lenght = strlen(result);
+
+	for (pos = 0; pos < lenght; ++pos, toSubstite = false)
+	{
+		for (unsigned int i = 0; original[i] == chain[pos + i], !toSubstite; i++)
+		{
+			if (i == lenght)
+			{
+				toSubstite = true;
+			}
+		}
+		
+		for (unsigned int i2 = 0; i2 < lenght; i2++)
+		{
+			chain[pos + i2] = result[i2];
+		}
+
+	}
+}
+
+
 // TODO: Proposta, trim amb arguments molt cool countRque estigucountRoptimitzat, if you feel like it
 /*void String::OLD_Trim()
 {
@@ -141,8 +167,14 @@ hola pepito
 	len = j - i;
 	size = len + 1;
 }*/
+
+
+
+
+
+
 //Funcio que mircountRels espais
-void String::Trim()
+void String::Trim2()
 {
 	///Counters NO-OPTIMAL
 	unsigned int countR;
@@ -166,9 +198,6 @@ void String::Trim()
 
 
 //void Substitute()
-
-
-
 
 void String::Trim(bool toRight, bool toLeft, char toDestroy)
 {

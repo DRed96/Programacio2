@@ -1,5 +1,5 @@
 #pragma once
-#include "log.h"
+#include "Utils.h"
 
 void log(const char file[], int line, const char* format, ...)
 {

@@ -13,8 +13,8 @@ namespace Tests
 		
 		TEST_METHOD(BubbleTEST)
 		{
-			p2DynArray<int>* test;
-			test = new p2DynArray<int>;
+			DynArray<int>* test;
+			test = new DynArray<int>;
 			test->PushBack(2);
 			test->PushBack(3);
 			test->PushBack(6);

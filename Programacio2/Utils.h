@@ -8,7 +8,7 @@ void log(const char file[], int line, const char* format, ...);
 
 #define CAP(n) ((n <= 0.0f) ? n=0.0f : (n >= 1.0f) ? n=1.0f : n=n)
 
-int factorial(int number){
+/*int factorial(int number){
 	int ret = 1;
 	for (int i = 1; i <= number; i++)
 	{
@@ -28,7 +28,7 @@ int factorial2(int num){
 		return 1;
 	}
 }
-
+*/
 template<class TYPE>
 void swap(TYPE &a, TYPE & b){
 	TYPE tmp = a;
