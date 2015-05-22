@@ -1,5 +1,5 @@
 #include <assert.h>
-#include "globals.h"
+#define MEM_CHUNK 16
 
 template <class T>
 class Queue{

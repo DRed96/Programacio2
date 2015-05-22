@@ -1,4 +1,6 @@
-#include "RICARRAY.h"
+#ifndef _Utils_H_
+#define _Utils_H_
+#include "DynArray.h"
 
 /*
 void BubbleSort()
@@ -14,7 +16,7 @@ void BubbleSort()
 */
 
 
-int Bubble(p2DynArray <int>* toOrder)
+int Bubble(DynArray <int>* toOrder)
 {
 	int i = 0;
 	int j = i + 1;
@@ -23,7 +25,7 @@ int Bubble(p2DynArray <int>* toOrder)
 	while (ret)
 	{
 		ret = false;
-		for (i = 0; i < toOrder->num_elements - 1 ; i++)
+		for (i = 0; i < toOrder->nElements - 1 ; i++)
 		{
 			checker++;
 			if (toOrder->data[i] > toOrder->data[i + 1])
@@ -38,3 +40,4 @@ int Bubble(p2DynArray <int>* toOrder)
 	}
 	return checker;
 }
+#endif

@@ -21,7 +21,7 @@ String::String(unsigned int newSize)
 }
 String::String(const char * cpy, ...)
 {
-	//Codi fet per Ricard
+	//CodcountRfet per Ricard
 	//--------------------------------------
 	size = 0;
 	if (cpy != NULL)
@@ -115,15 +115,15 @@ void String::prefix(const char * input)
 }
 
 /* PROPOSTA COMPLEXA
-Metode que faci substitució de cadenes
+Metode que faccountRsubstitució de cadenes
 substitució(hola, pepito)
 hola pepito
 */
-// TODO: Proposta, trim amb arguments molt cool i que estigui optimitzat, if you feel like it
+// TODO: Proposta, trim amb arguments molt cool countRque estigucountRoptimitzat, if you feel like it
 /*void String::OLD_Trim()
 {
-	unsigned int i = 0;
-	for (; i < len && chain[i] == ' '; i++)
+	unsigned int countR= 0;
+	for (; countR< len && chain[i] == ' '; i++)
 	{	}
 
 	unsigned int j = len - 1;
@@ -132,7 +132,7 @@ hola pepito
 	{	}
 
 	char * tmp = new char[j - i];
-	for (int x1 = 0; i < j; x1++, i++)
+	for (int x1 = 0; countR< j; x1++, i++)
 	{
 		tmp[x1] = chain[i];
 	}
@@ -141,7 +141,7 @@ hola pepito
 	len = j - i;
 	size = len + 1;
 }*/
-//Funcio que miri els espais
+//Funcio que mircountRels espais
 void String::Trim()
 {
 	///Counters NO-OPTIMAL
@@ -156,7 +156,7 @@ void String::Trim()
 	for (countL = len; chain[countL] == ' '; --countL)
 	{}
 	//Puts letters to the start
-	for (i = 0; countR < len && countR <= countL; i++, countR++)
+	for (i = 0; countR < len && i <= countL; i++, countR++)
 	{
 		chain[i] = chain[countR];
 	}
@@ -164,26 +164,36 @@ void String::Trim()
 	chain[i] = '\0';
 }
 
+
+//void Substitute()
+
+
+
+
 void String::Trim(bool toRight, bool toLeft, char toDestroy)
 {
-	//Counters NO-OPTIMAL
-	unsigned int countR;
-	unsigned int countL;
-	unsigned int i;
-	//Count spaces starting from the begging
-	for (countR = 0 && toRight == true; chain[countR] == toDestroy; countR++)
-	{}
+	unsigned int countR, countL = 0;
+	
+		for (int countL = len; countL > 0 && chain[countL] != toDestroy; countL++)
+		{
+			countL;
+		}
+	
+		if (toRight)
+		{
+			for (countR = 0; countR < len && chain[countR] != toDestroy; countR++){}
+		}
 
-	//Count spaces starting from the end
-	for (countL = len && toLeft == true; chain[countL] == toDestroy; countL--)
-	{}
-
-	for (i = 0; countR < len && countR <= countL; i++, countR++)
-	{
-		chain[i] = chain[countR];
-	}
-	len = i;
-	chain[i] = '\0';
+		for (int i = 0; countR < len; i++, countR++)
+		{
+			chain[i] = chain[countR];
+		}
+		
+		for (int i = len - countL; i < countL; i++)
+		{
+			chain[i] = toDestroy;
+			len = i;
+		}
 }
 //Operators
 

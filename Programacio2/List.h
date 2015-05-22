@@ -1,7 +1,7 @@
 #ifndef _List_H_
 #define _List_H_
 
-#include "Globals.h"
+#include <assert.h>
 //#include "Swap.h"
 
 template<class TYPE>

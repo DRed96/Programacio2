@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "log.h"
 
+
 int fibonacci(unsigned int index)
 {
 	int first = 0;
@@ -21,6 +22,7 @@ int fibonacci(unsigned int index)
 *Fer fibonacci iteratiu i recursiu
 **/
 
+/*
 int fibonaci_iterative(unsigned int position)
 {
 	if (position == 1 || position == 0)
@@ -28,7 +30,7 @@ int fibonaci_iterative(unsigned int position)
 	else
 	return fibonacci(pos - 1) + fibonacci()
 }
-
+*/
 
 int main()
 {

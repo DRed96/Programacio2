@@ -44,16 +44,10 @@
     <ClInclude Include="Queue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RICARRAY.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Stack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="String.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Swap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Tree.h">
@@ -68,19 +62,16 @@
     <ClInclude Include="Factorial.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Globals.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="List.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="log.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Stack_List.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Queue_List.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

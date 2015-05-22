@@ -74,19 +74,16 @@
     <ClInclude Include="Bubble.h" />
     <ClInclude Include="DynArray.h" />
     <ClInclude Include="Factorial.h" />
-    <ClInclude Include="Globals.h" />
     <ClInclude Include="List.h" />
-    <ClInclude Include="log.h" />
+    <ClInclude Include="Utils.h" />
     <ClInclude Include="Point2D.h" />
     <ClInclude Include="PointTemp.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="Queue_List.h" />
-    <ClInclude Include="RICARRAY.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="Stack_List.h" />
     <ClInclude Include="String.h" />
-    <ClInclude Include="Swap.h" />
     <ClInclude Include="Tree.h" />
   </ItemGroup>
   <ItemGroup>
