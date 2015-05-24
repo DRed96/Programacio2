@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include "String.h"
+#include "Queue.h"
 #include <string.h>
 
 #define TMP_STRING_SIZE	4096
@@ -125,22 +126,36 @@ void String::Substitute(const char * original, const char * result)
 	unsigned int pos;
 	bool toSubstite = false;
 	unsigned int  lenght = strlen(result);
-
-	for (pos = 0; pos < lenght; ++pos, toSubstite = false)
+	unsigned int diff = lenght - strlen(original);
+	Queue <unsigned int> calls;
+	for (pos = 0; pos < len; ++pos, toSubstite = false)
 	{
-		for (unsigned int i = 0; original[i] == chain[pos + i], !toSubstite; i++)
+		//Quan pos > 3 passa algosy
+		if (original[0] == chain[pos])
 		{
-			if (i == lenght)
+			for (unsigned int i = 1; original[i] == chain[pos + i], !toSubstite; i++)
 			{
-				toSubstite = true;
+				if (i == lenght)
+				{
+					toSubstite = true;
+				}
 			}
-		}
-		
-		for (unsigned int i2 = 0; i2 < lenght; i2++)
-		{
-			chain[pos + i2] = result[i2];
-		}
 
+			for (unsigned int i2 = 0; i2 < lenght; i2++, pos++)
+			{
+				chain[pos] = result[i2];
+			}
+			//Pos is now at the end of the substituted word
+			if (diff < 0)
+				calls.PushBack(pos + 1);
+		//else
+		}
+		if (diff < 0)
+			while (calls.getElem() <= 0)
+				for (unsigned int i3 = calls.PopFirst; )
+			{
+				chain
+			}
 	}
 }
 
@@ -167,11 +182,6 @@ void String::Substitute(const char * original, const char * result)
 	len = j - i;
 	size = len + 1;
 }*/
-
-
-
-
-
 
 //Funcio que mircountRels espais
 void String::Trim2()
@@ -213,15 +223,15 @@ void String::Trim(bool toRight, bool toLeft, char toDestroy)
 			for (countR = 0; countR < len && chain[countR] != toDestroy; countR++){}
 		}
 
-		for (int i = 0; countR < len; i++, countR++)
+		for (unsigned int i = 0; countR < len; i++, countR++)
 		{
 			chain[i] = chain[countR];
 		}
 		
-		for (int i = len - countL; i < countL; i++)
+		for (unsigned int i2 = len - countL; i2 < countL; i++)
 		{
-			chain[i] = toDestroy;
-			len = i;
+			chain[i2] = toDestroy;
+			len = i2;
 		}
 }
 //Operators

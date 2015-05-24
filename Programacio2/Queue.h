@@ -80,6 +80,16 @@ public:
 			start_pos++;
 	}
 
+	void PopFirst(T& ref){
+		ref == NULL;
+		if (start_pos < mem_alloc)
+			{
+				ref = data[start_pos]
+				start_pos++;
+			}
+		return ref;
+	}
+
 	void CopyArrays(int * destiny, int * source, unsigned int newMem)
 	{
 		if (source != NULL)
@@ -96,13 +106,7 @@ public:
 		}
 	}
 
-	//Operators
-	T & operator [](unsigned int index){
-		assert(index < nElements);
-		return data[index];
-
-	}
-
+	//Operator
 	const T & operator [] (unsigned int index) const {
 		assert(index < nElements);
 		return data[index];

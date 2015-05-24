@@ -41,5 +41,6 @@ int main()
 	const char * cpy = test.getString();
 	
 	//LOG("Fibonacci = %d \n", fibonacci(2));
+	getchar();
 	return 0;
 }
