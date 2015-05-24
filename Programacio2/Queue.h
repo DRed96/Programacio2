@@ -25,7 +25,7 @@ public:
 	{
 		return data[start_pos];
 	}
-	const T getTop() const
+	const T &  getTop() const
 	{
 		return data[nElements - 1];
 	}
@@ -80,14 +80,16 @@ public:
 			start_pos++;
 	}
 
-	void PopFirst(T& ref){
+	bool PopFirst(T& ref){
 		ref == NULL;
 		if (start_pos < mem_alloc)
 			{
 				ref = data[start_pos]
-				start_pos++;
+				start_pos++; 
+				nElements--;
+				
 			}
-		return ref;
+		return(ref != NULL);
 	}
 
 	void CopyArrays(int * destiny, int * source, unsigned int newMem)

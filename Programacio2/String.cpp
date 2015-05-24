@@ -126,7 +126,7 @@ void String::Substitute(const char * original, const char * result)
 	unsigned int pos;
 	bool toSubstite = false;
 	unsigned int  lenght = strlen(result);
-	unsigned int diff = lenght - strlen(original);
+	int diff = lenght - strlen(original);
 	Queue <unsigned int> calls;
 	for (pos = 0; pos < len; ++pos, toSubstite = false)
 	{
@@ -150,13 +150,22 @@ void String::Substitute(const char * original, const char * result)
 				calls.PushBack(pos + 1);
 		//else
 		}
-		if (diff < 0)
-			while (calls.getElem() <= 0)
-				for (unsigned int i3 = calls.PopFirst; )
-			{
-				chain
-			}
 	}
+	if (diff < 0)
+		while (calls.getElem() <= 0)
+		{
+			unsigned int positions;
+			calls.PopFirst(positions);
+			unsigned int positions_2 = calls.getStart();
+			unsigned int cicles = 1;
+			for (unsigned int i3 = positions; i3 < positions - diff  && i3 < positions_2 - cicles - 1; i3++)
+			{
+				chain[i3] = chain[i3 + 1];
+			}
+				
+		
+			cicles++;
+		}
 }
 
 
@@ -228,7 +237,7 @@ void String::Trim(bool toRight, bool toLeft, char toDestroy)
 			chain[i] = chain[countR];
 		}
 		
-		for (unsigned int i2 = len - countL; i2 < countL; i++)
+		for (unsigned int i2 = len - countL; i2 < countL; i2++)
 		{
 			chain[i2] = toDestroy;
 			len = i2;
