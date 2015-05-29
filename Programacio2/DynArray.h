@@ -107,6 +107,41 @@ public:
 		return true;
 	}
 
+
+	bool Insert(const DynArray& toInsert, unsigned int position)
+	{
+		if (position > nElements)
+			return false;
+
+		/*if (position == nElements)
+		{
+			for ()
+			PushBack(element);
+			return true;
+		}
+		*/
+		if (nElements + toInsert.nElements > memAlloc)	
+			Alloc(memAlloc + toInsert.nElements);
+
+		/*TODO Posar bé*/
+
+		
+
+		for (unsigned int i = position; i > nElements + toInsert.nElements; ++i)
+		{
+			data[i + toInsert.nElements] = data[i];
+			data[i] = toInsert[i - position];
+			++nElements;
+		}
+
+		//for (i)
+		//data [i + toInsert.nElements] = data [i
+		//data[i] = toInsert[i - position]
+
+		return true;
+	}
+
+
 	TYPE* At(unsigned int index)
 	{
 		TYPE* result = NULL;

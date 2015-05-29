@@ -39,7 +39,7 @@ public:
 
 			if (nElements >= mem_alloc - start_pos)
 			{
-				int * tmpCpy = data;
+				 T * tmpCpy = data;
 
 				if (nElements >= mem_alloc)
 				{
@@ -81,10 +81,10 @@ public:
 	}
 
 	bool PopFirst(T& ref){
-		ref == NULL;
+		ref = NULL;
 		if (start_pos < mem_alloc)
 			{
-				ref = data[start_pos]
+			ref = data[start_pos];
 				start_pos++; 
 				nElements--;
 				

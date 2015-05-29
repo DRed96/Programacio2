@@ -53,6 +53,7 @@ public:
 	void Trim(bool, bool, char);
 
 	void Substitute(const char * original, const char * result);
+	unsigned int Find(const char * original);
 private:
 	//Crea una còpia que allocata
 	void Alloc(unsigned int nSize)

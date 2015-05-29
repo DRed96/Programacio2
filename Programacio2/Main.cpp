@@ -34,13 +34,8 @@ int fibonaci_iterative(unsigned int position)
 
 int main()
 {
-	String test("Hola mundo");//4 esquerra, 6 dreta
-	test.Substitute("mundo", "loli");
+	String test("hola mundo hola mundo mundo hola hol mun mundo");
 
 
-	const char * cpy = test.getString();
-	
-	//LOG("Fibonacci = %d \n", fibonacci(2));
-	getchar();
-	return 0;
+	return test.Find("hola");
 }

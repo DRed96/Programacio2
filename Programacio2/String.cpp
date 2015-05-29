@@ -121,18 +121,40 @@ substitució(mundo, pepito)
 hola pepito
 */
 
+
+// Substitute amb metodes petits
+// diferencia de tamany
+unsigned int String::Find(const char * original)
+{
+	unsigned int pos = 0, ret = 0;
+	while (pos <= len)
+	{
+		if (original[0] == chain[pos])
+		{
+			//%str[i]
+			//Fer servir punters per posar posicions exactes
+			ret += strncmp(chain, original, strlen(original));
+		}
+		pos++;
+	}
+	return ret;
+}
+
+
 void String::Substitute(const char * original, const char * result)
 {
 	unsigned int pos;
 	bool toSubstite = false;
 	unsigned int  lenght = strlen(result);
 	int diff = lenght - strlen(original);
+
 	Queue <unsigned int> calls;
+	// Fer mètode que busqui quantes vegades hi ha X paraula dins una cadena 
 	for (pos = 0; pos < len; ++pos, toSubstite = false)
 	{
-		//Quan pos > 3 passa algosy
 		if (original[0] == chain[pos])
 		{
+
 			for (unsigned int i = 1; original[i] == chain[pos + i], !toSubstite; i++)
 			{
 				if (i == lenght)
@@ -140,32 +162,39 @@ void String::Substitute(const char * original, const char * result)
 					toSubstite = true;
 				}
 			}
-
-			for (unsigned int i2 = 0; i2 < lenght; i2++, pos++)
+			for (pos = 0; pos < len; ++pos, toSubstite = false)
 			{
-				chain[pos] = result[i2];
+				//Quan pos > 3 passa algosy
+
+				for (unsigned int i2 = 0; i2 < lenght; i2++, pos++)
+				{
+					chain[pos] = result[i2];
+				}
+				//Pos is now at the end of the substituted word
+				if (diff < 0)
+					calls.PushBack(pos + 1);
+				//else
 			}
-			//Pos is now at the end of the substituted word
-			if (diff < 0)
-				calls.PushBack(pos + 1);
-		//else
+
 		}
-	}
-	if (diff < 0)
+
+		if (diff < 0)
 		while (calls.getElem() <= 0)
 		{
 			unsigned int positions;
 			calls.PopFirst(positions);
 			unsigned int positions_2 = calls.getStart();
 			unsigned int cicles = 1;
-			for (unsigned int i3 = positions; i3 < positions - diff  && i3 < positions_2 - cicles - 1; i3++)
+
+			for (unsigned int i3 = positions; i3 < positions - diff && i3 < positions_2 - cicles - 1; i3++)
 			{
 				chain[i3] = chain[i3 + 1];
 			}
-				
-		
+
+
 			cicles++;
 		}
+	}
 }
 
 
