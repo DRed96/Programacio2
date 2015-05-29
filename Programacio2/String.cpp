@@ -245,29 +245,29 @@ void String::Trim(bool toRight, bool toLeft, char toDestroy)
 }
 //Operators
 
-const bool String::operator == (const String & ref)
+bool String::operator == (const String & ref)
 {
 	return (strcmp(chain, ref.chain) == 0);
 }
 
-const bool String::operator == (const char * cpy)
+bool String::operator == (const char * cpy)
 {
 	if (cpy != NULL) { return (strcmp(chain, cpy) == 0); }
 	return false;
 }
 
-const bool String::operator != (const char * cpy)
+bool String::operator != (const char * cpy)
 {
 	if (cpy != NULL) { return (strcmp(chain, cpy) != 0); }
 	return false;
 }
 
-const bool String::operator != (const String & ref)
+bool String::operator != (const String & ref)
 {
 	return (strcmp(chain, ref.chain) != 0);
 }
 
-String & String::operator = (const String & ref)
+const String & String::operator = (const String & ref)
 {
 	if (size < ref.size)
 	{
@@ -278,7 +278,7 @@ String & String::operator = (const String & ref)
 	return (*this);
 }
 
-String & String::operator = (const char * cpyChain)
+const String & String::operator = (const char * cpyChain)
 {
 	unsigned int needSize = strlen(cpyChain) + 1;
 	if (cpyChain != NULL)
@@ -298,7 +298,7 @@ String & String::operator = (const char * cpyChain)
 	}
 	return (*this);
 }
-String & String::operator += (const String & ref)
+const String & String::operator += (const String & ref)
 {
 	unsigned int finalSize = size + ref.size;
 	if (size < finalSize)
@@ -309,10 +309,10 @@ String & String::operator += (const String & ref)
 	}
 	strcat_s(chain, size, ref.chain);
 
-	return (*this);
+	return (*this); //Contingut del punter
 }
 
-String & String::operator += (const char * cpyChain)
+const String & String::operator += (const char * cpyChain)
 {
 	if (cpyChain != NULL)
 	{

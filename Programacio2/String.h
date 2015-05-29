@@ -32,21 +32,21 @@ public:
 	void prefix(const char * ref);
 	//Operators
 
-	const bool operator == (const String & ref);
+	bool operator == (const String & ref);
 
-	const bool operator == (const char * cpy);
+	bool operator == (const char * cpy);
 
-	const bool operator != (const char * cpy);
+	bool operator != (const char * cpy);
 
-	const bool operator != (const String & ref);
+	bool operator != (const String & ref);
 
-	String & operator = (const String & ref);
+	const String & operator = (const String & ref);
 
-	String & operator = (const char * cpyChain);
+	const String & operator = (const char * cpyChain);
 
-	String & operator += (const String & ref);
+	const String & operator += (const String & ref);
 
-	String & operator += (const char * cpyChain);
+	const String & operator += (const char * cpyChain);
 
 	void Trim2();
 
