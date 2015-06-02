@@ -34,7 +34,7 @@ int fibonaci_iterative(unsigned int position)
 
 int main()
 {
-	String test("hola hola hola holhol");
+	String test("holhol");
 	Queue <unsigned int> test2;
 	test2 = test.Find("hol");
 
