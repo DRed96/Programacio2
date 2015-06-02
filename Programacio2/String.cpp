@@ -121,18 +121,40 @@ substitució(mundo, pepito)
 hola pepito
 */
 
+
+// Substitute amb metodes petits
+// diferencia de tamany
+unsigned int String::Find(const char * original)
+{
+	unsigned int pos = 0, ret = 0;
+	while (pos <= len)
+	{
+		if (original[0] == chain[pos])
+		{
+			//%str[i]
+			//Fer servir punters per posar posicions exactes
+			ret += strncmp(chain, original, strlen(original));
+		}
+		pos++;
+	}
+	return ret;
+}
+
+
 void String::Substitute(const char * original, const char * result)
 {
 	unsigned int pos;
 	bool toSubstite = false;
 	unsigned int  lenght = strlen(result);
 	int diff = lenght - strlen(original);
+
 	Queue <unsigned int> calls;
+	// Fer mètode que busqui quantes vegades hi ha X paraula dins una cadena 
 	for (pos = 0; pos < len; ++pos, toSubstite = false)
 	{
-		//Quan pos > 3 passa algosy
 		if (original[0] == chain[pos])
 		{
+
 			for (unsigned int i = 1; original[i] == chain[pos + i], !toSubstite; i++)
 			{
 				if (i == lenght)
@@ -140,33 +162,35 @@ void String::Substitute(const char * original, const char * result)
 					toSubstite = true;
 				}
 			}
-
-			for (unsigned int i2 = 0; i2 < lenght; i2++, pos++)
+			for (pos = 0; pos < len; ++pos, toSubstite = false)
 			{
-				chain[pos] = result[i2];
+				for (unsigned int i2 = 0; i2 < lenght; i2++, pos++)
+				{
+					chain[pos] = result[i2];
+				}
+				//Pos is now at the end of the substituted word
+				
 			}
-			//Pos is now at the end of the substituted word
-			if (diff < 0)
-				calls.PushBack(pos + 1);
-		//else
+
 		}
-	}
-
-	unsigned int positions;
-	unsigned int cicles = 1;
-	if (diff < 0)
-	{
-		while (calls.PopFirst(positions))
+		unsigned int positions;
+		unsigned int cicles = 1;
+		if (diff < 0)
 		{
-			unsigned int positions_2 = calls.getStart();
+			while (calls.getElem() >= 0)
 
-			for (unsigned int i3 = positions; i3 < positions - diff && i3 < positions_2 - cicles - 1; i3++)
 			{
-				chain[i3] = chain[i3 + 1];
+				unsigned int positions_2 = calls.getStart();
+
+
+				for (unsigned int i3 = positions; i3 < positions - diff && i3 < positions_2 - cicles - 1; i3++)
+				{
+					chain[i3] = chain[i3 + 1];
+				}
+
+
+				cicles++;
 			}
-
-
-			cicles++;
 		}
 	}
 }
@@ -248,29 +272,29 @@ void String::Trim(bool toRight, bool toLeft, char toDestroy)
 }
 //Operators
 
-const bool String::operator == (const String & ref)
+bool String::operator == (const String & ref)
 {
 	return (strcmp(chain, ref.chain) == 0);
 }
 
-const bool String::operator == (const char * cpy)
+bool String::operator == (const char * cpy)
 {
 	if (cpy != NULL) { return (strcmp(chain, cpy) == 0); }
 	return false;
 }
 
-const bool String::operator != (const char * cpy)
+bool String::operator != (const char * cpy)
 {
 	if (cpy != NULL) { return (strcmp(chain, cpy) != 0); }
 	return false;
 }
 
-const bool String::operator != (const String & ref)
+bool String::operator != (const String & ref)
 {
 	return (strcmp(chain, ref.chain) != 0);
 }
 
-String & String::operator = (const String & ref)
+const String & String::operator = (const String & ref)
 {
 	if (size < ref.size)
 	{
@@ -281,7 +305,7 @@ String & String::operator = (const String & ref)
 	return (*this);
 }
 
-String & String::operator = (const char * cpyChain)
+const String & String::operator = (const char * cpyChain)
 {
 	unsigned int needSize = strlen(cpyChain) + 1;
 	if (cpyChain != NULL)
@@ -301,7 +325,7 @@ String & String::operator = (const char * cpyChain)
 	}
 	return (*this);
 }
-String & String::operator += (const String & ref)
+const String & String::operator += (const String & ref)
 {
 	unsigned int finalSize = size + ref.size;
 	if (size < finalSize)
@@ -312,10 +336,10 @@ String & String::operator += (const String & ref)
 	}
 	strcat_s(chain, size, ref.chain);
 
-	return (*this);
+	return (*this); //Contingut del punter
 }
 
-String & String::operator += (const char * cpyChain)
+const String & String::operator += (const char * cpyChain)
 {
 	if (cpyChain != NULL)
 	{
