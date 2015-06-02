@@ -2,6 +2,12 @@
 #define _STRING_H_
 
 #include <string.h>
+#include <windows.h>
+#include <stdio.h>
+#include <stdarg.h>
+#include "Queue.h"
+#include <string.h>
+
 class String{
 
 	char * chain;
@@ -53,7 +59,8 @@ public:
 	void Trim(bool, bool, char);
 
 	void Substitute(const char * original, const char * result);
-	unsigned int Find(const char * original);
+	
+	Queue<unsigned int>& Find(const char * original);
 private:
 	//Crea una còpia que allocata
 	void Alloc(unsigned int nSize)

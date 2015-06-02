@@ -1,9 +1,6 @@
-#include <windows.h>
-#include <stdio.h>
-#include <stdarg.h>
+
 #include "String.h"
-#include "Queue.h"
-#include <string.h>
+
 
 #define TMP_STRING_SIZE	4096
 //Constructors
@@ -124,22 +121,35 @@ hola pepito
 
 // Substitute amb metodes petits
 // diferencia de tamany
-unsigned int String::Find(const char * original)
+Queue<unsigned int> & String::Find(const char * original)
 {
-	unsigned int pos = 0, ret = 0;
+	unsigned int pos = 0;
+	unsigned int lenght = strlen(original);
+	unsigned int counter = 1;
+	Queue<unsigned int> ret;
+
 	while (pos <= len)
 	{
+		counter = 1;
 		if (original[0] == chain[pos])
 		{
-			//%str[i]
-			//Fer servir punters per posar posicions exactes
-			ret += strncmp(chain, original, strlen(original));
+			for (unsigned int i = 1; original[i] != '\0' && original[i] == chain[pos + i]; ++i, ++counter)
+			{}
+			if (counter == lenght )
+			{
+				ret.PushBack(pos);
+				pos += lenght - 1;
+			}
+			counter = 1;
+			//Es dona la condicio si tots els chars son iguals
+			
 		}
 		pos++;
 	}
 	return ret;
 }
-
+//%str[i]
+//Fer servir punters per posar posicions exactes
 
 void String::Substitute(const char * original, const char * result)
 {
@@ -147,6 +157,9 @@ void String::Substitute(const char * original, const char * result)
 	bool toSubstite = false;
 	unsigned int  lenght = strlen(result);
 	int diff = lenght - strlen(original);
+	/*Find
+	Prepare
+	Substitute*/
 
 	Queue <unsigned int> calls;
 	// Fer mètode que busqui quantes vegades hi ha X paraula dins una cadena 
@@ -173,7 +186,7 @@ void String::Substitute(const char * original, const char * result)
 			}
 
 		}
-		unsigned int positions;
+		unsigned int positions = 0;
 		unsigned int cicles = 1;
 		if (diff < 0)
 		{

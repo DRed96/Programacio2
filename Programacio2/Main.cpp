@@ -34,8 +34,11 @@ int fibonaci_iterative(unsigned int position)
 
 int main()
 {
-	String test("hola mundo hola mundo mundo hola hol mun mundo");
+	String test("hola hola hola holhol");
+	Queue <unsigned int> test2;
+	test2 = test.Find("hol");
 
-
-	return test.Find("hola");
+	printf("Similarities found == %d", test2.getElem());
+	getchar();
+	return 0;
 }
