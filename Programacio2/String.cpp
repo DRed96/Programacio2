@@ -151,21 +151,24 @@ void String::Substitute(const char * original, const char * result)
 		//else
 		}
 	}
+
+	unsigned int positions;
+	unsigned int cicles = 1;
 	if (diff < 0)
-		while (calls.getElem() <= 0)
+	{
+		while (calls.PopFirst(positions))
 		{
-			unsigned int positions;
-			calls.PopFirst(positions);
 			unsigned int positions_2 = calls.getStart();
-			unsigned int cicles = 1;
-			for (unsigned int i3 = positions; i3 < positions - diff  && i3 < positions_2 - cicles - 1; i3++)
+
+			for (unsigned int i3 = positions; i3 < positions - diff && i3 < positions_2 - cicles - 1; i3++)
 			{
 				chain[i3] = chain[i3 + 1];
 			}
-				
-		
+
+
 			cicles++;
 		}
+	}
 }
 
 
