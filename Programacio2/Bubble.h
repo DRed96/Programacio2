@@ -18,8 +18,8 @@ void BubbleSort()
 
 int Bubble(DynArray <int>* toOrder)
 {
-	int i = 0;
-	int j = i + 1;
+	unsigned int i = 0;
+
 	int checker = 0;
 	bool ret = true;
 	while (ret)

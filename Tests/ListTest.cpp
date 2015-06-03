@@ -72,5 +72,32 @@ namespace UnitTest1
 			Assert::AreEqual(test[4], 42);
 			*/
 		}
+
+		TEST_METHOD(List_Insert)
+		{
+			List<int> t1;
+			List<int> t2;
+			for (int i = 0; i < 10; i++)
+			{
+				t1.Add(i);
+
+			}
+
+			t2.Add(-1);
+			t2.Add(-2);
+			t2.Add(-3);
+
+			t1.Insert(2, t2);
+
+			for (int i = 0; i < 2; i++)
+			{
+				Assert::AreEqual(t1[i], i);
+			}
+
+			Assert::AreEqual(t1[2], -1);
+			Assert::AreEqual(t1[3], -2);
+			Assert::AreEqual(t1[4], -3);
+			
+		}
 	};
 }

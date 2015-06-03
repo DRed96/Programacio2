@@ -36,6 +36,19 @@ public:
 		start = end = NULL;
 		size = 0;
 	}
+	 //Constructor copia
+	 List(const List <TYPE>& ref)
+	 {
+		 start = end = NULL;
+		 size = 0;
+		 node <TYPE> *tmp2 = ref.start;
+		// for (unsigned int i = 0; i < ref.size; i++, tmp2 = tmp2->next)
+		 while (tmp2)
+		 {
+			 Add(tmp2->data);
+			 tmp2 = tmp2->next;
+		 }
+	 }
 
 	//Destructor
 	~List()
@@ -246,6 +259,8 @@ public:
 		return(sNode->data);
 	}
 	*/
+
+
 	/**
 	* returns the first apperance of data as index (-1 if not found)
 	*/
@@ -274,5 +289,56 @@ public:
 	{
 		return end;
 	}
+
+	bool Insert(unsigned int position, const List<TYPE>& ref)
+	{
+		if (position > size)
+			return false;
+
+		List<TYPE> Copied_List(ref);
+		node<TYPE> * tmp = start;
+		
+		if (position <= 0)
+		{
+			Copied_List.end->next = start;
+			start->prev = Copied_List.end;
+
+			start = Copied_List.start;
+			
+		}
+		else
+		{
+			unsigned int i = 1;
+			while (i < position)
+			{
+				
+				tmp = tmp->next;
+				i++;
+				
+			}
+
+			node<TYPE> * tmp2 = tmp->next;
+
+			if (tmp)
+			{
+				tmp->next = Copied_List.start;
+				Copied_List.start->prev = tmp;
+			}
+			if (tmp2)
+			{
+				Copied_List.end->next = tmp2;
+				tmp2->prev = Copied_List.end;
+			}
+			else
+			{
+				end = Copied_List.end;
+			}
+		}
+		Copied_List.start = Copied_List.end = NULL;
+		size += Copied_List.size;
+
+		return true;
+	}
+
 };
 #endif //_List_H_

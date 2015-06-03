@@ -1,6 +1,5 @@
-#include "DynArray.h"
 #include <stdio.h>
-#include "DynArray.h"
+#include "List.h"
 /*
 
 int fibonacci(unsigned int index)
@@ -34,22 +33,22 @@ int fibonaci_iterative(unsigned int position)
 
 int main()
 {
-	DynArray<int> t1;
-	DynArray<int> t2;
-	for (int i = 1; i < 6; i++)
+	List<int> t1;
+	List<int> t2;
+	for (int i = 0; i < 10; i++)
 	{
-		t1.PushBack(i);
+		t1.Add(i);
 
 	}
 
-	t2.PushBack(-1);
-	t2.PushBack(-2);
-	t2.PushBack(-3);
+	t2.Add(-1);
+	t2.Add(-2);
+	t2.Add(-3);
 
 
-	t1.Insert(t2, 3);
+	t1.Insert(2, t2);
 
-	for (int i = 0; i < t1.nElements; i++)
+	for (int i = 0; i < t1.size; i++)
 		printf("Postion %d == %d \n", i, t1[i]);
 
 	getchar();
