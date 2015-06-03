@@ -97,6 +97,10 @@ namespace UnitTest1
 			Assert::AreEqual(t1[2], -1);
 			Assert::AreEqual(t1[3], -2);
 			Assert::AreEqual(t1[4], -3);
+
+			Assert::AreEqual(t2[0], -1);
+			Assert::AreEqual(t2[1], -2);
+			Assert::AreEqual(t2[2], -3);
 			
 		}
 	};

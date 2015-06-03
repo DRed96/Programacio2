@@ -38,18 +38,22 @@ namespace UnitTest1
 			test.PushBack(1);
 			test.PushBack(0);
 
-			/*Assert::IsFalse(test.isOver);
-			Assert::AreEqual(test.Pop() , 0);
-			Assert::AreEqual(test.Pop() , 1);
-			Assert::AreEqual(test.Pop() ,2);
-			Assert::AreEqual(test.Pop() , 3);
-			Assert::AreEqual(test.Pop() , 4);
-			Assert::AreEqual(test.Pop() , 5);*/
+			int checker = 0;
+			test.Pop(checker);
+			Assert::AreEqual(checker, 0);
+			test.Pop(checker);
+			Assert::AreEqual(checker, 1);
+			test.Pop(checker);
+			Assert::AreEqual(checker, 2);
+			test.Pop(checker);
+			Assert::AreEqual(checker, 3);
+			test.Pop(checker);
+			Assert::AreEqual(checker, 4);
+			test.Pop(checker);
+			Assert::AreEqual(checker, 5);	
 			//All memory Poped
-			
-			Assert::IsTrue(test.Pop() == 0);
-			Assert::IsTrue(test.isOver);
-			Assert::IsTrue(test.Pop() == 0);
+			test.Pop(checker);
+			Assert::IsTrue(test.Pop(), 5);
 		}
 
 		TEST_METHOD(ListStack_FullTest)

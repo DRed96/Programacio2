@@ -311,7 +311,6 @@ public:
 			unsigned int i = 1;
 			while (i < position)
 			{
-				
 				tmp = tmp->next;
 				i++;
 				

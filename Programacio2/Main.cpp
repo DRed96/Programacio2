@@ -38,7 +38,6 @@ int main()
 	for (int i = 0; i < 10; i++)
 	{
 		t1.Add(i);
-
 	}
 
 	t2.Add(-1);
@@ -46,7 +45,7 @@ int main()
 	t2.Add(-3);
 
 
-	t1.Insert(2, t2);
+	t1.Insert(0, t2);
 
 	for (int i = 0; i < t1.size; i++)
 		printf("Postion %d == %d \n", i, t1[i]);

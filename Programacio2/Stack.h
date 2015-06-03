@@ -5,19 +5,16 @@ public:
 
 	unsigned int nElements; //Cambiar el tipus segons l'utilització de la cadena
 	unsigned int mem_alloc;// Quantitat de memòria	
-	
-
 	T * data;
-	bool isOver;
 public:
 	
 	
 	//Constructors
-	Stack() : mem_alloc(0), data(NULL), nElements(0), isOver(false)
+	Stack() : mem_alloc(0), data(NULL), nElements(0)
 	{
 		//mem_alloc = 0; data = NULL; nElements = 0;
 	}
-	Stack(unsigned int Size) : mem_alloc(Size), nElements(0), isOver(false)
+	Stack(unsigned int Size) : mem_alloc(Size), nElements(0)
 	{
 		data = new T[mem_alloc];
 	}
