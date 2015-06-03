@@ -133,12 +133,15 @@ void String::Find(const char * original, Queue<unsigned int>& ref)
 	{
 		if (original[0] == chain[pos])
 		{
-			for (unsiged int i = 1; i < len && original[i] == chain[pos + i]; i++)
+			for (unsigned int i = 1; i < len && original[i] == chain[pos + i]; i++, counter++)
+			{}		
+			if (counter == lenght)
 			{
 				ref.PushBack(pos);
 				pos += lenght - 1;
-			}			
+			}
 		}
+		counter = 1;
 		pos++;
 	}
 }
