@@ -145,12 +145,8 @@ namespace UnitTest1
 		{
 			String test("hola mundo hola mundo mundo hola hol mun mundo");
 			Queue<unsigned int> t1;
-			test.Find("hola", t1);
-				
-			Assert::AreEqual((int)t1.getElem(), 3);
-			/*Assert::AreEqual(test.Find("mundo"), 4);
-			Assert::AreEqual(test.Find("hol"), 4);
-			Assert::AreEqual(test.Find("mund"), 5);*/
+			test.Find("mund", t1);
+			Assert::AreEqual((int)t1.getElem(), 5);
 			
 		}
 	};
