@@ -145,10 +145,10 @@ namespace UnitTest1
 		{
 			String test("hola mundo hola mundo mundo hola hol mun mundo");
 		
-			Assert::AreEqual((int)test.Find("hola"), 3);
-			Assert::AreEqual((int)test.Find("mundo"), 4);
-			Assert::AreEqual((int)test.Find("hol"), 4);
-			Assert::AreEqual((int)test.Find("mund"), 5);
+			Assert::AreEqual((int)test.Find("hola").getElem(), 3);
+			Assert::AreEqual((int)test.Find("mundo").getElem(), 4);
+			Assert::AreEqual((int)test.Find("hol").getElem(), 4);
+			Assert::AreEqual((int)test.Find("mund").getElem(), 5);
 			
 		}
 	};

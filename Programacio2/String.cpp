@@ -31,6 +31,7 @@ String::String(const char * cpy, ...)
 
 		int nSize = vsnprintf_s(tmp, TMP_STRING_SIZE, cpy, args);
 		va_end(args);
+
 		if (nSize > 0)
 		{
 			Alloc(nSize + 1);
@@ -125,31 +126,27 @@ Queue<unsigned int> & String::Find(const char * original)
 {
 	unsigned int pos = 0;
 	unsigned int lenght = strlen(original);
-	unsigned int counter = 1;
 	Queue<unsigned int> ret;
-
-	while (pos <= len)
+	while (pos <= len - lenght + 1)
 	{
-		counter = 1;
 		if (original[0] == chain[pos])
 		{
-			for (unsigned int i = 1; original[i] != '\0' && original[i] == chain[pos + i]; ++i, ++counter)
-			{}
-			if (counter == lenght )
+			if (strncmp(original, chain, lenght)== 0)
 			{
 				ret.PushBack(pos);
 				pos += lenght - 1;
-			}
-			counter = 1;
-			//Es dona la condicio si tots els chars son iguals
-			
+			}			
 		}
 		pos++;
 	}
 	return ret;
 }
-//%str[i]
-//Fer servir punters per posar posicions exactes
+
+void  String::PrepareString(const Queue<unsigned int>& ref)
+{
+	
+}
+
 
 void String::Substitute(const char * original, const char * result)
 {
@@ -157,6 +154,25 @@ void String::Substitute(const char * original, const char * result)
 	bool toSubstite = false;
 	unsigned int  lenght = strlen(result);
 	int diff = lenght - strlen(original);
+
+	Queue <unsigned int> & matches = Find(original);
+	
+	int neded_mem = matches.getElem() * diff;
+
+	if (neded_mem > 0)
+	{
+		//chain 
+	}
+	
+	
+
+	
+
+
+
+
+
+
 	/*Find
 	Prepare
 	Substitute*/

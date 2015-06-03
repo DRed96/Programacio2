@@ -59,16 +59,26 @@ public:
 	void Trim(bool, bool, char);
 
 	void Substitute(const char * original, const char * result);
-	
+	//Little methods
 	Queue<unsigned int>& Find(const char * original);
+	void PrepareString(const Queue<unsigned int>& ref);
 private:
 	//Crea una còpia que allocata
 	void Alloc(unsigned int nSize)
 	{
-		size = nSize;
-		chain = new char[size];
-	}
-
+		
+			char* tmp = chain;
+			chain = new char[nSize];
+			if (tmp)
+			{
+				for (unsigned int i = 0; i < len; i++)
+				{
+					chain[i] = tmp[i];
+				}
+				delete[] tmp;
+			}
+			size = nSize;
+		}		
 };
 
 
