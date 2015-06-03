@@ -88,6 +88,7 @@ void String::prefix(String  ref)
 		char * tmp = ref.chain;
 		ref.Alloc(nededSize);
 		strcpy_s(ref.chain, ref.size, tmp);
+		delete[] tmp;
 	}
 	strcat_s(ref.chain, nededSize, chain);
 
@@ -122,24 +123,24 @@ hola pepito
 
 // Substitute amb metodes petits
 // diferencia de tamany
-Queue<unsigned int> & String::Find(const char * original)
+void String::Find(const char * original, Queue<unsigned int>& ref)
 {
+
+	assert(ref.getElem() == 0);
 	unsigned int pos = 0;
 	unsigned int lenght = strlen(original);
-	Queue<unsigned int> ret;
 	while (pos <= len - lenght + 1)
 	{
 		if (original[0] == chain[pos])
 		{
 			if (strncmp(original, chain, lenght)== 0)
 			{
-				ret.PushBack(pos);
+				ref.PushBack(pos);
 				pos += lenght - 1;
 			}			
 		}
 		pos++;
 	}
-	return ret;
 }
 
 void  String::PrepareString(const Queue<unsigned int>& ref)
@@ -155,14 +156,14 @@ void String::Substitute(const char * original, const char * result)
 	unsigned int  lenght = strlen(result);
 	int diff = lenght - strlen(original);
 
-	Queue <unsigned int> & matches = Find(original);
+	//Queue <unsigned int> & matches = Find(original);
 	
-	int neded_mem = matches.getElem() * diff;
+//	int neded_mem = matches.getElem() * diff;
 
-	if (neded_mem > 0)
+/*	if (neded_mem > 0)
 	{
 		//chain 
-	}
+	}*/
 	
 	
 
@@ -357,12 +358,16 @@ const String & String::operator = (const char * cpyChain)
 const String & String::operator += (const String & ref)
 {
 	unsigned int finalSize = size + ref.size;
+	
 	if (size < finalSize)
 	{
 		char * tmp = chain;
 		Alloc(finalSize);
 		strcpy_s(chain, size, tmp);
+		delete[] tmp;
+
 	}
+	
 	strcat_s(chain, size, ref.chain);
 
 	return (*this); //Contingut del punter
@@ -378,6 +383,8 @@ const String & String::operator += (const char * cpyChain)
 			char * tmp = chain;
 			Alloc(finalSize);
 			strcpy_s(chain, size, tmp);
+			delete[] tmp;
+
 		}
 		strcat_s(chain, size, cpyChain);
 	}

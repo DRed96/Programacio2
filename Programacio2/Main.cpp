@@ -36,8 +36,8 @@ int main()
 {
 	String test("hol hol");
 	Queue <unsigned int> test2;
-	test2 = test.Find("hol");
-
+	test.Find("hol", test2);
+	
 	printf("Similarities found == %d", test2.getElem());
 	getchar();
 	return 0;

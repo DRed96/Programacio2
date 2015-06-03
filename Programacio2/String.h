@@ -60,24 +60,17 @@ public:
 
 	void Substitute(const char * original, const char * result);
 	//Little methods
-	Queue<unsigned int>& Find(const char * original);
+	void Find(const char* , Queue<unsigned int>&);
 	void PrepareString(const Queue<unsigned int>& ref);
 private:
 	//Crea una còpia que allocata
 	void Alloc(unsigned int nSize)
 	{
-		
-			char* tmp = chain;
-			chain = new char[nSize];
-			if (tmp)
-			{
-				for (unsigned int i = 0; i < len; i++)
-				{
-					chain[i] = tmp[i];
-				}
-				delete[] tmp;
-			}
-			size = nSize;
+		/*if (chain)
+			delete[] chain;*/
+			
+		chain = new char[nSize];
+		size = nSize;
 		}		
 };
 
