@@ -148,6 +148,15 @@ public:
 		node<TYPE>* tmp;
 		//Prev
 
+		if (n1 == start)
+			start = n2;
+		else if (n2 == start)
+			start = n1;
+		if (n1 == end)
+			end = n2;
+		else if (n2 == end)
+			end = n1;
+
 		if (n1->prev)
 			n1->prev->next = n2;
 		if (n2->prev)

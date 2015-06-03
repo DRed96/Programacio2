@@ -59,18 +59,15 @@ namespace UnitTest1
 			test.Add(25);
 			test.Add(9);
 			test.Add(42);
-			test.Add(1);
-			test.Add(3);
+		
+			
+			test.swapNodes(test.start, test.start->next);
 
-		//	test.swapNodes();
-
-			Assert::IsTrue(1 == 2);
-			/*Assert::AreEqual(test[0], 1);
-			Assert::AreEqual(test[1], 3);
-			Assert::AreEqual(test[2], 9);
-			Assert::AreEqual(test[3], 25);
-			Assert::AreEqual(test[4], 42);
-			*/
+		//	Assert::IsTrue(1 == 2);
+			Assert::AreEqual(test[0], 9);
+			Assert::AreEqual(test[1], 25);
+			Assert::AreEqual(test[2], 42);
+			
 		}
 
 		TEST_METHOD(List_Insert)

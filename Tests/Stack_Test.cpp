@@ -53,7 +53,7 @@ namespace UnitTest1
 			Assert::AreEqual(checker, 5);	
 			//All memory Poped
 			test.Pop(checker);
-			Assert::IsTrue(test.Pop(), 5);
+			Assert::AreEqual(checker, 5);
 		}
 
 		TEST_METHOD(ListStack_FullTest)
