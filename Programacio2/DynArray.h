@@ -110,30 +110,31 @@ public:
 
 	bool Insert(const DynArray& toInsert, unsigned int position)
 	{
-		if (position > nElements)
+		unsigned int needed_mem = toInsert.nElements + nElements;
+		if (position > memAlloc)
 			return false;
 
-		/*if (position == nElements)
+		if (memAlloc < needed_mem)
 		{
-			for ()
-			PushBack(element);
-			return true;
-		}
-		*/
-		if (nElements + toInsert.nElements > memAlloc)	
-			Alloc(memAlloc + toInsert.nElements);
-
-		/*TODO Posar bé*/
-
+			Alloc(needed_mem);
 		
-
-		for (unsigned int i = position; i > nElements + toInsert.nElements; ++i)
-		{
-			data[i + toInsert.nElements] = data[i];
-			data[i] = toInsert[i - position];
-			++nElements;
+			for (unsigned int i2 = 0, i = nElements - 1; i >= position; i--, i2++)
+			{
+				data[memAlloc - i2 - 1] = data[i];
+			}
 		}
-
+		else
+		{
+			for (unsigned int i2 = 0, i = nElements - 1; i >= position; i--, i2++)
+			{
+				data[needed_mem - i2 - 1] = data[i];
+			}
+		}
+		for (unsigned int i = 0; i < toInsert.nElements; i++)
+		{
+			data[position + i] = toInsert[i];
+			nElements++;
+		}
 		//for (i)
 		//data [i + toInsert.nElements] = data [i
 		//data[i] = toInsert[i - position]

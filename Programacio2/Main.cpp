@@ -1,6 +1,6 @@
 #include "DynArray.h"
 #include <stdio.h>
-#include "String.h"
+#include "DynArray.h"
 /*
 
 int fibonacci(unsigned int index)
@@ -34,11 +34,24 @@ int fibonaci_iterative(unsigned int position)
 
 int main()
 {
-	String test("hmundo mund mu");
-	Queue<unsigned int> t1;
-	test.Find("mund", t1);
-	
-	printf("Similarities found == %d", t1.getElem());
+	DynArray<int> t1;
+	DynArray<int> t2;
+	for (int i = 1; i < 6; i++)
+	{
+		t1.PushBack(i);
+
+	}
+
+	t2.PushBack(-1);
+	t2.PushBack(-2);
+	t2.PushBack(-3);
+
+
+	t1.Insert(t2, 3);
+
+	for (int i = 0; i < t1.nElements; i++)
+		printf("Postion %d == %d \n", i, t1[i]);
+
 	getchar();
 	return 0;
 }
