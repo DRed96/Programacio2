@@ -184,7 +184,6 @@ public:
 	/**
 	* read / write operator access directly to a position in the list
 	*/
-
 //Posar referencia
 	TYPE& operator [](unsigned int index)
 	{
@@ -213,8 +212,26 @@ public:
 		return tmp->data;
 
 	}
+	//Concatenate two lists
+	void operator += (const List<TYPE> & ref)
+	{
+		assert(ref.start && ref.end);
+		/*for (int i = 0; i < ref.size; i++)
+		{
+		Add(ref[i]);
+		}*/
 
+		List <TYPE> Copied_List(ref);
 	
+		end->next = Copied_List.start;
+		Copied_List.start->prev = end;
+
+		end = Copied_List.end;
+		size += Copied_List.size;
+
+		//Copied_List.start = NULL;
+		Copied_List.end = NULL;
+	}
 
 	//Ordenar la llista fent bubble sort
 	
@@ -244,31 +261,6 @@ public:
 		}
 		return counter;
 	}
-
-
-	/*Ricard
-	TYPE& operator  [](const unsigned int index)
-	{
-		int pos = 0;
-		node<TYPE>* sNode = start;
-		
-		while(sNode != NULL)
-		{
-			if (pos == index)
-			{
-				break;
-			}
-
-			++pos;
-			sNode = sNode->next;
-		}
-
-		
-
-		return(sNode->data);
-	}
-	*/
-
 
 	/**
 	* returns the first apperance of data as index (-1 if not found)
@@ -304,7 +296,7 @@ public:
 		if (position > size)
 			return false;
 
-		List<TYPE> Copied_List(ref);
+		static List<TYPE> Copied_List(ref);
 		node<TYPE> * tmp = start;
 		
 		if (position <= 0)

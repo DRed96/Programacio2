@@ -33,17 +33,26 @@ int fibonaci_iterative(unsigned int position)
 
 int main()
 {
-	List<int> t1;
-	t1.Add(25);
-	t1.Add(9);
-	t1.Add(42);
+	List <int> t1;
+	List <int> t2;
 
+	for (int i = 0; i < 2; i++)
+		t1.Add(i);
 
-	t1.swapNodes(t1.start, t1.start->next);
+	t2.Add(-1);
+	t2.Add(-2);
+	t2.Add(-3);
+	
+	t1 += t2;
 
-	for (unsigned int i = 0; i < t1.size; i++)
+	for (unsigned int i = 0; i < t1.size; i++){
+		int debug = t1[i];
 		printf("Postion %d == %d \n", i, t1[i]);
+		
+	}
 
 	getchar();
 	return 0;
 }
+//-		((t1).start)->next	0x00b93ae0 {data=1 next=0x00b97240 {data=-17891602 next=0xfeeefeee {data=??? next=??? prev=??? } prev=...} ...}	node<int> *
+//+		next	0x00b97240 {data=-17891602 next=0xfeeefeee {data=??? next=??? prev=??? } prev=0xfeeefeee {data=??? next=...} }	node<int> *
