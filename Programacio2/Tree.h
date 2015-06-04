@@ -1,47 +1,49 @@
 #pragma once
 
+
 #include "List.h"
 #include "Stack.h"
-#include "Queue.h"
 
-/*
-DEURES
-Add(Amb punter a node pare)
-Recursiu
-*/
 
 template <class TYPE>
-struct tree_node {
+struct tree_node
+{
 	TYPE data;
 	tree_node * father;
 	List <tree_node<TYPE>*> sons;
 	//TYPE2 = tree_node<TYPE>*;
 	tree_node() : data(NULL), father(NULL)
-	{}
+	{
+		sons.start = sons.end = NULL;
+	}
 
 	tree_node(const TYPE a) : data(a), father(NULL)
-	{}
+	{
+		sons.start = sons.end = NULL;
+	}
 
 	~tree_node()
 	{}
-	// Si el Add el fem abans del for, es un preorder,
-	// Si el fem despres, un post-order
 
-	void PostorderREC(List <tree_node<TYPE>*>* list) //Postorder recursiu
+	void Clear(tree_node<TYPE> * starterNode)
 	{
-		node<TYPE> tmp = sons->start;
-	
-		for (tmp != NULL)
+		node<tree_node<TYPE>*> * tmp = starterNode->sons.start;
+		while (tmp)
 		{
-			node->PostorderRECl(list);
+			Clear(tmp->data);
 			tmp = tmp->next;
-			
+			starterNode->sons.size--;
 		}
-		list.Add(this);
-		
+		delete tmp;
 	}
-	
-	void PreorderREC(List <tree_node<TYPE>*>* list) //Preorder recursiu
+
+
+	//--------------------------------
+	// Recursive search functions
+	//--------------------------------
+
+
+	void PreOrderREC(List <tree_node<TYPE>*>* list)
 	{
 		node<tree_node<TYPE>*> * tmp;
 		tmp = sons.getStart();
@@ -49,74 +51,52 @@ struct tree_node {
 		list->Add(this);
 		while (tmp != NULL)
 		{
-			tmp->data->PreorderREC(list);
+			tmp->data->PreOrderREC(list);
 			tmp = tmp->next;
 		}
-		
+
 	}
 
-	
-	void InorderREC(List <tree_node<TYPE>*>* list) //Preorder recursiu
+	void PostOrderREC(List <tree_node<TYPE>*>* list)
 	{
-		const node<TYPE>* tmp;
-		tmp = sons->start;
-		unsigned int counter = 0;
-		while (tmp)
+		node<tree_node<TYPE>*> * tmp = sons.start;
+		while (tmp != NULL)
 		{
-			if (counter >= size / 2)
-			{
-				list.Add(this);
-			}
-			tmp->InorderREC(list);
-			counter++;
+			tmp->data->PostOrderREC(list);
 			tmp = tmp->next;
+
 		}
 		list->Add(this);
-		
+
 	}
 
-	void InorderIT(List <tree_node<TYPE>*>* list)  //Inorder iteratiu POSAR STACK
+	void InOrderREC(List <tree_node<TYPE>*>* list)
 	{
-		list.Add(data);
+		const node<tree_node<TYPE>*>* tmp;
+		tmp = sons.start;
 		unsigned int counter = 0;
-		node<tree_node<TYPE>*> * tmp = sons->start;
-		while (sons->size > counter)
-		{
-			Add(tmp->data);
-			tmp = tmp->next;
-			if (tmp->data->sons->start != NULL)
-			{
 
+		do
+		{
+			if (counter < sons.size / 2)
+			{
+				tmp->data->InOrderREC(list);
+				counter++;
+				tmp = tmp->next;
 			}
 
-			sons->
-				counter++;
-		}
-	}
-	
-	
-	
-	/*
-	void PreorderIT(List <tree_node<TYPE>*>* list)
-	{
-
-	Stack <tree_node<TYPE>*> sonStack;
-	tree_node <TYPE> * badass = root; 
-	node<TYPE>* tmp;
-	//list->Add(root);
-		while (badass != NULL)
-		{
-			list->Add(badass);
-			//if (badass->sons)
-				tmp = badass->sons->end;
-			while (tmp != NULL)
+			list->Add(this);
+			if (tmp)
 			{
-				sonStack.PushBack(tmp);
-				tmp = tmp->prev;
-			}	
-			badass = sonStack.Pop(tmp);
-		}
-	}*/
+				tmp->data->InOrderREC(list);
+				tmp = tmp->next;
+			}
+
+
+		} while (tmp);
+	}
+
+
 };
 
 
@@ -131,10 +111,13 @@ public:
 	{
 	}
 
-	tree_node<TYPE> * Add(const TYPE& _data, tree_node<TYPE> * newFather)
-	{
-		//assert(root != NULL && newFather == NULL);
 
+	//--------------------------------
+	// Add & Clear
+	//--------------------------------
+
+	tree_node<TYPE> * Add(const TYPE& _data, tree_node<TYPE> * newFather = NULL)
+	{
 		tree_node <TYPE> *newNode = new tree_node<TYPE>(_data);
 		if (newFather == NULL && root == NULL)
 		{
@@ -145,109 +128,177 @@ public:
 		{
 			newFather->sons.Add(newNode);
 			newNode->father = newFather;
-		} 
+		}
 		size++;
 		return newNode;
 	}
 
-	/*
-	void PostorderREC(List <TYPE*>* list) const
+	//This function is recursive, similar to Preorder REC
+	void Clear(tree_node<TYPE> * starterNode = NULL)
 	{
-		root->PostorderREC(list);
+
+		if (starterNode == NULL)
+			starterNode = root;
+
+		//This if is to avoid memory access violations
+		if (starterNode != root)
+			starterNode->father->sons.size--;
+
+		root->Clear(starterNode);
 	}
 
-	void PreorderREC(List <tree_node<TYPE>*>* list) const
-	{
-		root->PreorderREC(list);
-	}
-	void InorderREC(List <tree_node<TYPE>*> * list) const
-	{
-		root->InorderREC(list);
-	}*/
 
-	/*void PostorderIT(List <tree_node<TYPE>*> * list)
+	//--------------------------------
+	// Recursive search functions
+	//--------------------------------
+	void PostOrderREC(List <tree_node<TYPE>*>* list)
 	{
-		Stack <tree_node<TYPE>*> sonStack;
-		tree_node<TYPE>* it_node = root;
+		root->PostOrderREC(list);
+	}
+
+	void PreOrderREC(List <tree_node<TYPE>*>* list)
+	{
+		root->PreOrderREC(list);
+	}
+	void InOrderREC(List <tree_node<TYPE>*> * list)
+	{
+		root->InOrderREC(list);
+	}
+
+	//--------------------------------
+	// Iterative search functions
+	//--------------------------------
+
+	void PreOrderIT(List <tree_node<TYPE>*>* list) const
+	{
+		Stack <tree_node<TYPE>*> son_stack;
+		tree_node <TYPE> * it_node = root;
 		node<tree_node<TYPE>*>* tmp;
 
-
-		while (sonStack.isOver != true){
+		while (it_node != NULL)
+		{
+			list->Add(it_node);
 
 			tmp = it_node->sons.end;
-
 			while (tmp != NULL)
 			{
-				sonStack.PushBack(tmp->data);
+				son_stack.PushBack(tmp->data);
 				tmp = tmp->prev;
 			}
-
-			//Perquï¿½ no puc fer servir el Top??
-			it_node = sonStack.data[sonStack.nElements- 1];
-
-			if (it_node->sons.start == NULL){
-				list->Add(it_node);
-				sonStack.Pop();
-			}
-
-			if (it_node == it_node->father->sons.end->data)
-			{
-				//assert(1 != 1);
-				sonStack.Pop(it_node);
-				list->Add(it_node);
-			}
+			son_stack.Pop(it_node);
 		}
-		//assert(1 != 1);
-		//	assert(sonStack.isOver != true);
-		list->Add(root);
-	}*/
+	}
 
-
-	void PostorderIT(List <tree_node<TYPE>*> * list)
+	void PostOrderIT(List <tree_node<TYPE>*> * list) const
 	{
 		Stack <tree_node<TYPE>*> sonStack;
 		tree_node<TYPE>* it_node = root;
 		node<tree_node<TYPE>*>* tmp;
 		bool checker = true;
+		//Checker checks if the Pops of the stack work correctly
 
-
-		while (checker == true){
-
+		while (checker == true && it_node != NULL)
+		{
 			tmp = it_node->sons.end;
 
-			while (tmp != NULL)
-			{
+			if (tmp){
+				while (tmp->prev != NULL)
+				{
+					sonStack.PushBack(tmp->data);
+					tmp = tmp->prev;
+				}
 				sonStack.PushBack(tmp->data);
-				tmp = tmp->prev;
 			}
 
-			//Perquï¿e no puc fer servir el Top??
 			checker = sonStack.Pop(it_node);
 
-			if (it_node->sons.start == NULL){
+			if (it_node->sons.count() == 0){
 				list->Add(it_node);
 			}
 
-			if (it_node == it_node->father->sons.end->data)
-			{
-				list->Add(it_node);
-				it_node = it_node->father;
-				list->Add(it_node);
+			/*
+			This if(and while) gets triggered when the last item on the list it's the same
+			as the las son of the father of the iterative node, the purpose of this is that
+			the function only goes to the node father when it has finished with all the sons
+			*/
+			if (list->count() != 0 && list->end->data == it_node->father->sons.end->data){
+				while (list->end->data == it_node->father->sons.end->data)
+				{
+					if (it_node->father)
+						it_node = it_node->father;
+					list->Add(it_node);
+					if (it_node == root)
+					{
+						it_node = NULL;
+						break;
+					}
+				}
+				checker = sonStack.Pop(it_node);
 			}
 		}
-		//assert(1 != 1);
-		//	assert(sonStack.isOver != true);
-		list->Add(root);
 	}
 
-
-
-	void PretorderIT(List <tree_node<TYPE>*> * list) const
+	//I have not been able to complete this method
+	void InOrderIT(List <tree_node<TYPE>*> * list) const
 	{
-		root->PreorderIT(list);
-	}
-	void InorderIT(List <tree_node<TYPE>*> * list) const
-	{
-		root->InorderIT(list);
+		tree_node<TYPE>* it_node = root;
+		node<tree_node<TYPE>*>* tmp;
+		Stack <tree_node<TYPE>*> sonStack;
+		tree_node<TYPE>* debugStack;
+
+		float counter;
+
+		while (it_node){
+			counter = 0.0;
+			tmp = it_node->sons.end;
+			sonStack.Top(debugStack);
+			if (tmp == NULL)
+			{
+
+				list->Add(it_node);
+				sonStack.Top(debugStack);  //Borrar
+				if (it_node->father == debugStack || root == debugStack)
+				{
+					sonStack.Pop(it_node);
+					list->Add(it_node);
+				}
+
+			}
+			else{
+				if (it_node->sons.count() != 1)
+				{
+					while (tmp != NULL && counter < (float)it_node->sons.count() / 2)
+					{
+						sonStack.PushBack(tmp->data);
+						sonStack.Top(debugStack);
+						tmp = tmp->prev;
+						++counter;
+					}
+
+					sonStack.PushBack(it_node);
+
+					sonStack.Top(debugStack);
+
+					while (tmp != NULL)
+					{
+						sonStack.PushBack(tmp->data);
+
+						sonStack.Top(debugStack);
+
+						tmp = tmp->prev;
+					}
+					if (debugStack == it_node)
+					{
+						sonStack.Pop();
+					}
+				}
+				else
+				{
+					sonStack.PushBack(it_node);
+					sonStack.PushBack(tmp->data);
+				}
+			}
+			sonStack.Pop(it_node);
+		}
 	}
 };

@@ -215,12 +215,12 @@ public:
 	//Concatenate two lists
 	void operator += (const List<TYPE> & ref)
 	{
-		assert(ref.start && ref.end);
-		/*for (int i = 0; i < ref.size; i++)
+		//assert(ref.start && ref.end);
+		for (int i = 0; i < ref.size; i++)
 		{
 		Add(ref[i]);
-		}*/
-
+		}
+		/*
 		List <TYPE> Copied_List(ref);
 	
 		end->next = Copied_List.start;
@@ -230,7 +230,7 @@ public:
 		size += Copied_List.size;
 
 		//Copied_List.start = NULL;
-		Copied_List.end = NULL;
+		Copied_List.end = NULL;*/
 	}
 
 	//Ordenar la llista fent bubble sort
