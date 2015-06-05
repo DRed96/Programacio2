@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include "List.h"
+#include "DynArray.h"
+#include "Utils.h"
 /*
 
 int fibonacci(unsigned int index)
@@ -33,26 +34,51 @@ int fibonaci_iterative(unsigned int position)
 
 int main()
 {
-	List <int> t1;
-	List <int> t2;
 
-	for (int i = 0; i < 2; i++)
-		t1.Add(i);
 
-	t2.Add(-1);
-	t2.Add(-2);
-	t2.Add(-3);
-	
-	t1 += t2;
+	DynArray<int> t1;
+	for (int i = 0; i <=6 ; i++)
+		t1.PushBack(i);
 
-	for (unsigned int i = 0; i < t1.size; i++){
+	t1.flip();
+
+	for (unsigned int i = 0; i < t1.nElements; i++){
 		int debug = t1[i];
-		printf("Postion %d == %d \n", i, t1[i]);
-		
-	}
+		printf("Postion %d == %d \n", i, t1[i]);}
+	
 
 	getchar();
 	return 0;
 }
+
+
+/*
+Tree<char> test;
+
+tree_node<char> * s1;
+tree_node<char> * s2;
+
+
+test.Add('F', NULL);
+
+s1 = test.Add('B', test.root);
+s2 = test.Add('G', test.root);
+
+test.Add('H', s2);
+test.Add('I', s2->sons[0]);
+
+test.Add('A', s1);
+test.Add('D', s1);
+test.Add('C', s1->sons[1]);
+test.Add('E', s1->sons[1]);
+
+
+List <tree_node<char>*>* output;
+output = new List < tree_node<char>* >;
+
+test.PreOrderIT(output);
+//LOG("----------- %c", output->start->data->data);
+
 //-		((t1).start)->next	0x00b93ae0 {data=1 next=0x00b97240 {data=-17891602 next=0xfeeefeee {data=??? next=??? prev=??? } prev=...} ...}	node<int> *
 //+		next	0x00b97240 {data=-17891602 next=0xfeeefeee {data=??? next=??? prev=??? } prev=0xfeeefeee {data=??? next=...} }	node<int> *
+*/

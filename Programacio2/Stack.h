@@ -1,6 +1,7 @@
 #define MEM_CHUNK 16
 template <class T>
-class Stack{
+class Stack
+{
 public:
 
 	unsigned int nElements; //Cambiar el tipus segons l'utilització de la cadena
@@ -82,14 +83,25 @@ public:
 
 		//If it does nothing, it returns 0
 	}
-	//Gets a pointer to the top of the stack 
-	T* Top(unsigned int index)
+
+	void Top(T& ref) const
 	{
-		T* ret = NULL;
-		if (index<num_elements)
-			return ret = &data[nElements - 1];
-		return ret;
+		ref = NULL;
+		if (nElements > 0)
+		{
+			ref = data[nElements - 1];
+		}
 	}
+
+	//Gets a pointer to a position of the stack 
+	void Peek(unsigned int index, T& ref)
+	{
+		ref = NULL;
+		if (index<nElements)
+			ref = data[(nElements - 1)];
+
+	}
+
 
 	void CopyArrays(T * destiny, T * source, unsigned int newMem)
 	{

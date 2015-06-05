@@ -56,7 +56,7 @@ public:
 		delAll();
 	}
 
-	unsigned int count()
+	unsigned int count() const
 	{
 		return size;
 	}

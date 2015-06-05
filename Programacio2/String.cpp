@@ -62,6 +62,7 @@ String::~String(){ delete[] chain; }
 void String::Clear()
 {
 	chain[0] = '\0';
+	len = 0;
 }
 unsigned int String::getLen()
 {
@@ -81,36 +82,35 @@ const char* String::getString() const
 
 void String::prefix(String  ref)
 {
-	unsigned int nededSize = strlen(chain) + strlen(ref.chain) + 1;
+	unsigned int neededSize = strlen(chain) + strlen(ref.chain) + 1;
 
-	if (ref.size < nededSize)
+	if (ref.size < neededSize)
 	{
 		char * tmp = ref.chain;
-		ref.Alloc(nededSize);
+		ref.Reallocate(neededSize);
 		strcpy_s(ref.chain, ref.size, tmp);
 		delete[] tmp;
 	}
-	strcat_s(ref.chain, nededSize, chain);
+	strcat_s(ref.chain, neededSize, chain);
 
-	Alloc(nededSize);
-	strcpy_s(chain, nededSize, ref.chain);
+	Alloc(neededSize);
+	strcpy_s(chain, neededSize, ref.chain);
 }
 
 void String::prefix(const char * input)
 {
 	if (input != NULL){
-		unsigned int nededSize = strlen(chain) + strlen(input) + 1;
+		unsigned int neededSize = strlen(chain) + strlen(input) + 1;
 
 		String tmp(input);
-		if (tmp.size < nededSize)
+		if (tmp.size < neededSize)
 		{
-			tmp.Alloc(nededSize);
-			strcpy_s(tmp.chain, tmp.size, input);
+			Reallocate(neededSize);
 		}
-		strcat_s(tmp.chain, nededSize, chain);
+		strcat_s(tmp.chain, neededSize, chain);
 
-		Alloc(nededSize);
-		strcpy_s(chain, nededSize, tmp.chain);
+		Alloc(neededSize);
+		strcpy_s(chain, neededSize, tmp.chain);
 	}
 }
 
@@ -168,14 +168,6 @@ void String::Substitute(const char * original, const char * result)
 		//chain 
 	}*/
 	
-	
-
-	
-
-
-
-
-
 
 	/*Find
 	Prepare
@@ -228,7 +220,6 @@ void String::Substitute(const char * original, const char * result)
 	}
 }
 
-
 // TODO: Proposta, trim amb arguments molt cool countRque estigucountRoptimitzat, if you feel like it
 /*void String::OLD_Trim()
 {
@@ -259,6 +250,7 @@ void String::Trim2()
 	unsigned int countR;
 	unsigned int countL;
 	unsigned int i;
+
 	//Count spaces starting from the begging
 	for (countR = 0; chain[countR] == ' '; countR++)
 	{}
@@ -276,7 +268,6 @@ void String::Trim2()
 }
 
 
-//void Substitute()
 
 void String::Trim(bool toRight, bool toLeft, char toDestroy)
 {
@@ -305,6 +296,24 @@ void String::Trim(bool toRight, bool toLeft, char toDestroy)
 }
 //Operators
 
+//Change the memory of the string, keeping the data
+void String::Reallocate(const unsigned int newMem)
+{
+	if (newMem > size)
+	{
+		char * tmp = chain;
+		chain = new char[newMem];
+		strcpy_s(chain, size, tmp);
+		size = newMem;
+		delete[] tmp;
+	}
+	else
+	{
+		chain[newMem] = '\0';
+		size = newMem;
+	}
+}
+
 bool String::operator == (const String & ref)
 {
 	return (strcmp(chain, ref.chain) == 0);
@@ -331,6 +340,7 @@ const String & String::operator = (const String & ref)
 {
 	if (size < ref.size)
 	{
+		delete[] chain;
 		Alloc(ref.size);
 	}
 	strcpy_s(chain, size, ref.chain);

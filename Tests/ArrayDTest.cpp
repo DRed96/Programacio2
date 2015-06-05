@@ -95,7 +95,7 @@ namespace UnitTest1
 		TEST_METHOD(DynArray_Flip)
 		{
 			DynArray<int> test;
-			for (int i = 0; i < 6; i++)
+			for (int i = 0; i <= 6; i++)
 				test.PushBack(i);
 
 			test.flip();

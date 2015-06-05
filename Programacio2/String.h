@@ -58,6 +58,8 @@ public:
 
 	void Trim(bool, bool, char);
 
+	void Reallocate(unsigned int newMem);
+
 	void Substitute(const char * original, const char * result);
 	//Little methods
 	void Find(const char* , Queue<unsigned int>&);
@@ -66,9 +68,6 @@ private:
 	//Crea una còpia que allocata
 	void Alloc(unsigned int nSize)
 	{
-		/*if (chain)
-			delete[] chain;*/
-			
 		chain = new char[nSize];
 		size = nSize;
 		}		

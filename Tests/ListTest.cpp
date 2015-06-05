@@ -106,20 +106,20 @@ namespace UnitTest1
 			List <int> t1;
 			List <int> t2;
 
-			for (int i = 0; i < 100; i++)
+			for (int i = 0; i <= 100; i++)
 				t1.Add(i);
 
 			t2.Add(-1);
 			t2.Add(-2);
 			t2.Add(-3);
 			t1 += t2;
-			Assert::AreEqual(1, 2);
-			/*
-			for (int i = 0; i < 100; i++)
+//			Assert::AreEqual(1, 2);
+			
+			for (int i = 0; i <= 100; i++)
 				Assert::AreEqual(t1[i], i);
 			Assert::AreEqual(t1[101], -1);
 			Assert::AreEqual(t1[102], -2);
-			Assert::AreEqual(t1[103], -3);*/
+			Assert::AreEqual(t1[103], -3);
 		}
 	};
 }

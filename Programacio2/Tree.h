@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include "List.h"
 #include "Stack.h"
 
@@ -174,8 +173,8 @@ public:
 		Stack <tree_node<TYPE>*> son_stack;
 		tree_node <TYPE> * it_node = root;
 		node<tree_node<TYPE>*>* tmp;
-
-		while (it_node != NULL)
+		bool checker = true;
+		while (checker &&it_node != NULL)
 		{
 			list->Add(it_node);
 
@@ -185,7 +184,7 @@ public:
 				son_stack.PushBack(tmp->data);
 				tmp = tmp->prev;
 			}
-			son_stack.Pop(it_node);
+			checker = son_stack.Pop(it_node);
 		}
 	}
 
@@ -302,3 +301,29 @@ public:
 		}
 	}
 };
+
+/*
+tmp = it_node->sons.end;
+if (!tmp)
+list->Add(it_node);
+else
+{
+for (; counter <= (float)it_node->sons.count() / 2; counter++, tmp = tmp->prev)
+{
+sonStack.PushBack(tmp->data);
+}
+
+sonStack.PushBack(it_node);
+
+for (; tmp; tmp = tmp->prev)
+{
+sonStack.PushBack(tmp->data);
+}
+
+if (debugStack == )
+}
+
+
+
+
+}*/

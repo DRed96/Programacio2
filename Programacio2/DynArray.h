@@ -176,12 +176,10 @@ public:
 
 	void flip()
 	{		
-		for (unsigned int i = 0; i <= nElements / 2; i++)
+		for (unsigned int i = 0; i < nElements / 2; i++)
 		{
-				swap(data[i], data[nElements - (i + 1)]);
-				/*TYPE tmp = data[i];
-				data[i] = data[nElements];
-				data[nElements] = tmp;*/
+				swap(data[i], data[nElements - (i +1)]);
+			
 		}
 	
 	}
