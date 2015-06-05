@@ -300,6 +300,12 @@ public:
 			sonStack.Pop(it_node);
 		}
 	}
+
+	void Level_Ordered_IT(const List<TYPE>& ref) const
+	{
+
+
+	}
 };
 
 /*
