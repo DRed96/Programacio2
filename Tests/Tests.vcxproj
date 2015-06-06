@@ -91,6 +91,7 @@
     <ClCompile Include="ListTest.cpp" />
     <ClCompile Include="PointTempTest.cpp" />
     <ClCompile Include="QueueTest.cpp" />
+    <ClCompile Include="Queue_RIC.cpp" />
     <ClCompile Include="Stack_Test.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

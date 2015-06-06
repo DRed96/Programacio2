@@ -75,6 +75,7 @@
     <ClInclude Include="DynArray.h" />
     <ClInclude Include="Factorial.h" />
     <ClInclude Include="List.h" />
+    <ClInclude Include="Queue_List2.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Point2D.h" />
     <ClInclude Include="PointTemp.h" />

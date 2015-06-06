@@ -61,7 +61,7 @@ public:
 				start_pos = 0;
 				delete[] tmpCpy;
 			}
-			data[nElements++] = newValue;
+			data[start_pos + nElements++] = newValue;
 		}
 
 		else
@@ -75,10 +75,11 @@ public:
 		}
 	}
 
-	void PopFirst(){
+	/*void PopFirst(){
 		if (start_pos < mem_alloc)
 			start_pos++;
-	}
+			nElements--;
+	}*/
 
 	bool PopFirst(T& ref){
 		ref = NULL;

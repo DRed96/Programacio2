@@ -2,16 +2,16 @@
 #include "List.h"
 
 template <class T>
-class Queue_list
+class Queue_List
 {
 public:
 	List <T> data;
 
 	//Constructor
-	Queue_list()
+	Queue_List()
 	{}
 
-	~Queue_list(){ }
+	~Queue_List(){ }
 
 	//Methods
 	void PushBack(const T& newValue)
@@ -19,9 +19,10 @@ public:
 		data.Add(newValue);
 	}
 
-	bool PopFirst(T& ref){
+	bool PopFirst(T& ref)
+	{
 		
-		ref = data.start;
+		ref = data.start->data;
 		if (data.del(data.start) == false)
 		{
 			ref = NULL;

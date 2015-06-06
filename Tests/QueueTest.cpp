@@ -46,7 +46,7 @@ namespace UnitTest1
 
 		TEST_METHOD(Queue_List_PushBack)
 		{
-			Queue_list <int >test;
+			Queue_List <int >test;
 			for (int i = 0; i < 1000; i++)
 				test.PushBack(rand() % 1000);
 

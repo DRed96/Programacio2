@@ -60,9 +60,11 @@ int main()
 
 	for (unsigned int i = 0; i < output.count(); i++)
 	{
-		printf("Postion %d == %d \n", i, output[i]);
+		printf("Postion %d == %c \n", i, output[i]);
 	}
 
+	getchar();
+	return 0;
 }
 
 
