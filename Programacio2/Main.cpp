@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "DynArray.h"
+#include "Tree.h"
 #include "Utils.h"
 /*
 
@@ -35,20 +35,29 @@ int fibonaci_iterative(unsigned int position)
 int main()
 {
 
+	Tree<char> test;
 
-	DynArray<int> t1;
-	for (int i = 0; i <=6 ; i++)
-		t1.PushBack(i);
+	tree_node<char> * s1;
+	tree_node<char> * s2;
 
-	t1.flip();
+	test.Add('F', NULL);
 
-	for (unsigned int i = 0; i < t1.nElements; i++){
-		int debug = t1[i];
-		printf("Postion %d == %d \n", i, t1[i]);}
-	
+	s1 = test.Add('B', test.root);
+	s2 = test.Add('G', test.root);
 
-	getchar();
-	return 0;
+	test.Add('H', s2);
+	test.Add('I', s2->sons[0]);
+
+	test.Add('A', s1);
+	test.Add('D', s1);
+	test.Add('C', s1->sons[1]);
+	test.Add('E', s1->sons[1]);
+
+	List <tree_node<char>*>* output;
+	output = new List<tree_node<char>*>;
+
+	test.Level_Ordered_IT(output);
+
 }
 
 

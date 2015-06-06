@@ -2,7 +2,7 @@
 
 #include "List.h"
 #include "Stack.h"
-
+#include "Queue.h"
 
 template <class TYPE>
 struct tree_node
@@ -300,10 +300,38 @@ public:
 			sonStack.Pop(it_node);
 		}
 	}
-
-	void Level_Ordered_IT(const List<TYPE>& ref) const
+	void Level_Ordered_IT(List<tree_node<TYPE>*>* ref) const
 	{
+		Queue<tree_node<TYPE> *> Sons;
+		//This tree_node will be the one we add to ref
+		tree_node<TYPE> * it_node = root;
+		//And this,the one that travels trough the sons
+		node<tree_node<TYPE>*>* tmp = it_node->sons.start;
 
+		ref->Add(it_node);
+
+		do
+		{
+			//Mirar-se condició de nou
+			while (it_node != it_node->father->sons.end->data)
+			{
+				Sons.PopFirst(it_node);
+				ref->Add(it_node);
+				//Adds all Sons
+				tmp = it_node->sons.start;
+
+				while (tmp)
+				{
+					Sons.PushBack(tmp->data);
+					tmp = tmp->next;
+				}
+			}
+
+			
+
+			
+				
+		} while (Sons.getElem() > 0);
 
 	}
 };
