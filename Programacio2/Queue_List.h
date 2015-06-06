@@ -42,9 +42,8 @@ public:
 	//Read/write operator
 	 T& operator [](unsigned int index)
 	 {
-		if (index < data.count())
+		 assert(index < data.count());
 			return data[index];
-		else
-			return NULL;
+		
 	 }
 };

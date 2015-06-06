@@ -8,6 +8,8 @@ private:
 	unsigned int nElements; //Cambiar el tipus segons l'utilització de la cadena
 	unsigned int mem_alloc;// Quantitat de memòria	
 	unsigned int start_pos;
+
+
 public:
 	//Constructor
 	Queue()
@@ -35,9 +37,49 @@ public:
 	void PushBack(const T& newValue){
 		if (data != NULL)
 		{
-			if (nElements < start_pos){ nElements = start_pos; }
+			//if (nElements < start_pos){ nElements = start_pos; }
 
-			if (nElements >= mem_alloc - start_pos)
+			
+			if (nElements + start_pos >= mem_alloc)
+			{
+				if (nElements == 0)
+				{
+
+				}
+
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			if (nElements + start_pos >= mem_alloc)
 			{
 				 T * tmpCpy = data;
 

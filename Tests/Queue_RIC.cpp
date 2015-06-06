@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
-#include "../Programacio2/Queue_List2.h"
+#include "../Programacio2/Queue_List.h"
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace Tests
@@ -11,19 +11,19 @@ namespace Tests
 		
 		TEST_METHOD(TestMethod1)
 		{
-			p2Qeue<int> fifo;
+			Queue_List<int> fifo;
 
 
-			fifo.Push(11);
-			fifo.Push(22);
-			fifo.Push(33);
+			fifo.PushBack(11);
+			fifo.PushBack(22);
+			fifo.PushBack(33);
 
 			Assert::AreEqual((int)fifo.Count(), 3);
-			Assert::AreEqual((int)*(fifo.Peek(1)), 22);
+			Assert::AreEqual((int)(fifo[1]), 22);
 
 
 			int result;
-			bool r = fifo.Pop(result);
+			bool r = fifo.PopFirst(result);
 			/*
 			Assert::AreEqual((int)result, 33);
 			Assert::AreEqual((int)fifo.Count(), 2);
