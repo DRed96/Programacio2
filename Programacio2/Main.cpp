@@ -53,10 +53,15 @@ int main()
 	test.Add('C', s1->sons[1]);
 	test.Add('E', s1->sons[1]);
 
-	List <tree_node<char>*>* output;
-	output = new List<tree_node<char>*>;
+	List <tree_node<char>*> output;
+	//output = new List<tree_node<char>*>;
 
 	test.Level_Ordered_IT(output);
+
+	for (unsigned int i = 0; i < output.count(); i++)
+	{
+		printf("Postion %d == %d \n", i, output[i]);
+	}
 
 }
 
