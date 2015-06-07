@@ -2,7 +2,7 @@
 #define _QUEUE_ARRAY_H_
 
 #include "DynArray.h"
-#define MEM_CHUNK 16
+#define MEM_CHUNK 3
 #define OPTIM_LIMIT 5
 template<class T>
 class Queue_Array{
@@ -19,6 +19,8 @@ public:
 
 	Queue_Array() : start_pos(0), nElements(0), mem_alloc(MEM_CHUNK)
 	{
+		//data = new T[];
+		delete[] data;
 		data = new T[MEM_CHUNK];
 	}
 
@@ -35,21 +37,43 @@ public:
 		
 		if (start_pos + nElements > mem_alloc)
 		{
+			/*T * tmpCpy = data;
+			if (nElements >= mem_alloc)
+			{
+				mem_alloc += MEM_CHUNK;
+				data = new T[mem_alloc];
+			}
+
+			else
+			{
+
+				data = new T[mem_alloc];
+
+			}
+
+			for (unsigned int i = 0; i < mem_alloc; i++)
+			{
+				data[i] = tmpCpy[start_pos + i];
+			}
+			start_pos = 0;
+			delete[] tmpCpy;
+		*/
 			if (start_pos >= OPTIM_LIMIT)
 			{
 				Trim_Queue();
 			}
 			else
 			{
-				T * tmp = data;
+				data[4] = element;
+				/*T * tmp = data;
 				data = new T[mem_alloc + MEM_CHUNK];
 					//Copy the contents of both arrays
 					for (unsigned int i = 0; i < nElements; i++)
 					{
-						data[i] = tmp[start_pos + nElements];
+						data[i] = tmp[start_pos + i];
 					}
 				mem_alloc += MEM_CHUNK;
-				delete[] tmp;
+				delete[] tmp;*/
 			}
 		}
 		data[start_pos + nElements++] = element;

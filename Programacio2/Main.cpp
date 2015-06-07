@@ -35,15 +35,19 @@ int fibonaci_iterative(unsigned int position)
 int main()
 {
 	Queue_Array <int> t1;
-	t1.PushBack(1);
+	
 
 
-	printf("Elements == %d \n", t1.get_Elements());
+	
 
-	/*for (unsigned int i = 0; i < output.count(); i++)
+for (unsigned int i = 0; i < 999; i++)
 	{
-		printf("Postion %d == %c \n", i, output[i]->data);
-	}*/
+		t1.PushBack(i);
+		printf("Elements == %d \n", t1.get_Elements());
+		printf("Mem == %d \n", t1.get_Memory());
+		printf("Data  == %d \n", t1.data[i]);
+		
+	}
 
 	getchar();
 	return 0;
