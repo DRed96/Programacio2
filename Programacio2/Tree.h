@@ -315,13 +315,12 @@ public:
 			Sons.PushBack(tmp->data);
 			tmp = tmp->next;
 		}
-	//	it_node = it_node->sons.start->data;
-		
-			
+
 		while (Sons.PopFirst(it_node))
 			{
 				
 				ref.Add(it_node);
+				
 				//Adds all Sons
 				tmp = it_node->sons.start;
 

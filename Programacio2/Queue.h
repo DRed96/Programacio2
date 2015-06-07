@@ -98,7 +98,7 @@ public:
 
 	bool PopFirst(T& ref){
 		ref = NULL;
-		if (start_pos < mem_alloc)
+		if (start_pos <= mem_alloc && nElements > 0)
 			{
 			ref = data[start_pos];
 				start_pos++; 
@@ -106,7 +106,7 @@ public:
 				return true;
 			}
 		else
-		return false;
+			return false;
 	}
 
 	void CopyArrays(int * destiny, int * source, unsigned int newMem)
