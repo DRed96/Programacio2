@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "Tree.h"
+#include "Queue_Array.h"
 #include "Utils.h"
 /*
 
@@ -34,39 +34,48 @@ int fibonaci_iterative(unsigned int position)
 
 int main()
 {
+	Queue_Array <int> t1;
+	t1.PushBack(1);
 
-	Tree<char> test;
 
-	tree_node<char> * s1;
-	tree_node<char> * s2;
+	printf("Elements == %d \n", t1.get_Elements());
 
-	test.Add('F', NULL);
-
-	s1 = test.Add('B', test.root);
-	s2 = test.Add('G', test.root);
-
-	test.Add('H', s2);
-	test.Add('I', s2->sons[0]);
-
-	test.Add('A', s1);
-	test.Add('D', s1);
-	test.Add('C', s1->sons[1]);
-	test.Add('E', s1->sons[1]);
-
-	List <tree_node<char>*> output;
-	//output = new List<tree_node<char>*>;
-
-	test.Transversal_Order_IT(output);
-
-	for (unsigned int i = 0; i < output.count(); i++)
+	/*for (unsigned int i = 0; i < output.count(); i++)
 	{
 		printf("Postion %d == %c \n", i, output[i]->data);
-	}
+	}*/
 
 	getchar();
 	return 0;
 }
 
+
+
+
+
+/*Tree<char> test;
+
+tree_node<char> * s1;
+tree_node<char> * s2;
+
+test.Add('F', NULL);
+
+s1 = test.Add('B', test.root);
+s2 = test.Add('G', test.root);
+
+test.Add('H', s2);
+test.Add('I', s2->sons[0]);
+
+test.Add('A', s1);
+test.Add('D', s1);
+test.Add('C', s1->sons[1]);
+test.Add('E', s1->sons[1]);
+
+List <tree_node<char>*> output;
+//output = new List<tree_node<char>*>;
+
+test.Transversal_Order_IT(output);
+*/
 
 /*
 Tree<char> test;

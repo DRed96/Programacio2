@@ -300,27 +300,17 @@ public:
 			sonStack.Pop(it_node);
 		}
 	}
+	
 	void Transversal_Order_IT(List<tree_node<TYPE>*>& ref) const
 	{
 		Queue<tree_node<TYPE> *> Sons;
 		//This tree_node will be the one we add to ref
 		tree_node<TYPE> * it_node = root;
 		//And this,the one that travels trough the sons
-		node<tree_node<TYPE>*>* tmp = it_node->sons.start;
-
-		//Init
-		ref.Add(it_node);
-		while (tmp)
+		node<tree_node<TYPE>*>* tmp;
+		do
 		{
-			Sons.PushBack(tmp->data);
-			tmp = tmp->next;
-		}
-
-		while (Sons.PopFirst(it_node))
-			{
-				
 				ref.Add(it_node);
-				
 				//Adds all Sons
 				tmp = it_node->sons.start;
 
@@ -329,7 +319,7 @@ public:
 					Sons.PushBack(tmp->data);
 					tmp = tmp->next;
 				}
-			}
+		} while (Sons.PopFirst(it_node));
 	}
 };
 
