@@ -20,14 +20,15 @@ public:
 	}
 
 	bool PopFirst(T& ref)
-	{
-		
+	{			
 		ref = data.start->data;
 		if (data.del(data.start) == false)
 		{
 			ref = NULL;
 			return false;
 		}
+		
+		
 	}
 
 	void PopFirst(){

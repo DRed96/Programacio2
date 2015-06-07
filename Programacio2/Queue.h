@@ -40,7 +40,7 @@ public:
 			//if (nElements < start_pos){ nElements = start_pos; }
 
 			
-			if (nElements + start_pos >= mem_alloc)
+		/*	if (nElements + start_pos >= mem_alloc)
 			{
 				if (nElements == 0)
 				{
@@ -48,7 +48,7 @@ public:
 				}
 
 				
-			}
+			}*/
 			
 
 			
@@ -103,9 +103,10 @@ public:
 			ref = data[start_pos];
 				start_pos++; 
 				nElements--;
-				
+				return true;
 			}
-		return(ref != NULL);
+		else
+		return false;
 	}
 
 	void CopyArrays(int * destiny, int * source, unsigned int newMem)

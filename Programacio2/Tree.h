@@ -2,7 +2,7 @@
 
 #include "List.h"
 #include "Stack.h"
-#include "Queue_List.h"
+#include "Queue.h"
 
 template <class TYPE>
 struct tree_node
@@ -302,7 +302,7 @@ public:
 	}
 	void Level_Ordered_IT(List<tree_node<TYPE>*>& ref) const
 	{
-		Queue_List<tree_node<TYPE> *> Sons;
+		Queue<tree_node<TYPE> *> Sons;
 		//This tree_node will be the one we add to ref
 		tree_node<TYPE> * it_node = root;
 		//And this,the one that travels trough the sons
@@ -320,6 +320,7 @@ public:
 			
 		while (Sons.PopFirst(it_node))
 			{
+				
 				ref.Add(it_node);
 				//Adds all Sons
 				tmp = it_node->sons.start;
