@@ -300,7 +300,7 @@ public:
 			sonStack.Pop(it_node);
 		}
 	}
-	void Level_Ordered_IT(List<tree_node<TYPE>*>& ref) const
+	void Transversal_Order_IT(List<tree_node<TYPE>*>& ref) const
 	{
 		Queue<tree_node<TYPE> *> Sons;
 		//This tree_node will be the one we add to ref

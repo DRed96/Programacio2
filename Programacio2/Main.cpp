@@ -56,7 +56,7 @@ int main()
 	List <tree_node<char>*> output;
 	//output = new List<tree_node<char>*>;
 
-	test.Level_Ordered_IT(output);
+	test.Transversal_Order_IT(output);
 
 	for (unsigned int i = 0; i < output.count(); i++)
 	{
