@@ -54,7 +54,7 @@ namespace UnitTest1
 			Assert::AreEqual((int)t1.get_Start_Pos(), 0);
 			Assert::AreEqual(t1.data[0], 1);
 
-			for (int i = 0; i <= 99; i++)
+			for (int i = 1; i < 99; i++)
 			{
 				t1.PushBack(i);
 				Assert::AreEqual(t1.data[i], i);
