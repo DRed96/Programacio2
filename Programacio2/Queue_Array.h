@@ -21,7 +21,7 @@ public:
 	{
 		//data = new T[];
 		delete[] data;
-		data = new T[MEM_CHUNK];
+		data = new T[3];
 	}
 
 	//Destructor?
