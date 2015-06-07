@@ -50,34 +50,7 @@ public:
 				
 			}
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+
 			
 			if (nElements + start_pos >= mem_alloc)
 			{
