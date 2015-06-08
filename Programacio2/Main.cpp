@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "String.h"
+#include "Queue_List.h"
 #include "Utils.h"
 /*
 
@@ -34,20 +34,23 @@ int fibonaci_iterative(unsigned int position)
 
 int main()
 {
-	String t1("    Hola mundo      ");//4 esquerra, 6 dreta
-	t1.Trim(true, true, ' ');
-	printf("Mem == %d \n", t1.getSize());
-	for (unsigned int i = 0; i < t1.getSize(); i++)
-	{
-		
+	Queue_List<int> fifo;
 
-		printf("Len == %d \n", t1.getLen());
-		printf("Pos == %d \n",i);
-		printf("Data  == %c \n", t1.chain[i]);
-		printf("---------------------------\n");
-		
-	}
 
+	fifo.PushBack(11);
+	fifo.PushBack(22);
+	fifo.PushBack(33);
+
+	int ref;
+
+	fifo.PopFirst(ref);
+	printf("ref == %d", ref);
+	fifo.PopFirst(ref);
+	printf("ref == %d", ref);
+	fifo.PopFirst(ref);
+	printf("ref == %d", ref);
+	fifo.PopFirst(ref);
+	printf("ref == %d", ref);
 	getchar();
 	return 0;
 }

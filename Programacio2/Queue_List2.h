@@ -162,5 +162,15 @@ public:
 		start = NULL;
 	}
 
+	tdata & operator [](unsigned int index)
+	{
+		p2Qeue_item<tdata>* tmp;
+		unsigned int i = 0;
+		for ( tmp = start; tmp != NULL && i < index; tmp = tmp->next)
+			++i;
+	
+		return tmp->data;
+	}
+
 };
 #endif /*__p2Qeue_H__*/

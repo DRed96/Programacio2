@@ -13,9 +13,7 @@ public:
 
 	//Constructor
 	Queue_List() 
-	{
-		fake_start = data.start;
-	}
+	{}
 
 	~Queue_List()
 	{
@@ -27,13 +25,19 @@ public:
 	//Methods
 	unsigned int PushBack(const T & element)
 	{
-		return data.Add(element);
+		
+		unsigned int ret = data.Add(element);
+		if (fake_start == NULL)
+			fake_start = data.start;
+		return ret;
 	}
+
+
 
 
 	bool PopFirst(T& ref)
 	{
-		if (fake_start)
+		if (fake_start != NULL)
 		{
 			ref = fake_start->data;
 			fake_start = fake_start->next;
