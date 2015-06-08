@@ -83,14 +83,10 @@ public:
 		return ++size;
 	}
 
-	Add(const TYPE& input, unsigned int pos)
+	unsigned int Add(const TYPE& input, unsigned int pos)
 	{
 		
-		if (pos > size + 1)
-		{
-
-		}
-		else
+		if (pos <= size + 1)		
 		{
 			node<TYPE> newNode(input);
 			if (start == NULL)
@@ -114,17 +110,15 @@ public:
 					tmp = tmp->next;
 					counter++;
 				}
-				node<TYPE>*tmp2 = tmp->next;
-
 				tmp->next->prev = newNode;
 				newNode->next = tmp->next;
-				tmp
+				tmp->next = newNode;
+				newNode->prev = tmp;
 				
 			}
-				
-
-			
+			size++;
 		}
+		return size;
 	}
 
 

@@ -84,7 +84,7 @@ namespace UnitTest1
 			t2.Add(-2);
 			t2.Add(-3);
 
-			t1.Insert(2, t2);
+			t1.Insert_List(2, t2);
 
 			for (int i = 0; i < 2; i++)
 			{
