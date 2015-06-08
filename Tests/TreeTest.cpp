@@ -331,7 +331,7 @@ namespace UnitTest1
 			List <tree_node<char>*>* output;
 			output = new List<tree_node<char>*>;
 
-		//	test.InOrderIT(output);
+			test.InOrderIT(output);
 
 			Assert::AreEqual(output->start->data->data, 'A');
 			Assert::AreEqual(output->start->next->data->data, 'B');
@@ -343,6 +343,42 @@ namespace UnitTest1
 			Assert::AreEqual(output->start->next->next->next->next->next->next->next->data->data, 'H');
 			Assert::AreEqual(output->start->next->next->next->next->next->next->next->next->data->data, 'G');
 			Assert::IsTrue(false);
+		}
+
+		TEST_METHOD(Tree_TransversalOrder_IT)
+		{
+
+
+			Tree<char> test;
+
+			tree_node<char> * s1;
+			tree_node<char> * s2;
+
+			test.Add('F', NULL);
+
+			s1 = test.Add('B', test.root);
+			s2 = test.Add('G', test.root);
+
+			test.Add('H', s2);
+			test.Add('I', s2->sons[0]);
+
+			test.Add('A', s1);
+			test.Add('D', s1);
+			test.Add('C', s1->sons[1]);
+			test.Add('E', s1->sons[1]);
+
+			List <tree_node<char>*> output;
+			test.Transversal_Order_IT(output);
+
+			Assert::AreEqual(output.start->data->data, 'F');
+			Assert::AreEqual(output.start->next->data->data, 'B');
+			Assert::AreEqual(output.start->next->next->data->data, 'G');
+			Assert::AreEqual(output.start->next->next->next->data->data, 'A');
+			Assert::AreEqual(output.start->next->next->next->next->data->data, 'D');
+			Assert::AreEqual(output.start->next->next->next->next->next->data->data, 'H');
+			Assert::AreEqual(output.start->next->next->next->next->next->next->data->data, 'C');
+			Assert::AreEqual(output.start->next->next->next->next->next->next->next->data->data, 'E');
+			Assert::AreEqual(output.start->next->next->next->next->next->next->next->next->data->data, 'I');
 		}
 	};
 }
