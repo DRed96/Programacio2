@@ -3,6 +3,7 @@
 
 #define MEM_CHUNK_QUEUE 16
 #define OPTIM_LIMIT 5
+#include <assert.h>
 
 template<class T>
 class Queue_Array{
@@ -124,7 +125,7 @@ public:
 
 	T& operator [](unsigned int index)
 	{
-		assert(index >= nElements);
+		assert(index < nElements);
 		return data[index];
 	}
 

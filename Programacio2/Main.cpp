@@ -37,15 +37,17 @@ int main()
 	Queue_Array <int> t1;
 	
 
-
 	
 
-for (unsigned int i = 0; i < 999; i++)
+//	t1.PushBack(0);
+	
+
+for (unsigned int i = 0; i < 99; i++)
 	{
 		t1.PushBack(i);
 		printf("Elements == %d \n", t1.get_Elements());
 		printf("Mem == %d \n", t1.get_Memory());
-		printf("Data  == %d \n", t1.data[i]);
+		printf("Data  == %d \n", t1[i]);
 		
 	}
 

@@ -265,9 +265,9 @@ public:
 	/**
 	* returns the first apperance of data as index (-1 if not found)
 	*/
-	int find(const TYPE& data)
+	int find(const TYPE& data) const
 	{
-		node<TYPE>* tmp = fstart;
+		node<TYPE>* tmp = start;
 		int index = 0;
 
 		while (tmp != NULL)
@@ -281,6 +281,22 @@ public:
 		return (-1);
 	}
 
+
+	unsigned int find_node_pos(const node<TYPE> & node) const
+	{
+		node<TYPE>* tmp = start;
+		unsigned int index = 0;
+
+		while (tmp != NULL)
+		{
+			if (tmp->data == node)
+				return(index);
+
+			++index;
+			tmp = tmp->next;
+		}
+		return (-1);
+	}
 
 	node <TYPE>*getStart() const
 	{

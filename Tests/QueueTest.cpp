@@ -11,10 +11,10 @@ namespace UnitTest1
 	{
 	public:
 		
-		TEST_METHOD(Queue_PushBack)
+		TEST_METHOD(Queue_Array_PushBack)
 		{
 			Queue_Array<int> test;
-			a
+			
 			test.PushBack(2);
 			Assert::AreEqual((int)test[0], 2);
 			Assert::IsTrue(test.get_Memory() == 16);
@@ -41,24 +41,22 @@ namespace UnitTest1
 	
 		}
 
-		TEST_METHOD(Queue_Array_PushBack)
+		TEST_METHOD(Queue_Array_PushBack2)
 		{
 			Queue_Array <int> t1;
 			t1.PushBack(1);
 			Assert::AreEqual((int)t1.get_Elements(), 1);
 			Assert::AreEqual((int)t1.get_Memory(), 16);
 			Assert::AreEqual((int)t1.get_Start_Pos(), 0);
-			Assert::AreEqual(t1.data[0], 1);
+			Assert::AreEqual(t1[0], 1);
 
 			for (int i = 1; i < 99; i++)
 			{
 				t1.PushBack(i);
-				Assert::AreEqual(t1.data[i], i);
+				Assert::AreEqual(t1[i], i);
 				Assert::AreEqual((int)t1.get_Elements(), i + 1);
 			}
 		}
-
-	
 
 		TEST_METHOD(Queue_Array_Complete)
 		{
@@ -83,14 +81,18 @@ namespace UnitTest1
 			Assert::AreEqual((int)t1.get_Memory (), 16);
 		}
 
-		/*TEST_METHOD(Queue_List_PushBack)
+		TEST_METHOD(Queue_List_PushBack)
 		{
+		
 		Queue_List <int >test;
 		for (int i = 0; i < 1000; i++)
-		test.PushBack(rand() % 1000);
-
-		Assert::AreEqual((int)test.Count(), 1000);
-		//Assert::IsTrue((int)test[200] != NULL); }*/
+		{
+			test.PushBack(rand() % 1000);
+			
+		}
+		Assert::AreEqual((int)test.getSize(), 1000);
+		Assert::IsTrue((int)test[200] != NULL); 
+		}
 		
 
 	};

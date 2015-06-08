@@ -4,9 +4,11 @@
 template <class T>
 class Queue_List
 {
-	node<T> * fake_start;
+	
 	List <T> data;
+	node<T> * fake_start;
 public:
+	
 	
 
 	//Constructor
@@ -15,16 +17,19 @@ public:
 		fake_start = data.start;
 	}
 
-	~Queue_List(){ }
+	~Queue_List()
+	{
+		fake_start = NULL;
+	}
 
 	//Getters
 	unsigned int getSize() const{return data.count();}
-
 	//Methods
 	unsigned int PushBack(const T & element)
 	{
 		return data.Add(element);
 	}
+
 
 	bool PopFirst(T& ref)
 	{
