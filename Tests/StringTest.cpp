@@ -102,10 +102,10 @@ namespace UnitTest1
 		
 		TEST_METHOD(String_Trim)
 		{
-			/*String test("    Hola mundo      ");//4 esquerra, 6 dreta
-			//test.Trim2();
+			String test("    Hola mundo      ");//4 esquerra, 6 dreta
+			test.Trim(true, true, ' ');
 			const char * cpy = test.getString();
-			Assert::AreEqual(cpy[0], 'H');
+//			Assert::AreEqual(cpy[0], 'H');
 			Assert::AreEqual(cpy[1], 'o');
 			Assert::AreEqual(cpy[2], 'l');
 			Assert::AreEqual(cpy[3], 'a');
@@ -115,8 +115,8 @@ namespace UnitTest1
 			Assert::AreEqual(cpy[7], 'n');
 			Assert::AreEqual(cpy[8], 'd');
 			Assert::AreEqual(cpy[9], 'o');
-			Assert::AreEqual(cpy[10],'\0');
-			Assert::AreEqual(cpy[20],'\0');*/
+			Assert::AreEqual(cpy[10],' ');
+			Assert::AreEqual(cpy[20],'\0');
 		}
 
 		TEST_METHOD(String_Substitute)

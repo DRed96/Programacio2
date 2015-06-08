@@ -155,7 +155,6 @@ namespace UnitTest1
 			Assert::AreEqual(t1[4], 5);
 		
 		}
-		//DelAll
-		//Add argus
+		
 	};
 }

@@ -1,13 +1,12 @@
 #ifndef _STRING_H_
 #define _STRING_H_
 
-#include <string.h>
-#include <windows.h>
+
 #include <stdio.h>
 #include <stdarg.h>
-#include "Queue.h"
+#include <assert.h>
 #include <string.h>
-
+#include "Queue.h"
 class String{
 
 	char * chain;
@@ -15,7 +14,6 @@ class String{
 	unsigned int size; //memoria
 public:
 
-	//POSAR GETTERS I FER PRIVAT?
 	String();
 
 	String(unsigned inta);
@@ -29,7 +27,7 @@ public:
 
 	//Utils
 	void Clear();
-	unsigned int getLen();
+	unsigned int getLen() const ;
 	unsigned int getSize() const;
 	const char* getString() const;
 	//Methods

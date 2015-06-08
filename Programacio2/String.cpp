@@ -36,7 +36,7 @@ String::String(const char * cpy, ...)
 		{
 			Alloc(nSize + 1);
 			strcpy_s(chain, size, tmp);
-			len = strlen(chain)- 1;
+			len = strlen(chain);
 		}
 	}
 	if (size == 0)
@@ -49,7 +49,7 @@ String::String(const char * cpy, ...)
 
 String::String(const String & ref)
 {
-	len = strlen(ref.chain) - 1;
+	len = strlen(ref.chain);
 	size = ref.size;
 	chain = new char[size];
 	strcpy_s(chain, size, ref.chain);
@@ -64,9 +64,8 @@ void String::Clear()
 	chain[0] = '\0';
 	len = 0;
 }
-unsigned int String::getLen()
+unsigned int String::getLen() const 
 {
-	len = strlen(chain);
 	return len;
 
 }
@@ -273,26 +272,27 @@ void String::Trim(bool toRight, bool toLeft, char toDestroy)
 {
 	unsigned int countR, countL = 0;
 	
-		for (int countL = len; countL > 0 && chain[countL] != toDestroy; countL++)
+		if (toLeft)
 		{
-			countL;
+			for (int countL = len; countL > 0 && chain[countL] != toDestroy; countL++){}
+			for (unsigned int i2 = len - countL; i2 < countL; i2++)
+			{
+				chain[i2] = toDestroy;
+				len = i2;
+			}
 		}
-	
 		if (toRight)
 		{
 			for (countR = 0; countR < len && chain[countR] != toDestroy; countR++){}
-		}
+		
 
-		for (unsigned int i = 0; countR < len; i++, countR++)
-		{
-			chain[i] = chain[countR];
+			for (unsigned int i = 0; countR < len; i++, countR++)
+			{
+				chain[i] = chain[countR];
+			}
+
 		}
 		
-		for (unsigned int i2 = len - countL; i2 < countL; i2++)
-		{
-			chain[i2] = toDestroy;
-			len = i2;
-		}
 }
 //Operators
 

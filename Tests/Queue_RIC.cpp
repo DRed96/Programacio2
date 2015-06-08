@@ -25,7 +25,7 @@ namespace Tests
 			int result;
 			bool r = fifo.PopFirst(result);
 			
-			Assert::AreEqual((int)result, 33);
+			Assert::AreEqual(result, 33);
 			Assert::AreEqual((int)fifo.getSize(), 2);
 			
 		}
