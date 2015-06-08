@@ -308,7 +308,7 @@ namespace UnitTest1
 
 		TEST_METHOD(Tree_InOrderIT)
 		{
-			Tree<char> test;
+		/*	Tree<char> test;
 
 			tree_node<char> * s1;
 			tree_node<char> * s2;
@@ -328,20 +328,30 @@ namespace UnitTest1
 			test.Add('E', s1->sons[1]);
 
 
-			List <tree_node<char>*>* output;
-			output = new List<tree_node<char>*>;
+			List <char> output;
+			
 
 			test.InOrderIT(output);
 
-			Assert::AreEqual(output->start->data->data, 'A');
-			Assert::AreEqual(output->start->next->data->data, 'B');
-			Assert::AreEqual(output->start->next->next->data->data, 'C');
-			Assert::AreEqual(output->start->next->next->next->data->data, 'D');
-			Assert::AreEqual(output->start->next->next->next->next->data->data, 'E');
-			Assert::AreEqual(output->start->next->next->next->next->next->data->data, 'F');
-			Assert::AreEqual(output->start->next->next->next->next->next->next->data->data, 'I');
-			Assert::AreEqual(output->start->next->next->next->next->next->next->next->data->data, 'H');
-			Assert::AreEqual(output->start->next->next->next->next->next->next->next->next->data->data, 'G');
+			
+			Assert::AreEqual(output[1] ,'A');
+			Assert::AreEqual(output[2], 'B');
+			Assert::AreEqual(output[3], 'C');
+			Assert::AreEqual(output[4], 'D');
+			Assert::AreEqual(output[5], 'E');
+			Assert::AreEqual(output[6], 'F');
+			Assert::AreEqual(output[7], 'G');
+			Assert::AreEqual(output[8], 'H');
+			Assert::AreEqual(output[9], 'I');
+
+			/*Assert::AreEqual(output.start->next->data->data, 'B');
+			Assert::AreEqual(output.start->next->next->data->data, 'C');
+			Assert::AreEqual(output.start->next->next->next->data->data, 'D');
+			Assert::AreEqual(output.start->next->next->next->next->data->data, 'E');
+			Assert::AreEqual(output.start->next->next->next->next->next->data->data, 'F');
+			Assert::AreEqual(output.start->next->next->next->next->next->next->data->data, 'I');
+			Assert::AreEqual(output.start->next->next->next->next->next->next->next->data->data, 'H');
+			Assert::AreEqual(output.start->next->next->next->next->next->next->next->next->data->data, 'G');*/
 			Assert::IsTrue(false);
 		}
 

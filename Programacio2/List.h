@@ -83,6 +83,51 @@ public:
 		return ++size;
 	}
 
+	Add(const TYPE& input, unsigned int pos)
+	{
+		
+		if (pos > size + 1)
+		{
+
+		}
+		else
+		{
+			node<TYPE> newNode(input);
+			if (start == NULL)
+			{
+				start = end = newNode;
+			}
+
+			if (pos == 0)
+			{
+				start->prev = newNode;
+				newNode->next = start;
+				start = newNode;
+
+			}
+			else
+			{
+				node<TYPE>*tmp = start;
+				unsigned int counter = 0;
+				while (counter < pos)
+				{
+					tmp = tmp->next;
+					counter++;
+				}
+				node<TYPE>*tmp2 = tmp->next;
+
+				tmp->next->prev = newNode;
+				newNode->next = tmp->next;
+				tmp
+				
+			}
+				
+
+			
+		}
+	}
+
+
 	bool del(node <TYPE> * ndelete)
 	{
 		if (ndelete == NULL)
@@ -307,7 +352,7 @@ public:
 		return end;
 	}
 
-	bool Insert(unsigned int position, const List<TYPE>& ref)
+	bool Insert_List(unsigned int position, const List<TYPE>& ref)
 	{
 		if (position > size)
 			return false;

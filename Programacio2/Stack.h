@@ -84,12 +84,12 @@ public:
 		//If it does nothing, it returns 0
 	}
 
-	void Top(T& ref) const
+	const T& Top() const
 	{
-		ref = NULL;
+		
 		if (nElements > 0)
 		{
-			ref = data[nElements - 1];
+			return data[nElements - 1];
 		}
 	}
 

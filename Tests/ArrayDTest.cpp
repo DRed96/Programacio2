@@ -125,19 +125,17 @@ namespace UnitTest1
 			test2.PushBack(-3);
 			
 
-			test.Insert(test2, 4);
-			/*
+			test.Insert_Array(test2, 4);
+			
 			Assert::AreEqual(test[0], 0);
 			Assert::AreEqual(test[1], 1);
 			Assert::AreEqual(test[2], 2);
 			Assert::AreEqual(test[3], 3);
-//			Assert::AreEqual(test[4], -1);
-			Assert::AreEqual(test[5], 5);
-			Assert::AreEqual(test[6], 6);
+			Assert::AreEqual(test[4], -1);
+			Assert::AreEqual(test[5], -2);
+			Assert::AreEqual(test[6], -3);
 			Assert::AreEqual(test[7], 4);
 			Assert::AreEqual(test[8], 5);
-			Assert::AreEqual(test[9], 6);*/
-
 
 		}
 	};

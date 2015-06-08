@@ -238,68 +238,56 @@ public:
 	}
 
 	//I have not been able to complete this method
-	void InOrderIT(List <tree_node<TYPE>*> * list) const
+	void InOrderIT(List <TYPE> & list) const
 	{
-		tree_node<TYPE>* it_node = root;
-		node<tree_node<TYPE>*>* tmp;
+		/*tree_node<TYPE>* it_node = root;
+		node<TYPE>* tmp = it_node->sons->end;//node to insert on the list
 		Stack <tree_node<TYPE>*> sonStack;
-		tree_node<TYPE>* debugStack;
+		Stack <tree_node<TYPE>*> fatherStack;
 
-		float counter;
 
-		while (it_node){
-			counter = 0.0;
-			tmp = it_node->sons.end;
-			sonStack.Top(debugStack);
-			if (tmp == NULL)
+		{
+
+			while (tmp != NULL)
 			{
-
-				list->Add(it_node);
-				sonStack.Top(debugStack);  //Borrar
-				if (it_node->father == debugStack || root == debugStack)
-				{
-					sonStack.Pop(it_node);
-					list->Add(it_node);
-				}
-
+				sonStack.PushBack(tmp->data);
+				tmp = tmp->prev;
 			}
-			else{
-				if (it_node->sons.count() != 1)
-				{
-					while (tmp != NULL && counter < (float)it_node->sons.count() / 2)
-					{
-						sonStack.PushBack(tmp->data);
-						sonStack.Top(debugStack);
-						tmp = tmp->prev;
-						++counter;
-					}
-
-					sonStack.PushBack(it_node);
-
-					sonStack.Top(debugStack);
-
-					while (tmp != NULL)
-					{
-						sonStack.PushBack(tmp->data);
-
-						sonStack.Top(debugStack);
-
-						tmp = tmp->prev;
-					}
-					if (debugStack == it_node)
-					{
-						sonStack.Pop();
-					}
-				}
-				else
-				{
-					sonStack.PushBack(it_node);
-					sonStack.PushBack(tmp->data);
-				}
-			}
-			sonStack.Pop(it_node);
 		}
-	}
+
+
+		*/
+
+
+		/*Stack <tree_node<TYPE>*> Stack1;
+		Stack<tree_node<TYPE>*> Stack2;
+		tree_node<TYPE>* node = root;
+		TYPE * ref;
+		
+		while (node != NULL)
+			{
+				int m = node->sons.count();
+				for (int n = m / 2; m > n; m--)
+				{
+					Stack1.PushBack(node->sons.Get(m - 1)->value);
+				}
+				Stack1.PushBack(node);
+				Stack2.PushBack(node);
+				for (; m > 0; m--)
+				{
+					Stack.PushBack(node->sons[m - 1]);
+				}
+				while (Stack1.Top() == Stack2.Top() && Stack1.Top() != NULL)
+				
+					Stack1.Pop(ref);
+					node = ref;
+					Stack2.Pop(ref)
+					list.Add(ref->data);
+				}
+				Stack1.Pop(ref);
+				node = ref;*/
+		}
+	
 	
 	void Transversal_Order_IT(List<tree_node<TYPE>*>& ref) const
 	{

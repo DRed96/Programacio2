@@ -108,7 +108,7 @@ public:
 	}
 
 
-	bool Insert(const DynArray& toInsert, unsigned int position)
+	bool Insert_Array(const DynArray& toInsert, unsigned int position)
 	{
 		unsigned int needed_mem = toInsert.nElements + nElements;
 		if (position > memAlloc)
