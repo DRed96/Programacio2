@@ -17,7 +17,21 @@ namespace UnitTest1
 			Assert::AreEqual((int)mylist.Add(5), 1);
 		}
 
-
+		TEST_METHOD(List_Add_Args)
+		{
+			List<int> t1;
+			for (int i = 0; i <= 10; i++)
+				t1.Add(i);
+			t1.Add(-1, 5);
+			for (int i = 0; i < 6; i++)
+				Assert::AreEqual(t1[i], i);
+			Assert::AreEqual(t1[6], -1);
+		
+				Assert::AreEqual(t1[7], 6);
+				Assert::AreEqual(t1[8], 7);
+				Assert::AreEqual(t1[9], 8);
+				Assert::AreEqual(t1[10], 9);
+		}
 		TEST_METHOD(List_Corchetes)
 		{
 			List<int> test;
@@ -121,5 +135,27 @@ namespace UnitTest1
 			Assert::AreEqual(t1[102], -2);
 			Assert::AreEqual(t1[103], -3);
 		}
+
+		TEST_METHOD(List_Delete)
+		{
+			List <int> t1;
+		
+
+			for (int i = 0; i <= 6; i++)
+				t1.Add(i);
+
+			t1.del(t1.start->next->next);//2
+			//::AreEqual(1, 2);
+
+		
+			Assert::AreEqual(t1[0], 0);
+			Assert::AreEqual(t1[1], 1);
+			Assert::AreEqual(t1[2], 3);
+			Assert::AreEqual(t1[3], 4);
+			Assert::AreEqual(t1[4], 5);
+		
+		}
+		//DelAll
+		//Add argus
 	};
 }

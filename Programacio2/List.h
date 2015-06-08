@@ -88,7 +88,8 @@ public:
 		
 		if (pos <= size + 1)		
 		{
-			node<TYPE> newNode(input);
+			node<TYPE>* newNode;
+				newNode = new node<TYPE>(input);
 			if (start == NULL)
 			{
 				start = end = newNode;
@@ -254,22 +255,11 @@ public:
 	//Concatenate two lists
 	void operator += (const List<TYPE> & ref)
 	{
-		//assert(ref.start && ref.end);
+		assert(ref.start);
 		for (unsigned int i = 0; i < ref.size; i++)
 		{
 		Add(ref[i]);
 		}
-		/*
-		List <TYPE> Copied_List(ref);
-	
-		end->next = Copied_List.start;
-		Copied_List.start->prev = end;
-
-		end = Copied_List.end;
-		size += Copied_List.size;
-
-		//Copied_List.start = NULL;
-		Copied_List.end = NULL;*/
 	}
 
 	//Ordenar la llista fent bubble sort

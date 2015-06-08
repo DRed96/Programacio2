@@ -66,7 +66,6 @@
   <ItemGroup>
     <ClCompile Include="log.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Point2D.cpp" />
     <ClCompile Include="PointTemp.cpp" />
     <ClCompile Include="String.cpp" />
   </ItemGroup>
@@ -78,7 +77,6 @@
     <ClInclude Include="Queue_Array.h" />
     <ClInclude Include="Queue_List2.h" />
     <ClInclude Include="Utils.h" />
-    <ClInclude Include="Point2D.h" />
     <ClInclude Include="PointTemp.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="Queue.h" />
