@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "Queue_Array.h"
+#include "String.h"
 #include "Utils.h"
 /*
 
@@ -34,20 +34,17 @@ int fibonaci_iterative(unsigned int position)
 
 int main()
 {
-	Queue_Array <int> t1;
-	
-
-	
-
-//	t1.PushBack(0);
-	
-
-for (unsigned int i = 0; i < 99; i++)
+	String t1("    Hola mundo      ");//4 esquerra, 6 dreta
+	t1.Trim(true, true, ' ');
+	printf("Mem == %d \n", t1.getSize());
+	for (unsigned int i = 0; i < t1.getSize(); i++)
 	{
-		t1.PushBack(i);
-		printf("Elements == %d \n", t1.get_Elements());
-		printf("Mem == %d \n", t1.get_Memory());
-		printf("Data  == %d \n", t1[i]);
+		
+
+		printf("Len == %d \n", t1.getLen());
+		printf("Pos == %d \n",i);
+		printf("Data  == %c \n", t1.chain[i]);
+		printf("---------------------------\n");
 		
 	}
 

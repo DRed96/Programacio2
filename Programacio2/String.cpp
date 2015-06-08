@@ -255,7 +255,7 @@ void String::Trim2()
 	{}
 
 	//Count spaces starting from the end
-	for (countL = len; chain[countL] == ' '; --countL)
+	for (countL = len- 1; chain[countL] == ' '; --countL)
 	{}
 	//Puts letters to the start
 	for (i = 0; countR < len && i <= countL; i++, countR++)
@@ -270,28 +270,37 @@ void String::Trim2()
 
 void String::Trim(bool toRight, bool toLeft, char toDestroy)
 {
-	unsigned int countR, countL = 0;
+	unsigned int countR, countL, tmp;
 	
 		if (toLeft)
 		{
-			for (int countL = len; countL > 0 && chain[countL] != toDestroy; countL++){}
-			for (unsigned int i2 = len - countL; i2 < countL; i2++)
+			for (countL = len - 1; countL > 0 && chain[countL] == toDestroy;)
 			{
-				chain[i2] = toDestroy;
-				len = i2;
+				countL--;
+				
+				
 			}
+			len = countL + 1;
+			
+			
+			
 		}
 		if (toRight)
 		{
-			for (countR = 0; countR < len && chain[countR] != toDestroy; countR++){}
+			for (countR = 0; countR < len && chain[countR] == toDestroy; countR++)
+			{
+			
+			}
 		
-
+			tmp = countR;
 			for (unsigned int i = 0; countR < len; i++, countR++)
 			{
 				chain[i] = chain[countR];
 			}
-
+			len -= tmp;
 		}
+		chain[len] = '\0';
+	
 		
 }
 //Operators

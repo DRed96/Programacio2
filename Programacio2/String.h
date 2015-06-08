@@ -9,11 +9,11 @@
 #include "Queue.h"
 class String{
 
-	char * chain;
+	
 	unsigned int len;
 	unsigned int size; //memoria
 public:
-
+	char * chain;
 	String();
 
 	String(unsigned inta);
