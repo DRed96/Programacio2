@@ -17,12 +17,17 @@ public:
 
 	T * data;
 
+	//Constructor
 	Queue_Array() : start_pos(0), nElements(0), mem_alloc(MEM_CHUNK_QUEUE)
 	{
 		data = new T[MEM_CHUNK_QUEUE];
 	}
 
-	//Destructor?
+	//Destructor
+	~Queue_Array()
+	{
+		delete[] data;
+	}
 
 	//Getters
 	unsigned int get_Start_Pos() const{ return start_pos; }
@@ -117,7 +122,11 @@ public:
 	Operator []?
 	*/
 
-
+	T& operator [](unsigned int index)
+	{
+		assert(index >= nElements);
+		return data[index];
+	}
 
 };
 

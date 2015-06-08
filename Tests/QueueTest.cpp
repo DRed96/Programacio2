@@ -13,36 +13,32 @@ namespace UnitTest1
 		
 		TEST_METHOD(Queue_PushBack)
 		{
-			Queue<int> test;
+			Queue_Array<int> test;
+
 			test.PushBack(2);
-			Assert::AreEqual(test.getTop(), test.getStart());
-			Assert::AreEqual(test.getTop(), 2);
-			Assert::IsTrue(test.getMem() == 16);
-			Assert::IsTrue(test.getElem() == 1);
+			Assert::AreEqual((int)test[0], 2);
+			Assert::IsTrue(test.get_Memory() == 16);
+			Assert::IsTrue(test.get_Elements() == 1);
 			test.PushBack(3);
 			test.PushBack(-50);
 
 			int value2 = test[1];
 
-			Assert::AreNotEqual(test.getTop(), test.getStart());
-			Assert::AreEqual(test.getTop(), -50);
-			Assert::AreEqual(test.getStart(), 2);
+			Assert::AreEqual(test[2], -50);
+			Assert::AreEqual(test[0], 2);
 			Assert::AreEqual(value2, 3);
 
-			Assert::IsTrue(test.getMem() == 16);
-			Assert::IsTrue(test.getElem() == 3);
+			Assert::AreEqual((int)test.get_Memory(), 16);
+			Assert::AreEqual((int)test.get_Elements(), 3);
 
-			for (int i = 0; i <= 999; i++){
+			for (int i = 3; i <= 999; i++){
 				test.PushBack(i);
+				Assert::AreEqual(test[i], i);
+			
 			}
 
-			value2 = test[555];
-			Assert::AreEqual(test.getTop(), 999);
-			Assert::AreEqual(test.getStart(), 2);
-			Assert::AreEqual(value2, 552);
-			int mem = test.getMem();
-			Assert::AreEqual(mem, 1008);
-			Assert::IsTrue(test.getElem() == 1003);
+			Assert::AreEqual((int)test.get_Memory(),1008);
+	
 		}
 
 		TEST_METHOD(Queue_Array_PushBack)

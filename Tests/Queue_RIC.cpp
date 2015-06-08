@@ -13,21 +13,21 @@ namespace Tests
 		{
 			Queue_List<int> fifo;
 
-
+			
 			fifo.PushBack(11);
 			fifo.PushBack(22);
 			fifo.PushBack(33);
 
-			Assert::AreEqual((int)fifo.Count(), 3);
+			Assert::AreEqual((int)fifo.getSize(), 3);
 			Assert::AreEqual((int)(fifo[1]), 22);
 
 
 			int result;
 			bool r = fifo.PopFirst(result);
-			/*
+			
 			Assert::AreEqual((int)result, 33);
-			Assert::AreEqual((int)fifo.Count(), 2);
-			*/
+			Assert::AreEqual((int)fifo.getSize(), 2);
+			
 		}
 
 	};

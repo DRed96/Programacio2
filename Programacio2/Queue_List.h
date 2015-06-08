@@ -4,40 +4,38 @@
 template <class T>
 class Queue_List
 {
-public:
+	node<T> * fake_start;
 	List <T> data;
+public:
+	
 
 	//Constructor
-	Queue_List()
-	{}
+	Queue_List() 
+	{
+		fake_start = data.start;
+	}
 
 	~Queue_List(){ }
 
+	//Getters
+	unsigned int getSize() const{return data.count();}
+
 	//Methods
-	void PushBack(const T& newValue)
+	unsigned int PushBack(const T & element)
 	{
-		data.Add(newValue);
+		return data.Add(element);
 	}
 
 	bool PopFirst(T& ref)
-	{			
-		ref = data.start->data;
-		if (data.del(data.start) == false)
-		{
-			ref = NULL;
-			return false;
-		}
-		
-		
-	}
-
-	void PopFirst(){
-		return (data.del(data.start));
-	}
-
-	unsigned int Count()
 	{
-		return data.count();
+		if (fake_start)
+		{
+			ref = fake_start->data;
+			fake_start = fake_start->next;
+			return true;
+		}
+		else
+			return false;
 	}
 
 	//Read/write operator

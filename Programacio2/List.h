@@ -62,7 +62,7 @@ public:
 	}
 
 	/**
-	* Add new item
+	* Add new item at the end
 	*/
 	unsigned int Add(const TYPE& input)
 	{
@@ -216,7 +216,7 @@ public:
 	void operator += (const List<TYPE> & ref)
 	{
 		//assert(ref.start && ref.end);
-		for (int i = 0; i < ref.size; i++)
+		for (unsigned int i = 0; i < ref.size; i++)
 		{
 		Add(ref[i]);
 		}
