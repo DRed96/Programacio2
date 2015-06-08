@@ -60,20 +60,42 @@ namespace UnitTest1
 				Assert::AreEqual(t1.data[i], i);
 				Assert::AreEqual((int)t1.get_Elements(), i + 1);
 			}
-				
-
-
 		}
 
-		TEST_METHOD(Queue_List_PushBack)
+	
+
+		TEST_METHOD(Queue_Array_Complete)
 		{
-			Queue_List <int >test;
-			for (int i = 0; i < 1000; i++)
-				test.PushBack(rand() % 1000);
+			Queue_Array <int> t1;
+			int check;
 
-			Assert::AreEqual((int)test.Count(), 1000);
-			//Assert::IsTrue((int)test[200] != NULL);
+			t1.PushBack(1);
+
+			for (int i = 1; i < 8; i++)
+			{
+				t1.PushBack(i);
+			}
+			for (int i = 8; i <= 1; i--)
+			{
+				t1.PopFirst(check);
+				Assert::AreEqual(check, 5);
+				Assert::AreEqual((int)t1.get_Start_Pos(), i);
+			}
+			//Trim
+			t1.PushBack(6);
+			Assert::AreEqual((int)t1.get_Start_Pos(), 0);
+			Assert::AreEqual((int)t1.get_Memory (), 16);
 		}
+
+		/*TEST_METHOD(Queue_List_PushBack)
+		{
+		Queue_List <int >test;
+		for (int i = 0; i < 1000; i++)
+		test.PushBack(rand() % 1000);
+
+		Assert::AreEqual((int)test.Count(), 1000);
+		//Assert::IsTrue((int)test[200] != NULL); }*/
+		
 
 	};
 }

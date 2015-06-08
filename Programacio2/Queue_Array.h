@@ -1,9 +1,9 @@
 #ifndef _QUEUE_ARRAY_H_
 #define _QUEUE_ARRAY_H_
 
-#include "DynArray.h"
-#define MEM_CHUNK 3
+#define MEM_CHUNK_QUEUE 16
 #define OPTIM_LIMIT 5
+
 template<class T>
 class Queue_Array{
 
@@ -17,11 +17,9 @@ public:
 
 	T * data;
 
-	Queue_Array() : start_pos(0), nElements(0), mem_alloc(MEM_CHUNK)
+	Queue_Array() : start_pos(0), nElements(0), mem_alloc(MEM_CHUNK_QUEUE)
 	{
-		//data = new T[];
-		delete[] data;
-		data = new T[3];
+		data = new T[MEM_CHUNK_QUEUE];
 	}
 
 	//Destructor?
@@ -34,78 +32,82 @@ public:
 	//Methods
 	void PushBack(const T & element)
 	{
-		
-		if (start_pos + nElements > mem_alloc)
+		if (start_pos + nElements >= mem_alloc)
 		{
-			/*T * tmpCpy = data;
-			if (nElements >= mem_alloc)
-			{
-				mem_alloc += MEM_CHUNK;
-				data = new T[mem_alloc];
-			}
 
-			else
-			{
 
-				data = new T[mem_alloc];
-
-			}
-
-			for (unsigned int i = 0; i < mem_alloc; i++)
-			{
-				data[i] = tmpCpy[start_pos + i];
-			}
-			start_pos = 0;
-			delete[] tmpCpy;
-		*/
 			if (start_pos >= OPTIM_LIMIT)
 			{
 				Trim_Queue();
 			}
 			else
 			{
-				data[4] = element;
-				/*T * tmp = data;
-				data = new T[mem_alloc + MEM_CHUNK];
-					//Copy the contents of both arrays
+				T* tmp = data;
+				mem_alloc += MEM_CHUNK_QUEUE;
+				data = new T[mem_alloc];
+
+				if (nElements > mem_alloc)
+					nElements = mem_alloc;
+
+
+				if (tmp != NULL)
+				{
 					for (unsigned int i = 0; i < nElements; i++)
 					{
-						data[i] = tmp[start_pos + i];
+						data[i] = tmp[i];
 					}
-				mem_alloc += MEM_CHUNK;
-				delete[] tmp;*/
+
+					delete[] tmp;
+				}
 			}
 		}
-		data[start_pos + nElements++] = element;
+		data[nElements++ + start_pos] = element;
 	}
 		
 	void Trim_Queue()
 	{
 		if (data)
+		{
 			for (unsigned int i = 0; i >= start_pos; i++)
 			{
 				data[i] = data[start_pos - i];
 			}
 			start_pos = 0;
+		}
 	}
 
 	bool PopFirst(T & ref)
 	{
-		if (nElments == 0)
+		if (nElements == 0)
 			return false;
 		else
 		{
 			ref = data[start_pos++];
 			nElements--;
-		}
 
-		if (start_pos >= mem_alloc && nElements == 0)
+			if (start_pos >= mem_alloc && nElements == 0)
+			{
+				start_pos = 0;
+			}
+			return true;
+		}	
+	}
+
+
+	bool PopFirst()
+	{
+		if (nElments == 0)
+			return false;
+		else
 		{
-			start_pos = 0;
-		}
+			nElements--;
 
-		return true;
-		
+			if (start_pos >= mem_alloc && nElements == 0)
+			{
+				start_pos = 0;
+			}
+			return true;
+		}
 	}
 	/*
 	Constructors i destructors
