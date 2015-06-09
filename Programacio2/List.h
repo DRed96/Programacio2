@@ -217,9 +217,7 @@ public:
 			else
 			{
 				end = cpy.end;
-			}
-
-			
+			}	
 		}
 		else
 		{
