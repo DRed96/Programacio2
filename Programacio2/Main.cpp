@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "DynArray.h"
+#include "String.h"
 #include "Utils.h"
 /*
 
@@ -34,22 +34,15 @@ int fibonaci_iterative(unsigned int position)
 
 int main()
 {
-	DynArray<int> array(5);
-	array.PushBack(1);
-	array.PushBack(2);
-	array.PushBack(4);
-	array.PushBack(5);
-	array.PushBack(8);
-	DynArray<int> array2;
-	array2.PushBack(991);
-	array2.PushBack(992);
-	array2.PushBack(993);
-	array += array2;
-
+	int debug;
+	String s1("Hola mundo");
+	s1.Cut(2, 5);
+	debug = strcmp("Houndo", s1.getString());
+	s1.Cut(3, 0);
+	debug = strcmp("Hou", s1.getString());
 	//printf("ref == %d", ref);
 	getchar();
 	return 0;
 }
-
 
 

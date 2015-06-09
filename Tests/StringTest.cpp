@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
 #include "../Programacio2/String.cpp"
+
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace UnitTest1
@@ -149,6 +150,8 @@ namespace UnitTest1
 			Assert::AreEqual((int)t1.getElem(), 4);
 			
 		}
+
+	
 	};
 	
 }

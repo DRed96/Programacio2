@@ -58,6 +58,8 @@ public:
 
 	void Reallocate(unsigned int newMem);
 
+	void String::Cut(unsigned int Li, unsigned int Ri);
+
 	void Substitute(const char * original, const char * result);
 	//Little methods
 	void Find(const char* , Queue<unsigned int>&);

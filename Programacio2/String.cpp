@@ -303,6 +303,34 @@ void String::Trim(bool toRight, bool toLeft, char toDestroy)
 	
 		
 }
+
+void String::Cut(unsigned int Li, unsigned int Ri)
+{
+	if (Ri != 0)
+		assert(Li <= Ri);
+
+	unsigned int i = 0;
+
+	for (; i + Ri < len; i++)
+	{
+		chain[Li + i] = chain[Ri + i + 1];
+	}
+
+	if (Ri != 0)
+		chain[i + 1] = '\0';
+	else
+		chain[i] = '\0';
+
+	if (Ri > len)
+	{
+		len -= Li + len;
+	}
+
+	else
+		len -= Li + Ri;
+	
+}
+
 //Operators
 
 //Change the memory of the string, keeping the data
