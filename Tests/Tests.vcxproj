@@ -88,6 +88,7 @@
   <ItemGroup>
     <ClCompile Include="ArrayDTest.cpp" />
     <ClCompile Include="BubbleTest.cpp" />
+    <ClCompile Include="EXAMEN_FINAL.cpp" />
     <ClCompile Include="ListTest.cpp" />
     <ClCompile Include="PointTempTest.cpp" />
     <ClCompile Include="QueueTest.cpp" />

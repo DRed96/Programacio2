@@ -314,27 +314,6 @@ public:
 	}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	int find(const TYPE& data) const
 	{
 		node<TYPE>* tmp = start;
@@ -382,7 +361,7 @@ public:
 		if (position > size)
 			return false;
 
-		static List<TYPE> Copied_List(ref);
+		List<TYPE> Copied_List(ref);
 		node<TYPE> * tmp = start;
 		
 		if (position <= 0)
@@ -425,6 +404,68 @@ public:
 
 		return true;
 	}
+
+	void InsertAfter(unsigned int index, const List & toInsert)
+	{
+		node<TYPE> *tmp = start;
+		unsigned int counter = 0;
+		// for (unsigned int i = 0; i < ref.size; i++, tmp2 = tmp2->next)
+
+		while (counter < index && tmp != NULL)
+		{
+			tmp = tmp->next
+		}
+
+		node<TYPE> *tmp2 = toInsert.start;
+		while (tmp2)
+		{
+			node<TYPE>* newNode;
+			newNode = new node<TYPE>(input);
+		}	
+	}
+
+	/*
+
+
+	start = end = NULL;
+	size = 0;
+	node <TYPE> *tmp2 = ref.start;
+	// for (unsigned int i = 0; i < ref.size; i++, tmp2 = tmp2->next)
+	while (tmp2)
+	{
+	Add(tmp2->data);
+	tmp2 = tmp2->next;
+	}
+	----------------------
+	if (pos <= size + 1)
+	{
+		node<TYPE>* newNode;
+		newNode = new node<TYPE>(input);
+		if (start == NULL)
+		{
+			start = end = newNode;
+		}
+
+		if (pos == 0)
+		{
+			start->prev = newNode;
+			newNode->next = start;
+			start = newNode;
+
+		}
+		else
+		{
+			node<TYPE>*tmp = start;
+			unsigned int counter = 0;
+			while (counter < pos)
+			{
+				tmp = tmp->next;
+				counter++;
+			}
+			tmp->next->prev = newNode;
+			newNode->next = tmp->next;
+			tmp->next = newNode;
+			newNode->prev = tmp;*/
 
 };
 #endif //_List_H_

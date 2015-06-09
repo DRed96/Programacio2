@@ -47,6 +47,32 @@ public:
 		return data[index];
 	}
 
+	/*unsigned int finalSize = size + ref.size;
+	
+	if (size < finalSize)
+	{
+		char * tmp = chain;
+		Alloc(finalSize);
+		strcpy_s(chain, size, tmp);
+		delete[] tmp;
+
+	}
+	
+	strcat_s(chain, size, ref.chain);*/
+
+	DynArray& operator +=(const DynArray<TYPE>& toCpy)
+	{
+		unsigned int finalSize = nElements + toCpy.nElements;
+
+		Alloc(finalSize);
+		for (unsigned int i = 0; i < toCpy.nElements; i++)
+		{
+			data[nElements + i] = toCpy[i];
+		}
+		nElements = finalSize;
+		return(*this);
+	}
+
 	// Data Management
 	void PushBack(const TYPE& element)
 	{

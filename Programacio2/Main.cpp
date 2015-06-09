@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "Queue_List.h"
+#include "DynArray.h"
 #include "Utils.h"
 /*
 
@@ -34,23 +34,19 @@ int fibonaci_iterative(unsigned int position)
 
 int main()
 {
-	Queue_List<int> fifo;
+	DynArray<int> array(5);
+	array.PushBack(1);
+	array.PushBack(2);
+	array.PushBack(4);
+	array.PushBack(5);
+	array.PushBack(8);
+	DynArray<int> array2;
+	array2.PushBack(991);
+	array2.PushBack(992);
+	array2.PushBack(993);
+	array += array2;
 
-
-	fifo.PushBack(11);
-	fifo.PushBack(22);
-	fifo.PushBack(33);
-
-	int ref;
-
-	fifo.PopFirst(ref);
-	printf("ref == %d", ref);
-	fifo.PopFirst(ref);
-	printf("ref == %d", ref);
-	fifo.PopFirst(ref);
-	printf("ref == %d", ref);
-	fifo.PopFirst(ref);
-	printf("ref == %d", ref);
+	//printf("ref == %d", ref);
 	getchar();
 	return 0;
 }
