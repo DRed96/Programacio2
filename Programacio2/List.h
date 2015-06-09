@@ -294,6 +294,47 @@ public:
 	/**
 	* returns the first apperance of data as index (-1 if not found)
 	*/
+
+
+	int find2(const TYPE& ref)
+	{
+		node<TYPE>* tmp = start;
+		int counter = 0;
+		while (tmp->data != data && tmp != NULL)
+		{
+			tmp = tmp->next;
+			counter++;
+		}
+		if (tmp->data == ref)
+		{
+			return counter;
+		}
+		else
+			return (-1);
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	int find(const TYPE& data) const
 	{
 		node<TYPE>* tmp = start;

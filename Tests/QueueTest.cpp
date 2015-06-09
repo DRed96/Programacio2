@@ -3,6 +3,7 @@
 #include "../Programacio2/Queue.h"
 #include "../Programacio2/Queue_Array.h"
 #include "../Programacio2/Queue_List.h"
+#include "../Programacio2/Queue_List2.h"
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace UnitTest1
@@ -84,7 +85,7 @@ namespace UnitTest1
 		TEST_METHOD(Queue_List_PushBack)
 		{
 		
-		Queue_List <int >test;
+		Queue_List<int> test;
 		for (int i = 0; i < 1000; i++)
 		{
 			test.PushBack(rand() % 1000);
@@ -95,5 +96,22 @@ namespace UnitTest1
 		}
 		
 
+		TEST_METHOD(Queue_List2_Pop)
+		{
+			p2Qeue <int> fifo;
+
+
+			fifo.Push(11);
+			fifo.Push(22);
+			fifo.Push(33);
+
+			Assert::AreEqual((int)fifo[1], 22);
+
+
+			int result;
+			fifo.Pop(result);
+
+			Assert::AreEqual(result, 33);
+		}
 	};
 }

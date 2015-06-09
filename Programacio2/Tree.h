@@ -240,23 +240,27 @@ public:
 	//I have not been able to complete this method
 	void InOrderIT(List <TYPE> & list) const
 	{
-		/*tree_node<TYPE>* it_node = root;
+		tree_node<TYPE>* it_node = root;
 		node<TYPE>* tmp = it_node->sons->end;//node to insert on the list
 		Stack <tree_node<TYPE>*> sonStack;
 		Stack <tree_node<TYPE>*> fatherStack;
-
+		fatherStack.PushBack(it_node);
 
 		{
-
-			while (tmp != NULL)
-			{
-				sonStack.PushBack(tmp->data);
-				tmp = tmp->prev;
-			}
+			/**
+			-Tmp = it_node->fills
+			- Posar fins a count /2
+			- Posar father
+			- Posar la resta
+			-(TOt en ordre invers pq es stack)
+			-Fas pop
+				-Si no té fills, l'afegeixes
+				-Fas top I si és igual al pare de it_node fas pop i afegeixes al pare
+				**/
 		}
 
 
-		*/
+		
 
 
 		/*Stack <tree_node<TYPE>*> Stack1;
