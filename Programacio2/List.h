@@ -186,29 +186,43 @@ public:
 	void InsertAfter(unsigned int index, const List & toInsert)
 	{
 		node<TYPE> *tmp = start;
+
 		unsigned int counter = 0;
 		// for (unsigned int i = 0; i < ref.size; i++, tmp2 = tmp2->next)
-		List<TYPE> cpy;
+		List<TYPE> cpy (toInsert);
+
+		
 		while (counter < index && tmp != NULL)
 		{
 			tmp = tmp->next;
 		}
+		
 
-		node<TYPE> * tmp2 = tmp->next;
+		if (tmp != NULL)
+		{
+			node<TYPE> * tmp2 = tmp->next;
 
-		if (tmp)
-		{
-			tmp->next = cpy.start;
-			cpy.start->prev = tmp;
-		}
-		//Comprova si despres del tmp hi ha un final
-		if (tmp2)
-		{
-			cpy.end->next = tmp2;
-			tmp2->prev = cpy.end;
+			if (tmp)
+			{
+				tmp->next = cpy.start;
+				cpy.start->prev = tmp;
+			}
+			//Comprova si despres del tmp hi ha un final
+			if (tmp2)
+			{
+				cpy.end->next = tmp2;
+				tmp2->prev = cpy.end;
+			}
+			else
+			{
+				end = cpy.end;
+			}
+
+			
 		}
 		else
 		{
+			start = cpy.start;
 			end = cpy.end;
 		}
 
