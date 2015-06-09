@@ -18,15 +18,15 @@ namespace Tests
 			List<int> mylist;
 			List<int> mylist2;
 
-			mylist2.Add(1);
-			mylist2.Add(2);
-			mylist2.Add(3);
+			mylist2.add(1);
+			mylist2.add(2);
+			mylist2.add(3);
 
 			List<int> mylist3;
 
-			mylist3.Add(4);
-			mylist3.Add(5);
-			mylist3.Add(6);
+			mylist3.add(4);
+			mylist3.add(5);
+			mylist3.add(6);
 
 			mylist.InsertAfter(0, mylist2);
 
@@ -53,7 +53,7 @@ namespace Tests
 			Assert::AreEqual(mylist[7], 6);
 			Assert::AreEqual(mylist[8], 3);
 			Assert::IsTrue((node<int>*) &mylist[0] == mylist.start);
-			Assert::IsTrue((node<int>*) &mylist[8] == mylist.end);
+			Assert::IsTrue((p2List_item<int>*) &mylist[8] == mylist.end);
 		}
 
 		TEST_METHOD(EXAM_SString_cut)

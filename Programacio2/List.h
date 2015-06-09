@@ -182,6 +182,41 @@ public:
 
 	}
 
+	//EXAM
+	void InsertAfter(unsigned int index, const List & toInsert)
+	{
+		node<TYPE> *tmp = start;
+		unsigned int counter = 0;
+		// for (unsigned int i = 0; i < ref.size; i++, tmp2 = tmp2->next)
+		List<TYPE> cpy;
+		while (counter < index && tmp != NULL)
+		{
+			tmp = tmp->next;
+		}
+
+		node<TYPE> * tmp2 = tmp->next;
+
+		if (tmp)
+		{
+			tmp->next = cpy.start;
+			cpy.start->prev = tmp;
+		}
+		//Comprova si despres del tmp hi ha un final
+		if (tmp2)
+		{
+			cpy.end->next = tmp2;
+			tmp2->prev = cpy.end;
+		}
+		else
+		{
+			end = cpy.end;
+		}
+
+		//Si poses els punters a null no pot el destructorn no destrueix
+		//la llista creada dins la funcio i es queda alocatada
+		cpy.start = cpy.end = NULL;
+		size += cpy.size;
+	}
 
 	void swapNodes(node<TYPE> * n1, node<TYPE>* n2)
 	{
@@ -405,24 +440,7 @@ public:
 		return true;
 	}
 
-	void InsertAfter(unsigned int index, const List & toInsert)
-	{
-		node<TYPE> *tmp = start;
-		unsigned int counter = 0;
-		// for (unsigned int i = 0; i < ref.size; i++, tmp2 = tmp2->next)
-
-		while (counter < index && tmp != NULL)
-		{
-			tmp = tmp->next
-		}
-
-		node<TYPE> *tmp2 = toInsert.start;
-		while (tmp2)
-		{
-			node<TYPE>* newNode;
-			newNode = new node<TYPE>(input);
-		}	
-	}
+	
 
 	/*
 

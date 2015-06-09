@@ -1,3 +1,4 @@
+#pragma once
 #include <assert.h>
 #define MEM_CHUNK 16
 

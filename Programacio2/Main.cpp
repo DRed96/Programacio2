@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "String.h"
+#include "Tree.h"
 #include "Utils.h"
 /*
 
@@ -34,12 +34,30 @@ int fibonaci_iterative(unsigned int position)
 
 int main()
 {
-	int debug;
-	String s1("Hola mundo");
-	s1.Cut(2, 5);
-	debug = strcmp("Houndo", s1.getString());
-	s1.Cut(3, 0);
-	debug = strcmp("Hou", s1.getString());
+
+	Tree<int> tree;
+	//He vist que el meu Add funciona amb un punter com a argument
+	//En la meva classe, el node root no esta suposat que tingui cap valor
+	tree_node<int> * iterative;
+	tree_node<int> * s1;
+	tree_node<int> * s2;
+	iterative = tree.Add(1, NULL);
+
+
+	s1 = tree.Add(2, iterative);
+	tree.Add(3, iterative);
+	s2 = tree.Add(4, iterative);
+
+	tree.Add(5, s1);
+	tree.Add(6, s1);
+	tree.Add(7, s1);
+
+	tree.Add(8, s2);
+	iterative = tree.Add(9, s2);
+
+	tree.Add(10, iterative);
+
+	tree.CalcAdditionIterative();
 	//printf("ref == %d", ref);
 	getchar();
 	return 0;

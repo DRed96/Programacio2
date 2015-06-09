@@ -71,7 +71,7 @@ struct tree_node
 
 	void InOrderREC(List <tree_node<TYPE>*>* list)
 	{
-		const node<tree_node<TYPE>*>* tmp;
+		node<tree_node<TYPE>*>* tmp;
 		tmp = sons.start;
 		unsigned int counter = 0;
 
@@ -95,6 +95,19 @@ struct tree_node
 		} while (tmp);
 	}
 
+	unsigned int CalcAdditionRecursive()
+	{
+		node<tree_node<TYPE>*>* tmp;
+		tmp = sons.start;
+		unsigned int ret = tmp->data->data;
+		while (tmp != NULL)
+		{
+			ret += tmp->data->CalcAdditionRecursive();
+			tmp = tmp->next;
+
+		}
+		return ret;
+	}
 
 };
 
@@ -110,6 +123,9 @@ public:
 	{
 	}
 
+	Tree(const TYPE& data) :root(data)
+	{
+	}
 
 	//--------------------------------
 	// Add & Clear
@@ -164,6 +180,11 @@ public:
 		root->InOrderREC(list);
 	}
 
+	unsigned int CalcAdditionRecursive()
+	{
+		return root->CalcAdditionRecursive();
+		
+	}
 	//--------------------------------
 	// Iterative search functions
 	//--------------------------------
@@ -246,7 +267,7 @@ public:
 		Stack <tree_node<TYPE>*> fatherStack;
 		fatherStack.PushBack(it_node);
 
-		{
+		
 			/**
 			-Tmp = it_node->fills
 			- Posar fins a count /2
@@ -257,7 +278,7 @@ public:
 				-Si no té fills, l'afegeixes
 				-Fas top I si és igual al pare de it_node fas pop i afegeixes al pare
 				**/
-		}
+		
 
 
 		
@@ -313,6 +334,29 @@ public:
 				}
 		} while (Sons.PopFirst(it_node));
 	}
+
+	unsigned int CalcAdditionIterative() const 
+	{
+		unsigned int ret = 0;
+		Queue<tree_node<TYPE> *> Sons;
+		tree_node<TYPE> * it_node = root;
+		node<tree_node<TYPE>*>* tmp;
+		do
+		{
+			ret += it_node->data;
+			//Adds all Sons
+			tmp = it_node->sons.start;
+
+			while (tmp)
+			{
+				Sons.PushBack(tmp->data);
+				tmp = tmp->next;
+			}
+		} while (Sons.PopFirst(it_node));
+
+		return ret;
+	}
+
 };
 
 /*
