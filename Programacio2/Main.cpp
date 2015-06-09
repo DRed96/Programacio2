@@ -49,6 +49,7 @@ int main()
 
 	mylist.InsertAfter(0, mylist2);
 
+	mylist.InsertAfter(1, mylist3);
 
 	mylist.InsertAfter(0, mylist3);
 	//printf("ref == %d", ref);

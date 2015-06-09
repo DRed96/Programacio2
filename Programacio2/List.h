@@ -195,6 +195,7 @@ public:
 		while (counter < index && tmp != NULL)
 		{
 			tmp = tmp->next;
+			counter++;
 		}
 		
 
