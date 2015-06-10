@@ -75,4 +75,7 @@
   <ItemGroup>
     <None Include="Prova LOG.vcxproj.filters" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="ejercicios.txt" />
+  </ItemGroup>
 </Project>
