@@ -18,7 +18,7 @@
 	/*const bool Pop()
 	{
 	if (start != NULL && end != NULL)
-	{
+//	{
 	if (start == end)
 	{
 	size = 0;
