@@ -34,25 +34,7 @@ int fibonaci_iterative(unsigned int position)
 
 int main()
 {
-	List<int> mylist;
-	List<int> mylist2;
-
-	mylist2.Add(1);
-	mylist2.Add(2);
-	mylist2.Add(3);
-
-	List<int> mylist3;
-
-	mylist3.Add(4);
-	mylist3.Add(5);
-	mylist3.Add(6);
-
-	mylist.InsertAfter(0, mylist2);
-
-	mylist.InsertAfter(1, mylist3);
-
-	mylist.InsertAfter(0, mylist3);
-	//printf("ref == %d", ref);
+	
 	getchar();
 	return 0;
 }
