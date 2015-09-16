@@ -73,6 +73,7 @@
     <ClInclude Include="DynArray.h" />
     <ClInclude Include="Factorial.h" />
     <ClInclude Include="List.h" />
+    <ClInclude Include="Point3D.h" />
     <ClInclude Include="Queue_Array.h" />
     <ClInclude Include="Queue_List2.h" />
     <ClInclude Include="Utils.h" />

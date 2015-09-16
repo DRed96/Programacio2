@@ -71,6 +71,9 @@
     <ClInclude Include="Queue_Array.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Point3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Prova LOG.vcxproj.filters" />
