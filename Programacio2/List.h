@@ -3,7 +3,11 @@
 
 #include <assert.h>
 //#include "Swap.h"
-#include "DynArray.h"
+
+
+template <class TYPE>
+class DynArray;
+
 template<class TYPE>
 struct node
 {
@@ -45,7 +49,7 @@ public:
 		// for (unsigned int i = 0; i < ref.size; i++, tmp2 = tmp2->next)
 		 while (tmp2)
 		 {
-			 Add(tmp2->data);
+			 add(tmp2->data);
 			 tmp2 = tmp2->next;
 		 }
 	 }
@@ -306,7 +310,7 @@ public:
 		assert(ref.start);
 		for (unsigned int i = 0; i < ref.size; i++)
 		{
-		Add(ref[i]);
+			add(ref[i]);
 		}
 	}
 
@@ -453,26 +457,27 @@ public:
 		return true;
 	}
 
-	bool copyToArray(DynArray<TYPE> & toFill)
+	bool copyToArray(DynArray<TYPE> * toFill)
 	{
-		bool status = true;
+		bool success = true;
 		node<TYPE> *tmp = start;
 		//To make sure you start from the beggining
-		toFill.Clear();
+		
 
-		if (start == NULL)
+		if (start == NULL || toFill == NULL)
 		{
-			status = false;
+			success = false;
 		}
 		else
 		{
+			toFill->Clear();
 			while (tmp != NULL)
 			{
-				toFill.PushBack(tmp->data);
+				toFill->PushBack(tmp->data);
 				tmp = tmp->next;				
 			}
 		}
-		return status;
+		return success;
 	}
 
 	/*

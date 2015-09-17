@@ -212,21 +212,21 @@ public:
 	
 	}
 
-	bool copyToList(List<TYPE> & toFill)
+	bool copyToList(List<TYPE> * toFill)
 	{
 		bool success = true;
-		if (toFill.size == 0)
+		if (toFill == NULL || toFill->size == 0)
 		{
 			success = false;
 		}
 		else
 		{
-			for (int i = 0; i <= nElements; i++)
+			for (unsigned int i = 0; i < nElements; i++)
 			{
-				toFill.PushBack(this->operator[i]);			
+				toFill->add(this->operator[](i));			
 			}
 		}
-		return status;
+		return success;
 	}
 
 private:

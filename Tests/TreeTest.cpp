@@ -67,7 +67,7 @@ namespace UnitTest1
 			Assert::AreEqual(test.root->data, 'A');
 
 			List <tree_node<int>*> output;
-			test.Clear();
+			test.clear();
 			Assert::IsTrue(output.size == 0);
 
 			Assert::AreEqual(test.root->sons.size, (unsigned int)0);
@@ -96,7 +96,7 @@ namespace UnitTest1
 			Assert::AreEqual(test.root->data, 'F');
 
 			List <tree_node<int>*> output;
-			test.Clear(s1->sons[1]);
+			test.clear(s1->sons[1]);
 
 			Assert::AreEqual(test.root->data, 'F');
 			Assert::IsTrue(output.size == 0);
@@ -130,7 +130,7 @@ namespace UnitTest1
 			List <tree_node<char>*>* output;
 			output = new List<tree_node<char>*>;
 
-			test.PostOrderIT(output);
+			test.postOrderIT(output);
 
 			Assert::AreEqual(output->start->data->data, 'X');
 			Assert::AreEqual(output->start->next->data->data, 'A');
@@ -172,7 +172,7 @@ namespace UnitTest1
 			List <tree_node<char>*>* output;
 			output = new List<tree_node<char>*>;
 
-			test.PostOrderREC(output);
+			test.postOrderREC(output);
 
 			Assert::AreEqual(output->start->data->data, 'A');
 			Assert::AreEqual(output->start->next->data->data, 'C');
@@ -378,7 +378,7 @@ namespace UnitTest1
 			test.add('E', s1->sons[1]);
 
 			List <tree_node<char>*> output;
-			test.Transversal_Order_IT(output);
+			test.transversal_Order_IT(output);
 
 			Assert::AreEqual(output.start->data->data, 'F');
 			Assert::AreEqual(output.start->next->data->data, 'B');

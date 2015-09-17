@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "List.h"
+#include "DynArray.h"
 #include "Utils.h"
 /*
 
@@ -34,7 +35,22 @@ int fibonaci_iterative(unsigned int position)
 
 int main()
 {
-	
+
+	List <int> l1;
+	DynArray <int> a1;
+	DynArray <int> *ptr = &a1;
+	for (int i = 0; i <= 15; i++)
+		l1.add(i);
+
+	l1.copyToArray(ptr);
+
+	for (int j = 0; j < 15; j++)
+	{
+		//Assert::AreEqual(ptr->operator[](j), l1[j]);
+		//Assert::AreEqual(ptr->operator[](j), j);
+		printf("ARRAY PTR: %i SHOULD BE: %i  \n", ptr->operator[](j), j);
+	}
+
 	getchar();
 	return 0;
 }

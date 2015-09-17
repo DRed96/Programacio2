@@ -115,7 +115,7 @@ iterative = tree.add(9, s2);
 	   tree.add(10, iterative);
 
 		//Assert::AreEqual((int)tree.CalcadditionRecursive(), 55);
-			Assert::AreEqual((int)tree.CalcadditionIterative(), 55);
+			Assert::AreEqual((int)tree.calcadditionIterative(), 55);
 		}
 	};
 }

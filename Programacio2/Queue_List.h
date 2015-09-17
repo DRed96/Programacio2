@@ -26,7 +26,7 @@ public:
 	unsigned int PushBack(const T & element)
 	{
 		
-		unsigned int ret = data.Add(element);
+		unsigned int ret = data.add(element);
 		if (fake_start == NULL)
 			fake_start = data.start;
 		return ret;

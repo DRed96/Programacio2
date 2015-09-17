@@ -59,6 +59,9 @@
     <ClCompile Include="EXAMEN_FINAL.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Point3D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Text.txt" />

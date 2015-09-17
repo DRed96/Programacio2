@@ -29,7 +29,7 @@ struct tree_node
 		node<tree_node<TYPE>*> * tmp = starterNode->sons.start;
 		while (tmp)
 		{
-			Clear(tmp->data);
+			clear(tmp->data);
 			tmp = tmp->next;
 			starterNode->sons.size--;
 		}
@@ -47,10 +47,10 @@ struct tree_node
 		node<tree_node<TYPE>*> * tmp;
 		tmp = sons.getStart();
 
-		list->Add(this);
+		list->add(this);
 		while (tmp != NULL)
 		{
-			tmp->data->PreOrderREC(list);
+			tmp->data->preOrderREC(list);
 			tmp = tmp->next;
 		}
 
@@ -61,11 +61,11 @@ struct tree_node
 		node<tree_node<TYPE>*> * tmp = sons.start;
 		while (tmp != NULL)
 		{
-			tmp->data->PostOrderREC(list);
+			tmp->data->postOrderREC(list);
 			tmp = tmp->next;
 
 		}
-		list->Add(this);
+		list->add(this);
 
 	}
 
@@ -79,15 +79,15 @@ struct tree_node
 		{
 			if (counter < sons.size / 2)
 			{
-				tmp->data->InOrderREC(list);
+				tmp->data->inOrderREC(list);
 				counter++;
 				tmp = tmp->next;
 			}
 
-			list->Add(this);
+			list->add(this);
 			if (tmp)
 			{
-				tmp->data->InOrderREC(list);
+				tmp->data->inOrderREC(list);
 				tmp = tmp->next;
 			}
 
@@ -95,14 +95,14 @@ struct tree_node
 		} while (tmp);
 	}
 
-	unsigned int calcAdditionRecursive()
+	unsigned int calcadditionRecursive()
 	{
 		node<tree_node<TYPE>*>* tmp;
 		tmp = sons.start;
 		unsigned int ret = tmp->data->data;
 		while (tmp != NULL)
 		{
-			ret += tmp->data->CalcAdditionRecursive();
+			ret += tmp->data->CalcadditionRecursive();
 			tmp = tmp->next;
 
 		}
@@ -128,7 +128,7 @@ public:
 	}
 
 	//--------------------------------
-	// Add & Clear
+	// add & Clear
 	//--------------------------------
 
 	tree_node<TYPE> * add(const TYPE& _data, tree_node<TYPE> * newFather = NULL)
@@ -141,7 +141,7 @@ public:
 		}
 		if (newFather != NULL && root != NULL)
 		{
-			newFather->sons.Add(newNode);
+			newFather->sons.add(newNode);
 			newNode->father = newFather;
 		}
 		size++;
@@ -159,7 +159,7 @@ public:
 		if (starterNode != root)
 			starterNode->father->sons.size--;
 
-		root->Clear(starterNode);
+		root->clear(starterNode);
 	}
 
 
@@ -168,21 +168,21 @@ public:
 	//--------------------------------
 	void postOrderREC(List <tree_node<TYPE>*>* list)
 	{
-		root->PostOrderREC(list);
+		root->postOrderREC(list);
 	}
 
 	void PreOrderREC(List <tree_node<TYPE>*>* list)
 	{
-		root->PreOrderREC(list);
+		root->preOrderREC(list);
 	}
 	void InOrderREC(List <tree_node<TYPE>*> * list)
 	{
-		root->InOrderREC(list);
+		root->inOrderREC(list);
 	}
 
-	unsigned int calcAdditionRecursive()
+	unsigned int calcadditionRecursive()
 	{
-		return root->CalcAdditionRecursive();
+		return root->calcadditionRecursive();
 		
 	}
 	//--------------------------------
@@ -197,7 +197,7 @@ public:
 		bool checker = true;
 		while (checker &&it_node != NULL)
 		{
-			list->Add(it_node);
+			list->add(it_node);
 
 			tmp = it_node->sons.end;
 			while (tmp != NULL)
@@ -233,7 +233,7 @@ public:
 			checker = sonStack.Pop(it_node);
 
 			if (it_node->sons.count() == 0){
-				list->Add(it_node);
+				list->add(it_node);
 			}
 
 			/*
@@ -246,7 +246,7 @@ public:
 				{
 					if (it_node->father)
 						it_node = it_node->father;
-					list->Add(it_node);
+					list->add(it_node);
 					if (it_node == root)
 					{
 						it_node = NULL;
@@ -307,7 +307,7 @@ public:
 					Stack1.Pop(ref);
 					node = ref;
 					Stack2.Pop(ref)
-					list.Add(ref->data);
+					list.add(ref->data);
 				}
 				Stack1.Pop(ref);
 				node = ref;*/
@@ -323,8 +323,8 @@ public:
 		node<tree_node<TYPE>*>* tmp;
 		do
 		{
-				ref.Add(it_node);
-				//Adds all Sons
+				ref.add(it_node);
+				//adds all Sons
 				tmp = it_node->sons.start;
 
 				while (tmp)					
@@ -335,7 +335,7 @@ public:
 		} while (Sons.PopFirst(it_node));
 	}
 
-	unsigned int calcAdditionIterative() const 
+	unsigned int calcadditionIterative() const 
 	{
 		unsigned int ret = 0;
 		Queue<tree_node<TYPE> *> Sons;
@@ -344,7 +344,7 @@ public:
 		do
 		{
 			ret += it_node->data;
-			//Adds all Sons
+			//adds all Sons
 			tmp = it_node->sons.start;
 
 			while (tmp)
@@ -362,7 +362,7 @@ public:
 /*
 tmp = it_node->sons.end;
 if (!tmp)
-list->Add(it_node);
+list->add(it_node);
 else
 {
 for (; counter <= (float)it_node->sons.count() / 2; counter++, tmp = tmp->prev)

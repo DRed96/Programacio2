@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include <stdlib.h> 
 #include "CppUnitTest.h"
+#include "../Programacio2/DynArray.h"
 #include "../Programacio2/List.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -57,7 +58,7 @@ namespace UnitTest1
 			test.add(1);
 			test.add(3);
 
-			test.BubbleSort();
+			test.bubbleSort();
 
 			Assert::AreEqual(test[0], 1);
 			Assert::AreEqual(test[1], 3);
@@ -155,18 +156,20 @@ namespace UnitTest1
 			Assert::AreEqual(t1[4], 5);
 		
 		}
-		TEST_METHOD(List_data_to_Array)
+		TEST_METHOD(List_copy_to_Array)
 		{
 			List <int> l1;
-			DynArray <int> a1;
+			//DynArray <int> a1;
+			DynArray <int> *ptr = new DynArray<int>;
 			for (int i = 0; i <= 15; i++)
 				l1.add(i);
 
-			l1.copyToArray(a1);
+			l1.copyToArray(ptr);
 
-			for (int j = 0; j <= 15; j++)
+			for (int j = 0; j < 15; j++)
 			{
-				Assert::AreEqual(a1[j], l1[j]);
+				//Assert::AreEqual(ptr->operator[](j), l1[j]);
+			Assert::AreEqual(ptr->operator[](j), j);
 			}
 		}
 	};
