@@ -176,7 +176,7 @@ namespace UnitTest1
 			}
 
 			ptr->~DynArray();
-			l1.copyToArray(ptr);
+			Assert::IsTrue(l1.copyToArray(ptr));
 
 			for (int j = 0; j < 15; j++)
 			{
