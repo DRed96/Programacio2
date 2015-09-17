@@ -3,7 +3,7 @@
 
 #include <assert.h>
 //#include "Swap.h"
-
+#include "DynArray.h"
 template<class TYPE>
 struct node
 {
@@ -453,7 +453,26 @@ public:
 		return true;
 	}
 
-	
+	bool dataToArray(DynArray<TYPE> & toFill)
+	{
+		bool status = true;
+		node<TYPE> *tmp = start;
+		//To make sure you start from the beggining
+		toFill.Clear();
+
+		if (start == NULL)
+		{
+			status = false;
+		}
+		else
+		{
+			while (tmp != NULL)
+			{
+				tmp = tmp->next;
+			}
+		}
+		return status;
+	}
 
 	/*
 

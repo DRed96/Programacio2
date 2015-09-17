@@ -19,7 +19,7 @@ public:
 		x = y = z = 0;
 	}
 
-	float GetDistance(const Point3D <T> & p)
+	template<> float Point3D<int>::GetDistance(const Point3D <T> & p)
 	{
 		return (float)sqrt(pow((x + p.x), 2) + pow((y + p.y), 2) + pow((z + p.z), 2));
 	}
@@ -79,7 +79,7 @@ public:
 	}
 	bool operator ==(const Point3D & p)
 	{
-		return (x == p.x && y == p.y && z == p.z ? true : false);
+		return (x == p.x && y == p.y && z == p.z);
 	}
 	
 	bool operator !=(const Point3D & p)
@@ -89,7 +89,7 @@ public:
 
 	bool isZero()
 	{
-		return (x == 0 && y == 0 && z == 0 ? true: false);
+		return (x == 0 && y == 0 && z == 0);
 	}
 };
 
