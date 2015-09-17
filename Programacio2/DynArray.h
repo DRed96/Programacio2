@@ -34,6 +34,8 @@ public:
 	~DynArray()
 	{
 		delete[] data;
+		data = NULL;
+		memalloc = nElements = 0;
 	}
 
 	// Operators
@@ -215,16 +217,17 @@ public:
 	bool copyToList(List<TYPE> * toFill)
 	{
 		bool success = true;
-		if (toFill == NULL || toFill->size == 0)
-		{
-			success = false;
-		}
-		else
+		//toFill == NULL ||
+		if (toFill != NULL && toFill->size == 0 )
 		{
 			for (unsigned int i = 0; i < nElements; i++)
 			{
-				toFill->add(this->operator[](i));			
-			}
+				toFill->add(this->operator[](i));
+			}	
+		}
+		else
+		{
+			success = false;
 		}
 		return success;
 	}
@@ -249,7 +252,6 @@ private:
 			{
 				data[i] = tmp[i];
 			}
-
 			delete[] tmp;
 		}
 	}

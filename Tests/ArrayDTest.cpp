@@ -152,10 +152,10 @@ namespace UnitTest1
 
 			a1.copyToList(l1);
 
-			for (int j = 0; j < 15; j++)
+			for (int j = 0; j < 14; j++)
 			{
-				//Assert::AreEqual(a1[j], l1[j]);
-				//Assert::AreEqual(l1[j], j);
+				Assert::AreEqual(a1[j], l1->operator[](j));
+				Assert::AreEqual(l1->operator[](j), j);
 			}
 		}
 

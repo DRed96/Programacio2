@@ -37,11 +37,14 @@ int main()
 {
 
 	List <int> l1;
-	DynArray <int> a1;
-	DynArray <int> *ptr = &a1;
+	DynArray <int> *ptr = NULL;
+
 	for (int i = 0; i <= 15; i++)
 		l1.add(i);
+	ptr = new DynArray<int>;
+	l1.copyToArray(ptr);
 
+	ptr->~DynArray();
 	l1.copyToArray(ptr);
 
 	for (int j = 0; j < 15; j++)

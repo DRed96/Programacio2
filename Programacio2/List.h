@@ -266,7 +266,6 @@ public:
 		if (n2->next)
 			n2->next->prev = n1;
 
-		//swap(n1->next, n2->next);
 		tmp = n1->next;
 		n1->next = n2->next;
 		n2->next = tmp;
@@ -464,18 +463,18 @@ public:
 		//To make sure you start from the beggining
 		
 
-		if (start == NULL || toFill == NULL)
-		{
-			success = false;
-		}
-		else
+		if (start != NULL && toFill != NULL)
 		{
 			toFill->Clear();
 			while (tmp != NULL)
 			{
 				toFill->PushBack(tmp->data);
-				tmp = tmp->next;				
+				tmp = tmp->next;
 			}
+		}
+		else
+		{
+			success = false;
 		}
 		return success;
 	}

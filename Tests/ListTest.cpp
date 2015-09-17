@@ -159,17 +159,29 @@ namespace UnitTest1
 		TEST_METHOD(List_copy_to_Array)
 		{
 			List <int> l1;
-			//DynArray <int> a1;
-			DynArray <int> *ptr = new DynArray<int>;
+			DynArray <int> *ptr = NULL;
+
 			for (int i = 0; i <= 15; i++)
 				l1.add(i);
 
+			Assert::IsFalse(l1.copyToArray(ptr));
+
+			ptr = new DynArray<int>;
 			l1.copyToArray(ptr);
 
 			for (int j = 0; j < 15; j++)
 			{
-				//Assert::AreEqual(ptr->operator[](j), l1[j]);
-			Assert::AreEqual(ptr->operator[](j), j);
+				Assert::AreEqual(ptr->operator[](j), l1[j]);
+				Assert::AreEqual(ptr->operator[](j), j);
+			}
+
+			ptr->~DynArray();
+			l1.copyToArray(ptr);
+
+			for (int j = 0; j < 15; j++)
+			{
+				Assert::AreEqual(ptr->operator[](j), l1[j]);
+				Assert::AreEqual(ptr->operator[](j), j);
 			}
 		}
 	};
