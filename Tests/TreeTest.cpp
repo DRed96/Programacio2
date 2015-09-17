@@ -9,30 +9,30 @@ namespace UnitTest1
 	{
 	public:
 
-		TEST_METHOD(Tree_Add)
+		TEST_METHOD(Tree_add)
 		{
 			Tree<int> test;
 			//OPERATOR?
 			tree_node<int> * s1;
 			tree_node<int> * s2;
 			tree_node<int> * it; //ITERATIVE NODE
-			test.Add(9, NULL);
+			test.add(9, NULL);
 
-			s1 = test.Add(11, test.root);
-			s2 = test.Add(5, test.root);
+			s1 = test.add(11, test.root);
+			s2 = test.add(5, test.root);
 
-			test.Add(3, s1);
-			test.Add(7, s1);
+			test.add(3, s1);
+			test.add(7, s1);
 
-			it = test.Add(2, s1->sons[0]);
-			test.Add(4, s1->sons[0]);
-			test.Add(1, it);
+			it = test.add(2, s1->sons[0]);
+			test.add(4, s1->sons[0]);
+			test.add(1, it);
 
-			test.Add(6, s1->sons[1]);
-			test.Add(8, s1->sons[1]);
+			test.add(6, s1->sons[1]);
+			test.add(8, s1->sons[1]);
 
-			test.Add(10, s2);
-			test.Add(12, s2);
+			test.add(10, s2);
+			test.add(12, s2);
 
 
 			Assert::AreEqual(9, test.root->data);
@@ -58,11 +58,11 @@ namespace UnitTest1
 		{
 			Tree<char> test;
 			tree_node <char>* a;
-			a = test.Add('A');
+			a = test.add('A');
 			tree_node<char>* b;
-			b = test.Add('B', a);
+			b = test.add('B', a);
 			tree_node<char>* c;
-			c = test.Add('C', a);
+			c = test.add('C', a);
 
 			Assert::AreEqual(test.root->data, 'A');
 
@@ -77,21 +77,21 @@ namespace UnitTest1
 		TEST_METHOD(Tree_Clear_2)
 		{
 			Tree<char> test;
-			test.Add('F', NULL);
+			test.add('F', NULL);
 
 			tree_node<char> * s1;
 			tree_node<char> * s2;
-			s1 = test.Add('B', test.root);
-			s2 = test.Add('G', test.root);
+			s1 = test.add('B', test.root);
+			s2 = test.add('G', test.root);
 
-			test.Add('H', s2);
-			test.Add('I', s2->sons[0]);
+			test.add('H', s2);
+			test.add('I', s2->sons[0]);
 
-			test.Add('A', s1);
-			test.Add('D', s1);
+			test.add('A', s1);
+			test.add('D', s1);
 
-			test.Add('C', s1->sons[1]);
-			test.Add('E', s1->sons[1]);
+			test.add('C', s1->sons[1]);
+			test.add('E', s1->sons[1]);
 
 			Assert::AreEqual(test.root->data, 'F');
 
@@ -112,19 +112,19 @@ namespace UnitTest1
 			tree_node<char> * s2;
 			tree_node<char> * it;
 
-			test.Add('F', NULL);
+			test.add('F', NULL);
 
-			s1 = test.Add('B', test.root);
-			s2 = test.Add('G', test.root);
+			s1 = test.add('B', test.root);
+			s2 = test.add('G', test.root);
 
-			test.Add('H', s2);
-			test.Add('I', s2->sons[0]);
+			test.add('H', s2);
+			test.add('I', s2->sons[0]);
 
-			it = test.Add('A', s1);
-			test.Add('X', it);
-			test.Add('D', s1);
-			test.Add('C', s1->sons[1]);
-			test.Add('E', s1->sons[1]);
+			it = test.add('A', s1);
+			test.add('X', it);
+			test.add('D', s1);
+			test.add('C', s1->sons[1]);
+			test.add('E', s1->sons[1]);
 
 
 			List <tree_node<char>*>* output;
@@ -154,19 +154,19 @@ namespace UnitTest1
 			tree_node<char> * s2;
 
 
-			test.Add('F', NULL);
+			test.add('F', NULL);
 
-			s1 = test.Add('B', test.root);
-			s2 = test.Add('G', test.root);
+			s1 = test.add('B', test.root);
+			s2 = test.add('G', test.root);
 
-			test.Add('H', s2);
-			test.Add('I', s2->sons[0]);
+			test.add('H', s2);
+			test.add('I', s2->sons[0]);
 
-			test.Add('A', s1);
+			test.add('A', s1);
 
-			test.Add('D', s1);
-			test.Add('C', s1->sons[1]);
-			test.Add('E', s1->sons[1]);
+			test.add('D', s1);
+			test.add('C', s1->sons[1]);
+			test.add('E', s1->sons[1]);
 
 
 			List <tree_node<char>*>* output;
@@ -195,18 +195,18 @@ namespace UnitTest1
 			tree_node<char> * s2;
 
 
-			test.Add('F', NULL);
+			test.add('F', NULL);
 
-			s1 = test.Add('B', test.root);
-			s2 = test.Add('G', test.root);
+			s1 = test.add('B', test.root);
+			s2 = test.add('G', test.root);
 
-			test.Add('H', s2);
-			test.Add('I', s2->sons[0]);
+			test.add('H', s2);
+			test.add('I', s2->sons[0]);
 
-			test.Add('A', s1);
-			test.Add('D', s1);
-			test.Add('C', s1->sons[1]);
-			test.Add('E', s1->sons[1]);
+			test.add('A', s1);
+			test.add('D', s1);
+			test.add('C', s1->sons[1]);
+			test.add('E', s1->sons[1]);
 
 
 			List <tree_node<char>*>* output;
@@ -234,24 +234,24 @@ namespace UnitTest1
 			tree_node<char> * s2;
 
 
-			test.Add('F', NULL);
+			test.add('F', NULL);
 
-			s1 = test.Add('B', test.root);
-			s2 = test.Add('G', test.root);
+			s1 = test.add('B', test.root);
+			s2 = test.add('G', test.root);
 
-			test.Add('H', s2);
-			test.Add('I', s2->sons[0]);
+			test.add('H', s2);
+			test.add('I', s2->sons[0]);
 
-			test.Add('A', s1);
-			test.Add('D', s1);
-			test.Add('C', s1->sons[1]);
-			test.Add('E', s1->sons[1]);
+			test.add('A', s1);
+			test.add('D', s1);
+			test.add('C', s1->sons[1]);
+			test.add('E', s1->sons[1]);
 
 
 			List <tree_node<char>*>* output;
 			output = new List<tree_node<char>*>;
 
-			test.PreOrderIT(output);
+			test.preOrderIT(output);
 
 
 			Assert::AreEqual(output->start->data->data, 'F');
@@ -275,18 +275,18 @@ namespace UnitTest1
 			tree_node<char> * s2;
 
 
-			test.Add('F', NULL);
+			test.add('F', NULL);
 
-			s1 = test.Add('B', test.root);
-			s2 = test.Add('G', test.root);
+			s1 = test.add('B', test.root);
+			s2 = test.add('G', test.root);
 
-			test.Add('H', s2);
-			test.Add('I', s2->sons[0]);
+			test.add('H', s2);
+			test.add('I', s2->sons[0]);
 
-			test.Add('A', s1);
-			test.Add('D', s1);
-			test.Add('C', s1->sons[1]);
-			test.Add('E', s1->sons[1]);
+			test.add('A', s1);
+			test.add('D', s1);
+			test.add('C', s1->sons[1]);
+			test.add('E', s1->sons[1]);
 
 
 			List <tree_node<char>*>* output;
@@ -314,18 +314,18 @@ namespace UnitTest1
 			tree_node<char> * s2;
 
 
-			test.Add('F', NULL);
+			test.add('F', NULL);
 
-			s1 = test.Add('B', test.root);
-			s2 = test.Add('G', test.root);
+			s1 = test.add('B', test.root);
+			s2 = test.add('G', test.root);
 
-			test.Add('H', s2);
-			test.Add('I', s2->sons[0]);
+			test.add('H', s2);
+			test.add('I', s2->sons[0]);
 
-			test.Add('A', s1);
-			test.Add('D', s1);
-			test.Add('C', s1->sons[1]);
-			test.Add('E', s1->sons[1]);
+			test.add('A', s1);
+			test.add('D', s1);
+			test.add('C', s1->sons[1]);
+			test.add('E', s1->sons[1]);
 
 
 			List <char> output;
@@ -364,18 +364,18 @@ namespace UnitTest1
 			tree_node<char> * s1;
 			tree_node<char> * s2;
 
-			test.Add('F', NULL);
+			test.add('F', NULL);
 
-			s1 = test.Add('B', test.root);
-			s2 = test.Add('G', test.root);
+			s1 = test.add('B', test.root);
+			s2 = test.add('G', test.root);
 
-			test.Add('H', s2);
-			test.Add('I', s2->sons[0]);
+			test.add('H', s2);
+			test.add('I', s2->sons[0]);
 
-			test.Add('A', s1);
-			test.Add('D', s1);
-			test.Add('C', s1->sons[1]);
-			test.Add('E', s1->sons[1]);
+			test.add('A', s1);
+			test.add('D', s1);
+			test.add('C', s1->sons[1]);
+			test.add('E', s1->sons[1]);
 
 			List <tree_node<char>*> output;
 			test.Transversal_Order_IT(output);

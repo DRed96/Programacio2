@@ -24,7 +24,7 @@ struct tree_node
 	~tree_node()
 	{}
 
-	void Clear(tree_node<TYPE> * starterNode)
+	void clear(tree_node<TYPE> * starterNode)
 	{
 		node<tree_node<TYPE>*> * tmp = starterNode->sons.start;
 		while (tmp)
@@ -42,7 +42,7 @@ struct tree_node
 	//--------------------------------
 
 
-	void PreOrderREC(List <tree_node<TYPE>*>* list)
+	void preOrderREC(List <tree_node<TYPE>*>* list)
 	{
 		node<tree_node<TYPE>*> * tmp;
 		tmp = sons.getStart();
@@ -56,7 +56,7 @@ struct tree_node
 
 	}
 
-	void PostOrderREC(List <tree_node<TYPE>*>* list)
+	void postOrderREC(List <tree_node<TYPE>*>* list)
 	{
 		node<tree_node<TYPE>*> * tmp = sons.start;
 		while (tmp != NULL)
@@ -69,7 +69,7 @@ struct tree_node
 
 	}
 
-	void InOrderREC(List <tree_node<TYPE>*>* list)
+	void inOrderREC(List <tree_node<TYPE>*>* list)
 	{
 		node<tree_node<TYPE>*>* tmp;
 		tmp = sons.start;
@@ -95,7 +95,7 @@ struct tree_node
 		} while (tmp);
 	}
 
-	unsigned int CalcAdditionRecursive()
+	unsigned int calcAdditionRecursive()
 	{
 		node<tree_node<TYPE>*>* tmp;
 		tmp = sons.start;
@@ -131,7 +131,7 @@ public:
 	// Add & Clear
 	//--------------------------------
 
-	tree_node<TYPE> * Add(const TYPE& _data, tree_node<TYPE> * newFather = NULL)
+	tree_node<TYPE> * add(const TYPE& _data, tree_node<TYPE> * newFather = NULL)
 	{
 		tree_node <TYPE> *newNode = new tree_node<TYPE>(_data);
 		if (newFather == NULL && root == NULL)
@@ -149,7 +149,7 @@ public:
 	}
 
 	//This function is recursive, similar to Preorder REC
-	void Clear(tree_node<TYPE> * starterNode = NULL)
+	void clear(tree_node<TYPE> * starterNode = NULL)
 	{
 
 		if (starterNode == NULL)
@@ -166,7 +166,7 @@ public:
 	//--------------------------------
 	// Recursive search functions
 	//--------------------------------
-	void PostOrderREC(List <tree_node<TYPE>*>* list)
+	void postOrderREC(List <tree_node<TYPE>*>* list)
 	{
 		root->PostOrderREC(list);
 	}
@@ -180,7 +180,7 @@ public:
 		root->InOrderREC(list);
 	}
 
-	unsigned int CalcAdditionRecursive()
+	unsigned int calcAdditionRecursive()
 	{
 		return root->CalcAdditionRecursive();
 		
@@ -189,7 +189,7 @@ public:
 	// Iterative search functions
 	//--------------------------------
 
-	void PreOrderIT(List <tree_node<TYPE>*>* list) const
+	void preOrderIT(List <tree_node<TYPE>*>* list) const
 	{
 		Stack <tree_node<TYPE>*> son_stack;
 		tree_node <TYPE> * it_node = root;
@@ -209,7 +209,7 @@ public:
 		}
 	}
 
-	void PostOrderIT(List <tree_node<TYPE>*> * list) const
+	void postOrderIT(List <tree_node<TYPE>*> * list) const
 	{
 		Stack <tree_node<TYPE>*> sonStack;
 		tree_node<TYPE>* it_node = root;
@@ -259,7 +259,7 @@ public:
 	}
 
 	//I have not been able to complete this method
-	void InOrderIT(List <TYPE> & list) const
+	void inOrderIT(List <TYPE> & list) const
 	{
 		tree_node<TYPE>* it_node = root;
 		node<TYPE>* tmp = it_node->sons->end;//node to insert on the list
@@ -314,7 +314,7 @@ public:
 		}
 	
 	
-	void Transversal_Order_IT(List<tree_node<TYPE>*>& ref) const
+	void transversal_Order_IT(List<tree_node<TYPE>*>& ref) const
 	{
 		Queue<tree_node<TYPE> *> Sons;
 		//This tree_node will be the one we add to ref
@@ -335,7 +335,7 @@ public:
 		} while (Sons.PopFirst(it_node));
 	}
 
-	unsigned int CalcAdditionIterative() const 
+	unsigned int calcAdditionIterative() const 
 	{
 		unsigned int ret = 0;
 		Queue<tree_node<TYPE> *> Sons;

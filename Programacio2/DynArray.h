@@ -7,25 +7,27 @@
 
 #define MEM_CHUNK 16
 #include <assert.h>
-#include "Utils.h"
 #include <stdlib.h>
+#include "Utils.h"
+#include "List.h"
+
 template<class TYPE>
 class DynArray
 {
 public:
 	TYPE*			data;
-	unsigned int	memAlloc;
+	unsigned int	memalloc;
 	unsigned int	nElements;
 
 	// Constructors
-	DynArray(): memAlloc(0), nElements(0), data(NULL)
+	DynArray(): memalloc(0), nElements(0), data(NULL)
 	{
-		Alloc(MEM_CHUNK);
+		alloc(MEM_CHUNK);
 	}
 
-	DynArray(unsigned int newMem) : memAlloc(0), nElements(0), data(NULL)
+	DynArray(unsigned int newMem) : memalloc(0), nElements(0), data(NULL)
 	{
-		Alloc(newMem);
+		alloc(newMem);
 	}
 
 	// Destructor
@@ -52,7 +54,7 @@ public:
 	if (size < finalSize)
 	{
 		char * tmp = chain;
-		Alloc(finalSize);
+		alloc(finalSize);
 		strcpy_s(chain, size, tmp);
 		delete[] tmp;
 
@@ -64,7 +66,7 @@ public:
 	{
 		unsigned int finalSize = nElements + toCpy.nElements;
 
-		Alloc(finalSize);
+		alloc(finalSize);
 		for (unsigned int i = 0; i < toCpy.nElements; i++)
 		{
 			data[nElements + i] = toCpy[i];
@@ -76,9 +78,9 @@ public:
 	// Data Management
 	void PushBack(const TYPE& element)
 	{
-		if (nElements >= memAlloc)
+		if (nElements >= memalloc)
 		{
-			Alloc(memAlloc + MEM_CHUNK);
+			alloc(memalloc + MEM_CHUNK);
 		}
 		data[nElements++] = element;
 	}
@@ -119,8 +121,8 @@ public:
 			return true;
 		}
 
-		if (nElements + 1 > memAlloc)
-			Alloc(memAlloc + MEM_CHUNK);
+		if (nElements + 1 > memalloc)
+			alloc(memalloc + MEM_CHUNK);
 
 		for (unsigned int i = nElements; i > position; --i)
 		{
@@ -137,16 +139,16 @@ public:
 	bool Insert_Array(const DynArray& toInsert, unsigned int position)
 	{
 		unsigned int needed_mem = toInsert.nElements + nElements;
-		if (position > memAlloc)
+		if (position > memalloc)
 			return false;
 
-		if (memAlloc < needed_mem)
+		if (memalloc < needed_mem)
 		{
-			Alloc(needed_mem);
+			alloc(needed_mem);
 		
 			for (unsigned int i2 = 0, i = nElements - 1; i >= position; i--, i2++)
 			{
-				data[memAlloc - i2 - 1] = data[i];
+				data[memalloc - i2 - 1] = data[i];
 			}
 		}
 		else
@@ -179,7 +181,7 @@ public:
 		return result;
 	}
 
-	const TYPE* At(unsigned int index) const
+	const TYPE* at(unsigned int index) const
 	{
 		TYPE* result = NULL;
 
@@ -190,12 +192,12 @@ public:
 	}
 
 	// Utils
-	unsigned int GetCapacity() const
+	unsigned int getCapacity() const
 	{
-		return memAlloc;
+		return memalloc;
 	}
 
-	unsigned int Count() const
+	unsigned int count() const
 	{
 		return nElements;
 	}
@@ -210,19 +212,35 @@ public:
 	
 	}
 
+	bool copyToList(List<TYPE> & toFill)
+	{
+		bool success = true;
+		if (toFill.size == 0)
+		{
+			success = false;
+		}
+		else
+		{
+			for (int i = 0; i <= nElements; i++)
+			{
+				toFill.PushBack(this->operator[i]);			
+			}
+		}
+		return status;
+	}
 
 private:
 
 	// Private Utils
-	void Alloc(unsigned int new_mem)
+	void alloc(unsigned int new_mem)
 	{
 		TYPE* tmp = data;
 
-		memAlloc = new_mem;
-		data = new TYPE [memAlloc];
+		memalloc = new_mem;
+		data = new TYPE [memalloc];
 
-		if (nElements > memAlloc)
-				nElements = memAlloc;
+		if (nElements > memalloc)
+				nElements = memalloc;
 		
 	
 		if (tmp != NULL)

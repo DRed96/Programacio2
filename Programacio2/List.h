@@ -27,7 +27,7 @@ class List
 public:
 	node<TYPE>* start;
 	node<TYPE>* end;
-	
+
 	unsigned int  size;
 	//Constructor
 	
@@ -64,7 +64,7 @@ public:
 	/**
 	* Add new item at the end
 	*/
-	unsigned int Add(const TYPE& input)
+	unsigned int add(const TYPE& input)
 	{
 		node<TYPE>*   newNode;
 		newNode = new node < TYPE >(input);
@@ -83,7 +83,7 @@ public:
 		return ++size;
 	}
 
-	unsigned int Add(const TYPE& input, unsigned int pos)
+	unsigned int add(const TYPE& input, unsigned int pos)
 	{
 		
 		if (pos <= size + 1)		
@@ -183,7 +183,7 @@ public:
 	}
 
 	//EXAM
-	void InsertAfter(unsigned int index, const List & toInsert)
+	void insertAfter(unsigned int index, const List & toInsert)
 	{
 		node<TYPE> *tmp = start;
 
@@ -312,7 +312,7 @@ public:
 
 	//Ordenar la llista fent bubble sort
 	
-	unsigned int BubbleSort()
+	unsigned int bubbleSort()
 	{
 		bool change = true;
 		unsigned int counter = 0;
@@ -453,7 +453,7 @@ public:
 		return true;
 	}
 
-	bool dataToArray(DynArray<TYPE> & toFill)
+	bool copyToArray(DynArray<TYPE> & toFill)
 	{
 		bool status = true;
 		node<TYPE> *tmp = start;
@@ -468,7 +468,8 @@ public:
 		{
 			while (tmp != NULL)
 			{
-				tmp = tmp->next;
+				toFill.PushBack(tmp->data);
+				tmp = tmp->next;				
 			}
 		}
 		return status;

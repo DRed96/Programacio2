@@ -139,6 +139,24 @@ namespace UnitTest1
 
 		}
 
-		
+		TEST_METHOD(DynArray_copyToList)
+		{
+			DynArray<int> a1;
+			List<int> l1;
+
+			for (int i = 0; i <= 15; i++)
+			{
+				a1.PushBack(i);
+			}
+
+			l1.copyToArray(a1);
+
+			for (int j = 0; j <= 15; j++)
+			{
+				Assert::AreEqual(a1[j], l1[j]);
+				Assert::AreEqual(l1[j], j);
+			}
+		}
+
 	};
 }

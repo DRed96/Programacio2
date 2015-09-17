@@ -11,18 +11,18 @@ namespace UnitTest1
 	{
 	public:
 		
-		TEST_METHOD(List_Add)
+		TEST_METHOD(List_add)
 		{
 			List<int> mylist;
-			Assert::AreEqual((int)mylist.Add(5), 1);
+			Assert::AreEqual((int)mylist.add(5), 1);
 		}
 
-		TEST_METHOD(List_Add_Args)
+		TEST_METHOD(List_add_Args)
 		{
 			List<int> t1;
 			for (int i = 0; i <= 10; i++)
-				t1.Add(i);
-			t1.Add(-1, 5);
+				t1.add(i);
+			t1.add(-1, 5);
 			for (int i = 0; i < 6; i++)
 				Assert::AreEqual(t1[i], i);
 			Assert::AreEqual(t1[6], -1);
@@ -35,11 +35,11 @@ namespace UnitTest1
 		TEST_METHOD(List_Corchetes)
 		{
 			List<int> test;
-			test.Add(0);
-			test.Add(1);
-			test.Add(4);
-			test.Add(11);
-			test.Add(-29);
+			test.add(0);
+			test.add(1);
+			test.add(4);
+			test.add(11);
+			test.add(-29);
 			Assert::AreEqual((int)test[0], 0);
 			Assert::AreEqual((int)test[1], 1);
 			Assert::AreEqual((int)test[2], 4);
@@ -51,11 +51,11 @@ namespace UnitTest1
 		TEST_METHOD(List_Bubble)
 		{
 			List<int> test;
-			test.Add(25);
-			test.Add(9);
-			test.Add(42);
-			test.Add(1);
-			test.Add(3);
+			test.add(25);
+			test.add(9);
+			test.add(42);
+			test.add(1);
+			test.add(3);
 
 			test.BubbleSort();
 
@@ -70,9 +70,9 @@ namespace UnitTest1
 		TEST_METHOD(List_Swap)
 		{
 			List<int> test;
-			test.Add(25);
-			test.Add(9);
-			test.Add(42);
+			test.add(25);
+			test.add(9);
+			test.add(42);
 		
 			
 			test.swapNodes(test.start, test.start->next);
@@ -90,13 +90,13 @@ namespace UnitTest1
 			List<int> t2;
 			for (int i = 0; i < 10; i++)
 			{
-				t1.Add(i);
+				t1.add(i);
 
 			}
 
-			t2.Add(-1);
-			t2.Add(-2);
-			t2.Add(-3);
+			t2.add(-1);
+			t2.add(-2);
+			t2.add(-3);
 
 			t1.Insert_List(2, t2);
 
@@ -121,11 +121,11 @@ namespace UnitTest1
 			List <int> t2;
 
 			for (int i = 0; i <= 100; i++)
-				t1.Add(i);
+				t1.add(i);
 
-			t2.Add(-1);
-			t2.Add(-2);
-			t2.Add(-3);
+			t2.add(-1);
+			t2.add(-2);
+			t2.add(-3);
 			t1 += t2;
 //			Assert::AreEqual(1, 2);
 			
@@ -142,7 +142,7 @@ namespace UnitTest1
 		
 
 			for (int i = 0; i <= 6; i++)
-				t1.Add(i);
+				t1.add(i);
 
 			t1.del(t1.start->next->next);//2
 			//::AreEqual(1, 2);
@@ -155,6 +155,19 @@ namespace UnitTest1
 			Assert::AreEqual(t1[4], 5);
 		
 		}
-		
+		TEST_METHOD(List_data_to_Array)
+		{
+			List <int> l1;
+			DynArray <int> a1;
+			for (int i = 0; i <= 15; i++)
+				l1.add(i);
+
+			l1.copyToArray(a1);
+
+			for (int j = 0; j <= 15; j++)
+			{
+				Assert::AreEqual(a1[j], l1[j]);
+			}
+		}
 	};
 }
